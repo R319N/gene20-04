@@ -5,22 +5,71 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
+    --text-primary: #FEFCFD;
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
 
+html,
 body {
-  background: var(--background);
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.app-body {
+  background: "yellow";
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* GSAP ScrollSmoother styles */
+#smooth-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#smooth-content {
+  position: relative;
+  will-change: transform;
+}
+.flowing-particle-terrain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: auto;
+  background: transparent;
+  overflow: hidden;
+}
+
+.flowing-particle-terrain canvas {
+  display: block;
+}
+
+.particle-hero-shell {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.hero-gradient{
+  position: absolute;
+  width: 204px;
+  height: 200px;
+  left: 50%;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0.2;
+  background-image: linear-gradient(270deg,
+      hsl(221, 100%, 51%) 74%,
+      hsla(220, 100%, 41%, 0.986) 100%);
+  filter: blur(200px);
+  transform: rotate(-114.2deg) translate(0, 0);
 }
