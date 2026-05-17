@@ -1,30 +1,33 @@
-import { satoshi, supreme } from "@/assets/fonts";
 import pxToRem from "../functions/pxToRem";
 import colors from "./colors";
-import { Montserrat, Plus_Jakarta_Sans, Share_Tech, Space_Grotesk, TikTok_Sans } from "next/font/google";
-const { text, transparent } = colors;
+import { Montserrat } from "next/font/google";
+
+const { text } = colors;
 
 const montserrat = Montserrat({
   weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
   display: "swap",
 });
+
 const baseProperties = {
   fontFamily: `${montserrat.style.fontFamily}, sans-serif`,
-  fontWeightLighter: 100,
+  fontWeightLighter: 300,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 700,
   fontWeightExtraBold: 900,
-  fontSizeXXS: pxToRem(10.5),
+  fontSizeXXS: pxToRem(10),
   fontSizeXS: pxToRem(12),
   fontSizeSM: pxToRem(14),
   fontSizeMD: pxToRem(16),
   fontSizeLG: pxToRem(18),
   fontSizeXL: pxToRem(20),
-  fontSize2XL: pxToRem(36),
-  fontSize3XL: pxToRem(48),
+  fontSize2XL: pxToRem(24),
+  fontSize3XL: pxToRem(30),
+  fontSize4XL: pxToRem(36),
+  fontSize5XL: pxToRem(48),
 };
 
 const baseHeadingProperties = {
@@ -34,7 +37,7 @@ const baseHeadingProperties = {
 
 const baseDisplayProperties = {
   fontFamily: baseProperties.fontFamily,
-  fontWeight: baseProperties.fontWeightLight,
+  fontWeight: baseProperties.fontWeightBold,
   lineHeight: 1.2,
 };
 
@@ -48,92 +51,98 @@ const typography = {
   color: text.primary,
 
   h1: {
-    fontSize: pxToRem(48),
-    lineHeight: 1.125,
+    fontSize: baseProperties.fontSize5XL,
+    lineHeight: 1.2,
+    ...baseHeadingProperties,
+    fontWeight: baseProperties.fontWeightExtraBold,
+  },
+
+  h2: {
+    fontSize: baseProperties.fontSize4XL,
+    lineHeight: 1.25,
+    ...baseHeadingProperties,
+    fontWeight: baseProperties.fontWeightBold,
+  },
+
+  h3: {
+    fontSize: baseProperties.fontSize3XL,
+    lineHeight: 1.3,
+    ...baseHeadingProperties,
+    fontWeight: baseProperties.fontWeightBold,
+  },
+
+  h4: {
+    fontSize: baseProperties.fontSize2XL,
+    lineHeight: 1.35,
     ...baseHeadingProperties,
     fontWeight: baseProperties.fontWeightMedium,
   },
 
-  h2: {
-    fontSize: pxToRem(36),
-    lineHeight: 1.25,
-    fontWeight: baseProperties.fontWeightBold,
-    ...baseHeadingProperties,
-  },
-
-  h3: {
-    fontSize: pxToRem(30),
-    lineHeight: 1.375,
-    ...baseHeadingProperties,
-  },
-
-  h4: {
-    fontSize: pxToRem(24),
-    lineHeight: 1.375,
-    ...baseHeadingProperties,
-    color: text.primary,
-  },
-
   h5: {
-    fontSize: pxToRem(20),
-    lineHeight: 1.375,
+    fontSize: baseProperties.fontSizeXL,
+    lineHeight: 1.4,
     ...baseHeadingProperties,
+    fontWeight: baseProperties.fontWeightMedium,
   },
 
   h6: {
-    fontSize: pxToRem(18),
-    lineHeight: 1.625,
+    fontSize: baseProperties.fontSizeLG,
+    lineHeight: 1.45,
     ...baseHeadingProperties,
+    fontWeight: baseProperties.fontWeightMedium,
   },
 
   subtitle1: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeMD,
     fontWeight: baseProperties.fontWeightMedium,
-    lineHeight: 1.625,
+    lineHeight: 1.5,
     color: text.primary,
   },
 
   subtitle2: {
     fontFamily: baseProperties.fontFamily,
-    fontSize: baseProperties.fontSizeXS,
-    fontWeight: baseProperties.fontWeightLight,
-    lineHeight: 1.2,
+    fontSize: baseProperties.fontSizeSM,
+    fontWeight: baseProperties.fontWeightMedium,
+    lineHeight: 1.45,
   },
 
   body1: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeSM,
     fontWeight: baseProperties.fontWeightRegular,
-    lineHeight: 1.475,
-    color: text.primary,
+    lineHeight: 1.5,
   },
 
   body2: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeXS,
-    fontWeight: baseProperties.fontWeightLight,
-    lineHeight: 1.475,
-    color: text.primary,
+    fontWeight: baseProperties.fontWeightRegular,
+    lineHeight: 1.45,
   },
 
   button: {
     fontFamily: baseProperties.fontFamily,
-    fontSize: baseProperties.fontSizeXS,
-    fontWeight: baseProperties.fontWeightLighter,
+    fontSize: baseProperties.fontSizeSM,
+    fontWeight: baseProperties.fontWeightMedium,
     lineHeight: 1.5,
+    textTransform: "none",
   },
 
   caption: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeXS,
-    fontWeight: baseProperties.fontWeightLight,
-    lineHeight: 1.25,
-    // color: borderColor,
+    fontWeight: baseProperties.fontWeightRegular,
+    lineHeight: 1.35,
+    color: text.primary,
   },
 
   overline: {
     fontFamily: baseProperties.fontFamily,
+    fontSize: baseProperties.fontSizeXXS,
+    fontWeight: baseProperties.fontWeightMedium,
+    lineHeight: 1.5,
+    textTransform: "uppercase",
   },
 
   d1: {
@@ -175,6 +184,8 @@ const typography = {
     xl: baseProperties.fontSizeXL,
     "2xl": baseProperties.fontSize2XL,
     "3xl": baseProperties.fontSize3XL,
+    "4xl": baseProperties.fontSize4XL,
+    "5xl": baseProperties.fontSize5XL,
   },
 
   lineHeight: {

@@ -1,11 +1,13 @@
 "use client"
+import { brotliCompress } from 'node:zlib'
 import colors from '../../base/colors'
 import typography from '../../base/typography'
 import pxToRem from '../../functions/pxToRem'
+import rgba from '../../functions/rgba'
 
 // Material Dashboard 2 React Base Styles
 
-const { text, info, secondary, transparent } = colors
+const { text, info, secondary, primary, transparent } = colors
 const { size, fontWeightMedium } = typography
 
 const buttonText = {
@@ -14,10 +16,10 @@ const buttonText = {
     minHeight: pxToRem(40),
     color: text.primary,
     boxShadow: 'none',
-    padding: `${pxToRem(10)} ${pxToRem(4)}`,
-    fontWeight: 500,
-    fontSize: size.xxs,
     lineHeight: 1,
+    borderRadius: 0,
+    padding: `${pxToRem(0)} ${pxToRem(0)}`,
+      borderBottom: `1px solid ${rgba(text.primary, 0.2)}`,
 
     '&:hover': {
       boxShadow: 'none'
@@ -37,8 +39,14 @@ const buttonText = {
     },
 
     '& .material-icon, .material-icons-round, svg': {
-      fontSize: `${pxToRem(14)} !important`
-    }
+      fontSize: `${pxToRem(24)} !important`,
+      color: text.primary,
+      transition: 'all 0.2s ease-in-out',
+    },
+    "&:hover .material-icon, &:hover .material-icons-round, &:hover svg": {
+      transform: 'translateX(4px)',
+      color: primary.main,
+    },
   },
 
   small: {
@@ -63,13 +71,14 @@ const buttonText = {
 
   primary: {
     color: text.primary,
+  
 
     '&:hover': {
       color: text.primary
     },
 
     '&:focus:not(:hover)': {
-      color: info.focus,
+      color: primary.main,
       boxShadow: 'none'
     }
   },

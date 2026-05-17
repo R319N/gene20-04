@@ -4,7 +4,7 @@ import React from 'react'
 const AboutSection = () => {
   return (
     <section id="about" style={{ padding: '80px 0', backgroundColor: 'background.paper' }}>
-      <Container maxWidth="lg">
+      {/* <Container maxWidth="lg">
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 6, alignItems: 'center' }}>
           <Box>
             <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
@@ -106,7 +106,7 @@ const AboutSection = () => {
             </Paper>
           </Box>
         </Box>
-      </Container>
+      </Container> */}
     </section>
   )
 }

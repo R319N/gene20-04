@@ -28,6 +28,7 @@ export default function HeroSection() {
           'radial-gradient(circle at 78% 38%, rgba(46, 114, 255, 0.26), transparent 34%), radial-gradient(circle at 28% 54%, rgba(84, 72, 255, 0.18), transparent 32%), linear-gradient(180deg, #030717 0%, #050a1f 55%, #020513 100%)',
       }}
     >
+      <Box className="hero-gradient"/>
       {/* <Box
         sx={{
           position: 'absolute',
@@ -88,7 +89,7 @@ export default function HeroSection() {
             }}
           >
             <Box
-              // component="span"
+              component="span"
               sx={{
                 width: 10,
                 height: 10,

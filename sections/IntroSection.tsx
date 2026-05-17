@@ -1,10 +1,12 @@
 'use client';
 
 import MountainField3D from '@/components/MountainField3D';
+import { styles } from '@/styles/styles';
 import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
-import BoltRounded from '@mui/icons-material/BoltRounded';
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import ShieldRounded from '@mui/icons-material/ShieldRounded';
-import { Box, Stack, Typography } from '@mui/material';
+import BoltRounded from '@mui/icons-material/BoltRounded';
+import { Box, Button, Stack, Typography } from '@mui/material';
 
 const laptopStats = [
   { icon: <AutoAwesomeRounded />, label: 'Visual Identity', value: 'Brand-led UI' },
@@ -20,14 +22,44 @@ const IntroSection = () => {
       sx={{
         position: 'relative',
         minHeight: { xs: 'auto', md: '100vh' },
-        overflow: 'hidden',
-        bgcolor: '#010513',
+       background: '#000414', 
         color: '#dbe7ff',
         px: { xs: 2.5, sm: 4, md: 7 },
-        py: { xs: 10, md: 0 },
+        py: { xs: 10, md: "14rem" },
       }}
     >
+<Box className="intro-gradient"/>
+
+      <Box sx={{ ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, }}>
+        <Typography variant='h1' sx={{ width: "20ch", textAlign: "center", fontWeight: 700, lineHeight: 1.4, textTransform: "capitalize" }}>
+          Your website shapes how people perceive your business.
+        </Typography>
+
+        <Typography
+          variant='body1'
+          sx={{
+            mt: 4,
+            textTransform: "capitalize",
+            width: "60ch",
+            textAlign: "center",
+          }}>
+          In today&apos;s digital world, customers often judge a brand before they ever make contact. A slow, outdated, or poorly designed website can reduce trust, weaken credibility, and cost opportunities.
+        </Typography>
+        <Button variant="text" endIcon={<TrendingFlatIcon />} sx={{ mt: 5, fontWeight: 700, textTransform: "capitalize", color: "#c8d9ff", borderBottom: "1px solid #c8d9ff" }} >
+          Let&apos;s Build Your Digital Presence
+        </Button>
+      </Box>
       <Box
+        sx={{
+          position: 'absolute',
+          inset: { xs: '-8% -28% 0 -28%', md: '19% -8% -18% -8%' },
+          opacity: { xs: 0.46, md: 0.78 },
+          pointerEvents: 'none',
+        }}
+      >
+        <MountainField3D />
+      </Box>
+      {/* <Box
         sx={{
           position: 'absolute',
           inset: 0,
@@ -437,7 +469,7 @@ function DigitalFlowers() {
             transformOrigin: 'top center',
           }}
         />
-      ))}
+      ))} */}
     </Box>
   );
 }
