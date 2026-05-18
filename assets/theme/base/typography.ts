@@ -131,7 +131,7 @@ const typography = {
 
   caption: {
     fontFamily: baseProperties.fontFamily,
-    fontSize: baseProperties.fontSizeXS,
+    fontSize: baseProperties.fontSizeXXS,
     fontWeight: baseProperties.fontWeightRegular,
     lineHeight: 1.35,
     color: text.primary,

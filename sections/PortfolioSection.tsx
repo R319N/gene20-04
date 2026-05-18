@@ -1,76 +1,154 @@
 'use client'
 
-import NorthEast from '@mui/icons-material/NorthEast'
+import LinkButton from '@/components/ui/buttons/LinkButton'
+import myProjects from '@/constants/my-projects'
+import { styles } from '@/styles/styles'
+import { useGSAP } from '@gsap/react'
 import { Box, Container, Stack, Typography } from '@mui/material'
-import Link from 'next/link'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+import React, { useRef, useState } from 'react'
 
-const portfolioItems = [
-  {
-    title: 'Luxora',
-    category: 'E-Commerce',
-    description: 'A luxury fashion e-commerce experience designed to elevate brand perception and drive sales.',
-    accent: '#8f7cff',
-    mockup: 'fashion',
-  },
-  {
-    title: 'Nova Finance',
-    category: 'Fintech',
-    description: 'A modern fintech platform focused on clarity, trust, and performance.',
-    accent: '#6d8cff',
-    mockup: 'dashboard',
-  },
-  {
-    title: 'Studio Atlas',
-    category: 'Brand System',
-    description: 'A visual identity and digital presence for a creative team with a sharp, premium voice.',
-    accent: '#b46cff',
-    mockup: 'brand',
-  },
-]
+gsap.registerPlugin(ScrollTrigger)
 
 const PortfolioSection = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const slides = myProjects
+  const [active, setActive] = useState(0)
+
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current
+      const track = trackRef.current
+
+      if (!section || !track) return
+
+      const getDistance = () => Math.max(0, track.scrollHeight - window.innerHeight * 0.62)
+
+      gsap.to(track, {
+        y: () => -getDistance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${getDistance() + window.innerHeight}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const nextActive = Math.min(slides.length - 1, Math.round(self.progress * (slides.length - 1)))
+            setActive(nextActive)
+          },
+        },
+      })
+    })
+
+    return () => ctx.revert()
+  }, [slides.length])
   return (
-    <Box
-      component="section"
+    <section
+      ref={sectionRef}
       id="portfolio"
-      sx={{
+      className="portfolio-section"
+      style={{
         position: 'relative',
         overflow: 'hidden',
         minHeight: '100dvh',
-        bgcolor: '#02040d',
+        backgroundColor: '#02040d',
         color: '#f6f7ff',
         borderTop: '1px solid rgba(153, 170, 255, 0.08)',
         borderBottom: '1px solid rgba(153, 170, 255, 0.08)',
       }}
     >
-      <Rail total={portfolioItems.length + 1} />
-
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(circle at 78% 18%, rgba(114, 89, 255, 0.2), transparent 30%), radial-gradient(circle at 40% 56%, rgba(79, 109, 255, 0.13), transparent 34%), linear-gradient(180deg, #030611 0%, #02040d 100%)',
+            'radial-gradient(circle at 78% 18%, rgba(114, 89, 255, 0.18), transparent 30%), radial-gradient(circle at 42% 56%, rgba(79, 109, 255, 0.12), transparent 34%), linear-gradient(180deg, #030611 0%, #02040d 100%)',
           pointerEvents: 'none',
         }}
       />
 
+      <Box sx={{ width: "5vw", height: "100vh", position: 'absolute', inset: 0, left: "2rem", top: 0, display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center', justifyContent: "space-evenly", borderRight: '1px solid rgba(153, 170, 255, 0.1)', zIndex: 6 }}  >
+        <Stack gap={2}>
+          {slides.map((_, i) => (
+            <Box
+              key={i}
+              sx={{
+                position: "relative",
+                height: "10px",
+                width: "10px",
+                borderRadius: '50%',
+                ...styles.glow1,
+                backgroundColor: active === i ? (theme) => theme.palette.primary.main : (theme) => theme.palette.text.primary,
+                transition: "width 0.25s ease, background-color 0.25s ease",
+              }}
+            />
+          ))}
+        </Stack>
+        <Box
+          sx={{
+            position: "absolute", maxWidth: "2rem",
+            display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", bottom: 54
+          }} gap={4} >
+          <Typography
+            variant="caption"
+            sx={{
+              letterSpacing: 2,
+              textTransform: 'uppercase',
+              writingMode: 'vertical-rl',
+              transform: 'rotate(180deg)',
+            }}>
+            scroll
+          </Typography>
+          <Box
+            sx={{ height: "3rem", width: "1px", ...styles.glow1 }}
+          />
+
+        </Box>
+      </Box>
+
       <Container
-        maxWidth={false}
         sx={{
+          ...styles.container,
           position: 'relative',
-          zIndex: 1,
-          maxWidth: 1720,
-          pl: { xs: 3, md: 11, lg: 16 },
-          pr: { xs: 3, md: 7, lg: 8 },
-          py: { xs: 8, md: 10 },
+          zIndex: 2,
+          height: '100dvh',
+          overflow: 'hidden',
+          pt: { xs: 4, md: 7 },
+          pb: 0,
         }}
       >
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: { xs: 8, md: 10 } }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{
+            position: 'relative',
+            zIndex: 8,
+            mb: { xs: 6, md: 8 },
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              left: -40,
+              right: -40,
+              top: -80,
+              bottom: -40,
+              background: 'linear-gradient(180deg, rgba(2,4,13,0.98) 0%, rgba(2,4,13,0.84) 62%, rgba(2,4,13,0) 100%)',
+              zIndex: -1,
+              pointerEvents: 'none',
+            },
+          }}
+        >
           <Typography
+            variant='body2'
             sx={{
               color: 'rgba(235, 239, 255, 0.74)',
-              fontSize: { xs: 12, md: 13 },
+              // fontSize: { xs: 12, md: 13 },
+              fontWeight: 600,
               letterSpacing: 4,
               textTransform: 'uppercase',
               '&::before': {
@@ -80,31 +158,48 @@ const PortfolioSection = () => {
                 height: 8,
                 mr: 1.8,
                 borderRadius: '50%',
-                bgcolor: '#8f7cff',
-                boxShadow: '0 0 14px rgba(143, 124, 255, 0.75)',
+                ...styles.glow1,
                 verticalAlign: 'middle',
               },
             }}
           >
             Our Projects
           </Typography>
-
-          <ProjectLink href="/portfolio" label="View All Projects" />
+          <LinkButton label="View All Projects" pageUrl="/projects" />
         </Stack>
 
         <Box
           sx={{
+            position: 'relative',
+            zIndex: 4,
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', lg: '0.36fr 0.64fr' },
-            gap: { xs: 6, lg: 9 },
-            alignItems: 'start',
+            gridTemplateColumns: { xs: '1fr', lg: '0.38fr 0.62fr' },
+            gap: { xs: 5, lg: 8 },
+            height: 'calc(100dvh - 120px)',
           }}
         >
-          <Box sx={{ position: { lg: 'sticky' }, top: { lg: 120 }, pb: { xs: 2, lg: 8 } }}>
+          <Box
+            sx={{
+              position: 'relative',
+              zIndex: 5,
+              pt: { xs: 1, md: 3 },
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: -40,
+                right: -30,
+                top: -30,
+                bottom: -60,
+                background: 'linear-gradient(90deg, rgba(2,4,13,0.98) 0%, rgba(2,4,13,0.88) 72%, rgba(2,4,13,0) 100%)',
+                zIndex: -1,
+                pointerEvents: 'none',
+              },
+            }}
+          >
             <Typography
               component="h2"
               sx={{
-                maxWidth: 500,
+                maxWidth: 600,
                 color: '#ffffff',
                 fontSize: { xs: 48, sm: 62, md: 72 },
                 fontWeight: 300,
@@ -122,291 +217,130 @@ const PortfolioSection = () => {
             </Typography>
           </Box>
 
-          <Stack divider={<Box sx={{ height: 1, bgcolor: 'rgba(220, 226, 255, 0.13)' }} />}>
-            {portfolioItems.map((item, index) => (
-              <ProjectRow key={item.title} item={item} index={index} total={portfolioItems.length} />
-            ))}
-          </Stack>
-        </Box>
-      </Container>
-    </Box>
-  )
-}
-
-function ProjectRow({
-  item,
-  index,
-  total,
-}: {
-  item: (typeof portfolioItems)[number]
-  index: number
-  total: number
-}) {
-  return (
-    <Box
-      sx={{
-        position: 'relative',
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', md: '0.42fr 0.58fr' },
-        gap: { xs: 4, md: 5 },
-        alignItems: 'center',
-        minHeight: { xs: 620, md: 560 },
-        py: { xs: 7, md: 6 },
-      }}
-    >
-      <Box sx={{ position: 'relative', minHeight: { xs: 260, md: 360 } }}>
-        <Typography
-          aria-hidden
-          sx={{
-            position: 'absolute',
-            left: { xs: -8, md: -38 },
-            top: { xs: -34, md: -24 },
-            color: 'rgba(255,255,255,0.11)',
-            fontSize: { xs: 110, md: 168 },
-            fontWeight: 200,
-            lineHeight: 1,
-          }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </Typography>
-
-        <Box sx={{ position: 'relative', zIndex: 1, pt: { xs: 11, md: 14 }, pl: { xs: 0, md: 10 } }}>
-          <Typography sx={{ color: 'rgba(235,239,255,0.58)', fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', mb: 2 }}>
-            {item.category}
-          </Typography>
-          <Typography
-            component="h3"
+          <Box
             sx={{
-              color: '#ffffff',
-              fontSize: { xs: 34, md: 44 },
-              fontWeight: 300,
-              letterSpacing: 3,
-              textTransform: 'uppercase',
-              mb: 2.4,
+              position: 'relative',
+              height: '100%',
+              overflow: 'visible',
+              pt: { xs: 2, lg: 8 },
             }}
           >
-            {item.title}
-          </Typography>
-          <Typography sx={{ maxWidth: 360, color: 'rgba(235,239,255,0.62)', fontSize: { xs: 15, md: 17 }, lineHeight: 1.55, mb: 4 }}>
-            {item.description}
-          </Typography>
-          <ProjectLink href="/portfolio" label="View Project" accent={item.accent} compact />
-        </Box>
-      </Box>
+            <Box ref={trackRef} sx={{ willChange: 'transform' }}>
+            {slides.map((slide, index) => (
+              <Box
+                key={slide.title}
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', md: '0.42fr 0.58fr' },
+                  gap: { xs: 3, md: 5 },
+                  alignItems: 'center',
+                  minHeight: { xs: '62vh', md: '72vh' },
+                  py: { xs: 5, md: 7 },
+                  borderTop: index === 0 ? 0 : '1px solid rgba(220, 226, 255, 0.13)',
+                  opacity: active === index ? 1 : 0.38,
+                  transition: 'opacity 0.3s ease',
+                }}
+              >
+                <Box sx={{ position: 'relative', minHeight: 260 }} >
+                  <Typography
+                    aria-hidden
+                    sx={{
+                      position: 'absolute',
+                      left: { xs: 0, md: -28 },
+                      top: { xs: -18, md: -34 },
+                      color: 'rgba(255,255,255,0.11)',
+                      fontSize: { xs: 110, md: 168 },
+                      fontWeight: 200,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </Typography>
+                  <Box sx={{ position: 'relative', zIndex: 1, pt: { xs: 10, md: 13 }, pl: { xs: 0, md: 8 } }}>
+                  <Typography sx={{ color: 'rgba(235,239,255,0.58)', fontSize: 13, letterSpacing: 3, textTransform: 'uppercase', mb: 2 }}>
+                    {slide.categories?.[0] ?? 'Project'}
+                  </Typography>
+                  <Typography
+                    component="h3"
+                    sx={{
+                      color: '#ffffff',
+                      fontSize: { xs: 34, md: 44 },
+                      fontWeight: 300,
+                      letterSpacing: 3,
+                      textTransform: 'uppercase',
+                      mb: 2.4,
+                    }}
+                  >
+                    {slide.title}
+                  </Typography>
+                  <Typography sx={{ maxWidth: 360, color: 'rgba(235,239,255,0.62)', fontSize: { xs: 15, md: 17 }, lineHeight: 1.55, mb: 4 }}>
+                    {slide.description}
+                  </Typography>
+                  <LinkButton label="View Project" pageUrl={slide.pageUrl}  />
+                  </Box>
+                </Box>
 
-      <ProjectMockup item={item} index={index} total={total} />
-    </Box>
-  )
-}
-
-function ProjectLink({ href, label, accent = '#8f7cff', compact = false }: { href: string; label: string; accent?: string; compact?: boolean }) {
-  return (
-    <Box
-      component={Link}
-      href={href}
-      sx={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: 1.2,
-        width: 'fit-content',
-        color: compact ? '#ffffff' : accent,
-        textDecoration: 'none',
-        textTransform: 'uppercase',
-        letterSpacing: 2.6,
-        fontSize: { xs: 11, md: 12 },
-        '&::after': compact
-          ? {
-              content: '""',
-              display: 'block',
-              width: 132,
-              height: 1,
-              bgcolor: accent,
-              opacity: 0.85,
-              order: 1,
-            }
-          : undefined,
-        '& svg': {
-          order: 2,
-          fontSize: 16,
-          transition: 'transform 0.2s ease',
-        },
-        '&:hover svg': { transform: 'translate(3px, -3px)' },
-      }}
-    >
-      <Box component="span" sx={{ order: 0 }}>
-        {label}
-      </Box>
-      <NorthEast />
-    </Box>
-  )
-}
-
-function ProjectMockup({ item, index, total }: { item: (typeof portfolioItems)[number]; index: number; total: number }) {
-  return (
-    <Box
-      sx={{
-        position: 'relative',
-        minHeight: { xs: 320, md: 500 },
-        display: 'grid',
-        placeItems: 'center',
-      }}
-    >
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 'auto 0 8% 5%',
-          height: '28%',
-          background: `radial-gradient(ellipse at center, ${item.accent}55, transparent 65%)`,
-          filter: 'blur(22px)',
-          opacity: 0.65,
-        }}
-      />
-
-      <Box
-        sx={{
-          position: 'relative',
-          width: { xs: 'min(100%, 620px)', md: 'min(58vw, 840px)' },
-          aspectRatio: '1.48 / 1',
-          borderRadius: { xs: 3, md: 4 },
-          border: '1px solid rgba(216, 225, 255, 0.24)',
-          bgcolor: 'rgba(8, 11, 26, 0.92)',
-          overflow: 'hidden',
-          transform: { xs: 'none', md: index % 2 === 0 ? 'perspective(1200px) rotateY(-10deg) rotateZ(2deg)' : 'perspective(1200px) rotateY(9deg) rotateZ(-2deg)' },
-          boxShadow: '0 44px 86px rgba(0,0,0,0.56), inset 0 0 0 8px rgba(255,255,255,0.02)',
-        }}
-      >
-        <Box sx={{ height: '10%', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', px: 3 }}>
-          <Typography sx={{ color: '#ffffff', fontSize: { xs: 12, md: 15 }, letterSpacing: 2.2 }}>{item.title.toUpperCase()}</Typography>
-          <Stack direction="row" spacing={3} sx={{ ml: 'auto', display: { xs: 'none', sm: 'flex' } }}>
-            {['New In', 'Collections', 'About'].map((nav) => (
-              <Typography key={nav} sx={{ color: 'rgba(235,239,255,0.58)', fontSize: 9, textTransform: 'uppercase' }}>
-                {nav}
-              </Typography>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    minHeight: { xs: 260, md: 380 },
+                    display: 'grid',
+                    placeItems: 'center',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      inset: 'auto 8% 6%',
+                      height: '30%',
+                      background: 'radial-gradient(ellipse at center, rgba(143,124,255,0.42), transparent 68%)',
+                      filter: 'blur(20px)',
+                      opacity: 0.8,
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      width: 'min(100%, 640px)',
+                      aspectRatio: '1.48 / 1',
+                      borderRadius: { xs: 3, md: 4 },
+                      border: '1px solid rgba(216, 225, 255, 0.24)',
+                      bgcolor: 'rgba(8, 11, 26, 0.92)',
+                      overflow: 'hidden',
+                      transform: { xs: 'none', md: index % 2 === 0 ? 'perspective(1200px) rotateY(-10deg) rotateZ(2deg)' : 'perspective(1200px) rotateY(9deg) rotateZ(-2deg)' },
+                      boxShadow: '0 44px 86px rgba(0,0,0,0.56), inset 0 0 0 8px rgba(255,255,255,0.02)',
+                    }}
+                  >
+                    <Box sx={{ height: '12%', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', px: 3 }}>
+                      <Typography sx={{ color: '#ffffff', fontSize: { xs: 12, md: 15 }, letterSpacing: 2.2 }}>{slide.title.toUpperCase()}</Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        inset: '12% 0 0',
+                        backgroundImage: `linear-gradient(rgba(143,124,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(143,124,255,0.08) 1px, transparent 1px)`,
+                        backgroundSize: '52px 52px',
+                      }}
+                    />
+                    <Stack spacing={1.3} sx={{ position: 'absolute', left: '8%', top: '30%', width: '38%' }}>
+                      {slide.features?.slice(0, 4).map((feature) => (
+                        <Box key={feature.text} sx={{ height: 12, borderRadius: 99, bgcolor: 'rgba(255,255,255,0.14)' }} />
+                      ))}
+                    </Stack>
+                    <Box sx={{ position: 'absolute', right: '9%', top: '22%', width: '33%', height: '48%', borderRadius: 3, background: 'linear-gradient(145deg, rgba(143,124,255,0.78), rgba(255,255,255,0.12))', boxShadow: '0 0 70px rgba(143,124,255,0.36)' }} />
+                    <Typography sx={{ position: 'absolute', left: { xs: 24, md: 44 }, bottom: { xs: 24, md: 38 }, color: '#ffffff', fontSize: { xs: 16, md: 22 }, letterSpacing: 1.5, '& span': { color: '#8f7cff' } }}>
+                      <span>{String(index + 1).padStart(2, '0')}</span> / {String(slides.length).padStart(2, '0')}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
             ))}
-          </Stack>
+            </Box>
+          </Box>
         </Box>
+      </Container>
 
-        {item.mockup === 'dashboard' ? <DashboardScreen accent={item.accent} /> : <EditorialScreen accent={item.accent} />}
-
-        <Box
-          sx={{
-            position: 'absolute',
-            left: { xs: 24, md: 44 },
-            bottom: { xs: 24, md: 38 },
-            color: '#ffffff',
-            fontSize: { xs: 16, md: 22 },
-            letterSpacing: 1.5,
-            '& span': { color: item.accent },
-          }}
-        >
-          <span>{String(index + 1).padStart(2, '0')}</span> / {String(total).padStart(2, '0')}
-        </Box>
-      </Box>
-    </Box>
-  )
-}
-
-function EditorialScreen({ accent }: { accent: string }) {
-  return (
-    <>
-      <Box
-        sx={{
-          position: 'absolute',
-          left: '8%',
-          top: '26%',
-          zIndex: 2,
-          color: '#ffffff',
-        }}
-      >
-        <Typography sx={{ maxWidth: 300, fontSize: { xs: 28, md: 48 }, fontWeight: 300, lineHeight: 0.98, letterSpacing: 1.2 }}>
-          Timeless Elegance
-        </Typography>
-        <Typography sx={{ mt: 2, color: 'rgba(235,239,255,0.6)', fontSize: 10, letterSpacing: 1.4, textTransform: 'uppercase' }}>
-          Discover the collection
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          right: '8%',
-          top: '19%',
-          width: '32%',
-          height: '48%',
-          borderRadius: '48% 48% 12% 12%',
-          background: `linear-gradient(155deg, rgba(255,255,255,0.92), ${accent}44 45%, rgba(6,8,18,0.96) 46%)`,
-          boxShadow: `0 0 70px ${accent}44`,
-        }}
-      />
-      <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '24%', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        {[0, 1, 2].map((tile) => (
-          <Box key={tile} sx={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderLeft: tile ? '1px solid rgba(255,255,255,0.08)' : 0, bgcolor: tile === 1 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.035)' }} />
-        ))}
-      </Box>
-    </>
-  )
-}
-
-function DashboardScreen({ accent }: { accent: string }) {
-  return (
-    <Box sx={{ position: 'absolute', inset: '10% 7% 9%', display: 'grid', gridTemplateColumns: '0.24fr 1fr 0.34fr', gap: 2 }}>
-      <Stack spacing={1.4} sx={{ borderRight: '1px solid rgba(255,255,255,0.07)', pr: 1.5 }}>
-        {['Dashboard', 'Transactions', 'Analytics', 'Settings'].map((item, index) => (
-          <Box key={item} sx={{ height: 24, borderRadius: 1, bgcolor: index === 0 ? `${accent}22` : 'transparent', border: index === 0 ? `1px solid ${accent}55` : 0 }} />
-        ))}
-      </Stack>
-      <Box>
-        <Typography sx={{ color: '#ffffff', fontSize: { xs: 24, md: 32 }, mb: 0.6 }}>$24,860.50</Typography>
-        <Typography sx={{ color: accent, fontSize: 11, mb: 5 }}>+12.6% from last month</Typography>
-        <Box sx={{ height: '48%', borderRadius: 2, border: '1px solid rgba(255,255,255,0.08)', background: `linear-gradient(160deg, transparent, ${accent}22)` }} />
-      </Box>
-      <Stack spacing={1.5} sx={{ p: 2, borderRadius: 2, border: '1px solid rgba(255,255,255,0.08)', bgcolor: 'rgba(255,255,255,0.035)' }}>
-        {[0, 1, 2].map((item) => (
-          <Box key={item} sx={{ height: 34, borderRadius: 1, bgcolor: 'rgba(255,255,255,0.06)' }} />
-        ))}
-      </Stack>
-    </Box>
-  )
-}
-
-function Rail({ total }: { total: number }) {
-  return (
-    <Box
-      sx={{
-        display: { xs: 'none', md: 'block' },
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        bottom: 0,
-        width: 82,
-        borderRight: '1px solid rgba(153, 170, 255, 0.1)',
-        zIndex: 2,
-      }}
-    >
-      <Typography sx={{ position: 'absolute', top: '31%', left: 30, color: 'rgba(235,239,255,0.7)', fontSize: 15 }}>
-        {String(total).padStart(2, '0')}
-      </Typography>
-      <Stack spacing={2.8} sx={{ position: 'absolute', top: '41%', left: 38, alignItems: 'center' }}>
-        {[0, 1, 2, 3].map((dot) => (
-          <Box key={dot} sx={{ width: dot === 0 ? 8 : 6, height: dot === 0 ? 8 : 6, borderRadius: '50%', bgcolor: dot === 0 ? '#8f7cff' : 'rgba(235,239,255,0.38)', boxShadow: dot === 0 ? '0 0 14px rgba(143,124,255,0.8)' : 'none' }} />
-        ))}
-      </Stack>
-      <Typography
-        sx={{
-          position: 'absolute',
-          bottom: 104,
-          left: 25,
-          color: 'rgba(235,239,255,0.74)',
-          fontSize: 12,
-          letterSpacing: 4,
-          textTransform: 'uppercase',
-          writingMode: 'vertical-rl',
-          transform: 'rotate(180deg)',
-        }}
-      >
-        Scroll
-      </Typography>
-      <Box sx={{ position: 'absolute', bottom: 54, left: 39, width: 1, height: 52, bgcolor: '#8f7cff' }} />
-    </Box>
+    </section>
   )
 }
 
