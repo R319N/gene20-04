@@ -16,6 +16,7 @@ const navigation: NavigationItem[] = [
     href: "/",
     isTab: true,
     isFooter: true,
+    // isExplore: true,
     isNavigation: true,
   },
   {
@@ -24,12 +25,14 @@ const navigation: NavigationItem[] = [
     href: "/",
     isTab: true,
     isNavigation: true,
+    isExplore: true,
   },
   {
     name: "services",
     url: "/#services",
     href: "/",
     isTab: true,
+    isExplore: true,
     isNavigation: true,
   },
 
@@ -38,14 +41,13 @@ const navigation: NavigationItem[] = [
     url: "/#portfolio",
     href: "/",
     isTab: true,
+    // isExplore: true,
     isNavigation: true,
   },
   {
     name: "testimonials",
     url: "/#testimonials",
     href: "/",
-    isTab: true,
-    isNavigation: true,
   },
 
   {
@@ -56,17 +58,20 @@ const navigation: NavigationItem[] = [
     isNavigation: true,
   },
   {
-    name: "our projects",
+    name: "gallery",
     url: "/#gallery",
-    href: "/our_projects",
+    href: "/gallery",
     isTab: false,
+    isNavigation: true,
     isExplore: true,
   },
   {
-    name: "gene20 community",
-    url: "/gene20community.com",
-    href: "/",
+    name: "prizing",
+    url: "/prizing",
+    href: "/prizing",
     isExplore: true,
+    isNavigation: true,
+    isTab: true
   },
   {
     name: "careers",

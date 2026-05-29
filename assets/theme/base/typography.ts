@@ -1,6 +1,7 @@
+import { mandalore, orbitron } from "@/assets/fonts/fonts";
 import pxToRem from "../functions/pxToRem";
 import colors from "./colors";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Nova_Flat, Nova_Round, Share_Tech, Roboto_Condensed, Roboto_Mono, Share_Tech_Mono} from "next/font/google";
 
 const { text } = colors;
 
@@ -9,9 +10,19 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
+const roboto = Share_Tech_Mono({
+  weight: ["400", ],
+  subsets: ["latin"],
+  display: "swap",
+});
+const nova_round = Share_Tech({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const baseProperties = {
-  fontFamily: `${montserrat.style.fontFamily}, sans-serif`,
+  fontFamily: `${roboto.style.fontFamily}, sans-serif`,
   fontWeightLighter: 300,
   fontWeightLight: 300,
   fontWeightRegular: 400,
@@ -27,7 +38,7 @@ const baseProperties = {
   fontSize2XL: pxToRem(24),
   fontSize3XL: pxToRem(30),
   fontSize4XL: pxToRem(36),
-  fontSize5XL: pxToRem(48),
+  fontSize5XL: pxToRem(40),
 };
 
 const baseHeadingProperties = {
@@ -52,9 +63,11 @@ const typography = {
 
   h1: {
     fontSize: baseProperties.fontSize5XL,
-    lineHeight: 1.2,
+    lineHeight: 1.5,
     ...baseHeadingProperties,
-    fontWeight: baseProperties.fontWeightExtraBold,
+    fontWeight: baseProperties.fontWeightBold,
+    letterSpacing: "3px",
+    fontFamily: orbitron.style.fontFamily,
   },
 
   h2: {
@@ -111,7 +124,7 @@ const typography = {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeSM,
     fontWeight: baseProperties.fontWeightRegular,
-    lineHeight: 1.5,
+    lineHeight: 1.8,
   },
 
   body2: {

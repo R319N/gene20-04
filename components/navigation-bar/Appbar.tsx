@@ -84,7 +84,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
           top: "0",
           zIndex: 99,
           width: "100%",
-          p: { xs: "0.5rem", lg: "1rem 8rem" },
+          p: { xs: "0.5rem", md: "1rem 4rem", xxl: "1rem 8rem" },
         }}
       >
         <ElevationScroll>
@@ -103,7 +103,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                 border: (theme) => theme.palette.mode === "light" ? `1px solid ${theme.palette.text.primary}` : `1px solid ${theme.palette.text.primary}33`,
                 borderRadius: (theme) => theme.shape.borderRadius,
                 position: "relative",
-                maxWidth: "100vw",
+                maxWidth: "100%",
                 minHeight: "40px",
                 width: "100%",
                 p: "0.5rem",
@@ -131,7 +131,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                     {!mobileOpen ? <MenuIcon /> : <Close />}
                   </IconButton>
                   <Link href="/" sx={{ display: { xs: "none", xl: "flex" }, }}>
-                 <LogoThumbnail/>
+                    <LogoThumbnail />
                   </Link>
                 </Box>
                 <Box

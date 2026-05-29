@@ -1,3 +1,4 @@
+"use client";
 import pxToRem from '@/assets/theme/functions/pxToRem';
 import Globe3D from '@/components/Globe3D';
 import { styles } from '@/styles/styles';
@@ -10,11 +11,6 @@ import WorkOutlineRounded from '@mui/icons-material/WorkOutlineRounded';
 import { Share_Tech } from 'next/font/google';
 import ScrollIndicator from '@/components/ScrollIndicator';
 
-const shareTech = Share_Tech({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-});
 export default function HeroSection() {
   return (
     <Box
@@ -24,9 +20,8 @@ export default function HeroSection() {
         width: '100%',
         position: 'relative',
         overflow: 'visible',
-        background:
-          'radial-gradient(circle at 78% 38%, rgba(46, 114, 255, 0.26), transparent 34%), radial-gradient(circle at 28% 54%, rgba(84, 72, 255, 0.18), transparent 32%), linear-gradient(180deg, #030717 0%, #050a1f 55%, #020513 100%)',
-      }}
+        background:"inherit",
+          }}
     >
       <Box className="hero-gradient"/>
       {/* <Box
@@ -102,29 +97,26 @@ export default function HeroSection() {
           </Typography>
 
           <Typography
-            component="h1"
+            variant="h1"
             sx={{
-              ...shareTech.style,
               fontWeight: "bold",
-              fontSize: { xs: 42, sm: 58, md: 72, xl:76 },
-              lineHeight: "120%",
-              letterSpacing: 0,
+              fontSize: { xs: 42, sm: 58, md: 38, xxl:48 },
+              lineHeight: "1.2",
               maxWidth: "100%",
               mb: { xs: 3, md: 4 },
               // textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
-              textWrap:"wrap"
+              textWrap:"wrap",
+              textTransform: "uppercase"
             }}
-            className='font-black'
           >
             Crafting Exceptional
             Digital Experiences
           </Typography>
 
           <Typography
-          variant="h6"
+          variant="body1"
             sx={{
               color: 'rgba(238, 243, 255, 0.78)',
-              lineHeight: 1.6,
               maxWidth: pxToRem(650),
               mb: { xs: 4, md: 5 },
             }}
@@ -153,12 +145,12 @@ export default function HeroSection() {
 
         <Box
           sx={{
-            position: { xs: 'relative', md: 'absolute' },
+            position: "absolute",
             right: { xs: 'auto', md: 24, xl: "-45%" },
             top: { xs: 'auto', md: '50%' },
             transform: { xs: 'none', md: 'translateY(-50%)' },
             width: { xs: '100%', md: '46vw', xl: '100%' },
-            height: { xs: 420, sm: 520, md: '78vh', xl: '100%' },
+            height: { xs:"100%", sm: 520, md: '78vh', xl: '100%' },
             minHeight: { md: 620 },
             maxHeight: { md: 1000 },
             mt: { xs: 5, md: 0 },

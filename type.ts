@@ -17,8 +17,6 @@ export interface Services {
   key: string
   image: string
   name: string
-  firstWord: string
-  secondWord: string
   description: string
   heading: string
   features: Feature[]

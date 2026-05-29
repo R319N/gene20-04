@@ -54,6 +54,7 @@ import formControlLabel from "./components/form/formControlLabel";
 import inputOutlined from "./components/form/inputOutlined";
 import input from "./components/form/input";
 import typography from "./base/typography";
+import link from "./components/link"
 
 const uLwandleTheme = createTheme({
   breakpoints: { ...breakpoints },
@@ -76,6 +77,7 @@ const uLwandleTheme = createTheme({
         ...container,
       },
     },
+    MuiLink:{ ...link},
     MuiModal: { ...modal },
     MuiIconButton: { ...iconButton },
     MuiPaper: { ...paper },

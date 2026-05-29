@@ -13,8 +13,8 @@ const XL = `@media (min-width: ${xl}px)`
 const XXL = `@media (min-width: ${xxl}px)`
 
 const sharedClasses = {
-  paddingRight: `${pxToRem(24)} !important`,
-  paddingLeft: `${pxToRem(24)} !important`,
+  paddingRight: `${pxToRem(14)} !important`,
+  paddingLeft: `${pxToRem(14)} !important`,
   marginRight: 'auto !important',
   marginLeft: 'auto !important',
   width: '100% !important',

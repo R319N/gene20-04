@@ -123,11 +123,11 @@ export const styles = {
     overflow: "hidden"
   },
   glassOutlinedTheme: {
-    borderRadius: pxToRem(20), // Add border radius for rounded corners
+    borderRadius: pxToRem(30), // Add border radius for rounded corners
     backdropFilter: "blur(10px)",
     // background: ${rgba(({ theme }) => theme.palette.secondary.main}, 0.5)`,
-    background: "#0f0f1ce6",
-    border: "1px solid #7E78D255",
+    background: "rgba(94, 94, 253, 0.05)",
+    border: "1px solid rgba(126, 120, 210, 0.2)",
     overflow: "hidden"
   },
   glassOutlinedDarkTheme: {

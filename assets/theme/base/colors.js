@@ -1,7 +1,7 @@
 const colors = {
   background: {
-    default: "#000416",
-    paper: "#1E2952",
+    default: "#000414",
+    paper: "#000414",
     button: "#F26430"
   },
 

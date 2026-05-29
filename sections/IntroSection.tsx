@@ -21,17 +21,27 @@ const IntroSection = () => {
       id="services"
       sx={{
         position: 'relative',
-        minHeight: { xs: 'auto', md: '100vh' },
-       background: '#000414', 
+        minHeight: "100vh",
         color: '#dbe7ff',
-        px: { xs: 2.5, sm: 4, md: 7 },
-        py: { xs: 10, md: "14rem" },
+        px: { xs: 1.4, sm: 4, md: 7 },
+      ...styles.center_flex
       }}
     >
-<Box className="intro-gradient"/>
+      <Box className="intro-gradient" />
 
-      <Box sx={{ ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, }}>
-        <Typography variant='h1' sx={{ width: "20ch", textAlign: "center", fontWeight: 700, lineHeight: 1.4, textTransform: "capitalize" }}>
+      <Box sx={{ 
+        ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, height:"100%"}}>
+        <Typography variant='h1'
+          sx={{
+            background: 'linear-gradient(90deg, #84d8ff, #8157ff)',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            width:{xs:"100%", xl: "30ch"},
+            textAlign: "center", lineHeight: 1.4,
+            textTransform: "capitalize",
+            
+          }}
+          >
           Your website shapes how people perceive your business.
         </Typography>
 
@@ -40,8 +50,9 @@ const IntroSection = () => {
           sx={{
             mt: 4,
             textTransform: "capitalize",
-            width: "60ch",
+            width: {xs:"100%", xl:"80ch"},
             textAlign: "center",
+            lineHeight: "2"
           }}>
           In today&apos;s digital world, customers often judge a brand before they ever make contact. A slow, outdated, or poorly designed website can reduce trust, weaken credibility, and cost opportunities.
         </Typography>
@@ -53,7 +64,7 @@ const IntroSection = () => {
         sx={{
           position: 'absolute',
           inset: { xs: '-8% -28% 0 -28%', md: '19% -8% -18% -8%' },
-          opacity: { xs: 0.46, md: 0.78 },
+          opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
         }}
       >

@@ -2,15 +2,14 @@ import colors from "../base/colors";
 import rgba from "../functions/rgba";
 import pxToRem from "../functions/pxToRem";
 
-const { light, transparent, white, dark, text } = colors;
+const { transparent, white, dark, text } = colors;
 
 const divider = {
   styleOverrides: {
     root: {
       backgroundColor: transparent.main,
-      backgroundImage:
-        `linear-gradient(to right,#655dd811 0%,#655dd8 30%, #7E78D208 100%),
-       linear-gradient(to right,#7E78D211 0%,#7D2EB2 50%, #655dd808 100%)`,
+      backgroundImage:`linear-gradient(to right, #0a046011 0%, #2c59d6 30%, #1a0bf808 100%),
+       linear-gradient(to right, #7E78D211 0%, #2e37b2 50%, #2d20db08 100%)`,
       height: pxToRem(1.5),
       margin: `${pxToRem(4)} 0`,
       borderBottom: "none",

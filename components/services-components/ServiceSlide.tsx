@@ -2,7 +2,7 @@ import pxToRem from '@/assets/theme/functions/pxToRem'
 import { styles } from '@/styles/styles'
 import { Feature } from '@/type'
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded'
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Container, Grid, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -10,18 +10,19 @@ import React from 'react'
 interface props {
     image: string
     name: string
-    firstWord: string
-    secondWord: string
     description: string
     heading: string
     features: Feature[]
     importance: string
     pageUrl: string
     color?: string
+    detailIntro: string
+    deliverables: string[]
+    outcomes: string[]
     index?: number
 }
 
-const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, description, heading, features, importance, pageUrl, color = "#8f7cff", index = 0 }) => {
+const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables, outcomes, description, heading, features, importance, pageUrl, color = "#8f7cff", index = 0 }) => {
     const slideRef = React.useRef<HTMLDivElement>(null)
     return (
         <Container
@@ -30,20 +31,21 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
             maxWidth={false}
             sx={{
                 height: '100%',
-                flexGrow: 1,
+                flexGrow: 0,
                 width: "100%",
                 position: "relative",
                 px: { xs: 3, md: 8, lg: 12 },
-                py: { xs: 10, md: 12 },
+                py: { xs: 10, md:0,  xxl: 0 },
                 display: "grid",
                 gridTemplateColumns: { xs: "1fr", lg: "0.82fr 1.18fr" },
                 alignItems: "center",
-                gap: { xs: 5, lg: 4 },
+                gap: { xs: 5, lg: 0 },
             }}
         >
 
 
-            <Box sx={{ position: "relative", zIndex: 1, width: 700 }}>
+            <Box sx={{ position: "relative", zIndex: 1, width: 700, gap: 2 }}>
+
                 <Typography
                     aria-hidden
                     sx={{
@@ -51,7 +53,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                         top: { xs: -62, md: -116 },
                         left: { xs: -10, md: -36 },
                         color: "rgba(255,255,255,0.055)",
-                        fontSize: { xs: 132, sm: 190, md: 280 },
+                        fontSize: { xs: 132, lg: 190, xl: 280 },
                         fontWeight: 900,
                         lineHeight: 0.8,
                         zIndex: -1,
@@ -59,77 +61,48 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 >
                     {String(index + 1).padStart(2, "0")}
                 </Typography>
+                <Stack gap={1.6}>
+                    <Typography
+                        className="title1 slide-animate"
+                        variant='h3'
+                        sx={{
+                            width: "15ch",
+                            fontSize: { xs: 44, sm: 62, md: 42, xxl: 72 },
+                            fontWeight: 800,
+                            lineHeight: 1,
+                            mb: 0.4,
+                            textTransform: "uppercase",
+                            textShadow: "0 16px 44px rgba(255,255,255,0.14)",
+                        }}
+                    >
+                        {name}
+                    </Typography>
+
+                    <Typography
+                        className="slide-text slide-animate"
+                        variant='body1'
+                        sx={{
+                            color: "rgba(235, 239, 255, 0.78)",
+                            fontSize: { xs: 18, md: 20 , xxl:26},
+                            fontWeight: 400,
+                            lineHeight: 1.34,
+                            maxWidth: 455,
+                            mb: 3.2,
+                        }}
+                    >
+                        {heading}
+                    </Typography>
+                </Stack>
+                <Box className="slide-rule slide-animate" sx={{ width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, mb: 3.2 }} />
 
                 <Typography
-                    className="title1"
-                    variant='h3'
-                    sx={{
-                        color: "#ffffff",
-                        fontSize: { xs: 44, sm: 62, md: 82, lg: 78 },
-                        fontWeight: 900,
-                        lineHeight: 0.98,
-                        mb: 0.4,
-                        textTransform: "uppercase",
-                        textShadow: "0 16px 44px rgba(255,255,255,0.14)",
-                    }}
-                >
-                    {firstWord}
-                </Typography>
-                <Typography
-                    className="title2"
-                    variant='h3'
-                    sx={{
-                        color: "#ffffff",
-                        fontSize: { xs: 44, sm: 62, md: 82, lg: 78 },
-                        fontWeight: 900,
-                        lineHeight: 0.98,
-                        mb: 2.8,
-                        textTransform: "uppercase",
-                        textShadow: "0 16px 44px rgba(255,255,255,0.14)",
-                    }}
-                >
-                    {secondWord}
-                </Typography>
-                {/* <Typography
-                    variant="h1"
-                    sx={{
-                        color: "#ffffff",
-                        fontSize: { xs: 44, sm: 62, md: 82, lg: 78 },
-                        fontWeight: 900,
-                        lineHeight: 0.98,
-                        mb: 2.8,
-                        textTransform: "uppercase",
-                        textWrap: "no-wrap",
-                        width: "100%",
-                        textShadow: "0 16px 44px rgba(255,255,255,0.14)",
-                    }}>
-                    {name}
-                </Typography> */}
-
-                <Typography
-                    className="slide-text"
-                    variant='body1'
-                    sx={{
-                        color: "rgba(235, 239, 255, 0.78)",
-                        fontSize: { xs: 18, md: 26 },
-                        fontWeight: 400,
-                        lineHeight: 1.34,
-                        maxWidth: 455,
-                        mb: 3.2,
-                    }}
-                >
-                    {heading}
-                </Typography>
-
-                <Box sx={{ width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, mb: 3.2 }} />
-
-                <Typography
+                    className="slide-description slide-animate"
                     variant='body2'
                     sx={{
                         color: "rgba(235, 239, 255, 0.68)",
-                        fontSize: { xs: 14, md: 16 },
+                        fontSize: { xs: 14, lg: 14, xxl:14 },
                         lineHeight: 1.55,
-                        maxWidth: "400",
+                       width: "60ch",
                         mb: 1.6,
                     }}
                 >
@@ -137,10 +110,11 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 </Typography>
 
                 <Typography
+                    className="slide-importance slide-animate"
                     variant='body2'
                     sx={{
                         color: "rgba(235, 239, 255, 0.54)",
-                        fontSize: { xs: 13, md: 14 },
+                        fontSize: { xs: 13, md: 10, xxl: 16 },
                         lineHeight: 1.5,
                         maxWidth: 330,
                         mb: 5,
@@ -150,7 +124,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 </Typography>
 
                 <Box
-                    className="slide-button"
+                    className="slide-button slide-animate"
                     component={Link}
                     href={pageUrl}
                     sx={{
@@ -195,6 +169,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 }}
             >
                 <Box
+                    className="slide-feature-card slide-animate"
                     sx={{
                         position: "absolute",
                         left: { xs: "2%", md: "8%" },
@@ -262,6 +237,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 </Box>
 
                 <Box
+                    className="slide-icon-tile slide-animate"
                     sx={{
                         ...styles.center_flex,
                         position: "absolute",
@@ -282,21 +258,24 @@ const ServiceSlide: React.FC<props> = ({ image, name, firstWord, secondWord, des
                 </Box>
 
                 <Box
+                    className="slide-image-wrap slide-animate"
                     sx={{
                         // position: "absolute",
                         right: { xs: "-10%", md: "-2%" },
                         bottom: { xs: "0%", md: "3%" },
-                        width: { xs: "88%", md: "1000px" },
-                        height: { xs: "78%", md: "1000px" },
+                        width: { xs: "88%", md: "50vw" },
+                        height: { xs: "78%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
+
                     }}
                 >
                     <Image
                         src={image}
                         alt={name}
                         fill
-                    // sizes="(max-width: 900px) 90vw, 98vw"
-                    // style={{ objectFit: "contain" }}
+                        unoptimized
+                        sizes="(max-width: 900px) 90vw, 98vw"
+                        style={{ objectFit: "contain", transform: "scaleX(1)" }}
                     />
                 </Box>
             </Box>

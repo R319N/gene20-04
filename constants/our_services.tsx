@@ -11,15 +11,17 @@ import HandymanIcon from "@mui/icons-material/Handyman";
 import PaletteIcon from "@mui/icons-material/Palette";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import SpeedIcon from "@mui/icons-material/Speed";
+import SearchIcon from "@mui/icons-material/Search";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import SocialDistanceIcon from "@mui/icons-material/SocialDistance";
+import EmailIcon from "@mui/icons-material/Email";
 
 const ourServices: Services[] = [
   {
     key: "1",
     name: "Website Development",
-    heading: "Build Powerful, Scalable Websites",
-    firstWord: "web",
-    secondWord: "development",
-    image: "/images/web-dev.png",
+    heading: "Build Powerful, Scalable Websites",   
+    image: "/images/dev.png",
     pageUrl: "/services#website-development",
     description:
       "We develop high-performance websites that are fast, secure, and built to grow with your business. From concept to launch, we turn your ideas into fully functional digital platforms that work seamlessly across all devices.",
@@ -48,10 +50,8 @@ const ourServices: Services[] = [
   },
   {
     key: "2",
-    name: "UI/UX Design",
+    name: "UI/UX & Web Design",
     heading: "Design Clear, Conversion-Friendly Experiences",
-    firstWord: "UI/UX",
-    secondWord: "design",
     image: "/images/web-dev.png",
     pageUrl: "/services#ui-ux-design",
     description:
@@ -81,11 +81,9 @@ const ourServices: Services[] = [
   },
   {
     key: "3",
-    name: "Content Creation",
+    name: "Branding & Graphic Design",
     heading: "Content That Connects",
-    firstWord: "content",
-    secondWord: "design",
-    image: "/images/web-dev.png",
+    image: "/images/branding.png",
     pageUrl: "/services#content-creation",
     description:
       "We create engaging and relevant content that tells your story and speaks directly to your audience. From visuals to written content, we help your brand stay active and impactful.",
@@ -112,6 +110,38 @@ const ourServices: Services[] = [
     importance:
       "Strong content builds relationships, increases visibility, and drives engagement.",
   },
+  {
+    key: "4",
+    name: "Social Media & Digital Marketing",
+    heading: "Reach Your Audience Effectively",
+    image: "/images/digital-marketing.png",
+    pageUrl: "/services#digital-marketing",
+    description:
+      "We develop and execute data-driven digital marketing strategies to increase your online visibility, attract qualified leads, and drive conversions.",
+    detailIntro:
+      "Digital marketing is about connecting with your audience where they are most active. It's about using data to inform decisions and create campaigns that resonate with your target market.",
+    features: [
+      { text: "Search Engine Optimization (SEO)", icon: <SearchIcon className="icon-small" /> },
+      { text: "Pay-Per-Click (PPC) Advertising", icon: <MonetizationOnIcon className="icon-small" /> },
+      { text: "Social Media Marketing", icon: <SocialDistanceIcon className="icon-small" /> },
+      { text: "Email Marketing", icon: <EmailIcon className="icon-small" /> },
+    ],
+    deliverables: [
+      "SEO audit and optimization plan",
+      "PPC campaign setup and management",
+      "Social media strategy and content calendar",
+      "Email marketing automation workflows",
+    ],
+    outcomes: [
+      "Increased organic traffic and search rankings",
+      "Higher conversion rates from paid advertising",
+      "Stronger social media presence and engagement",
+      "Improved email open and click-through rates",
+    ],
+    color: "#FF6B6B",
+    importance:
+      "Effective digital marketing amplifies your reach, drives targeted traffic, and maximizes return on investment.",
+  }
 ];
 
 export default ourServices;

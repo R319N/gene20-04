@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text-primary: #FEFCFD;
-    --background: #0a0a0a;
+    --background: #000414;
     --foreground: #ededed;
   }
 }
@@ -19,9 +19,11 @@ body {
   margin: 0;
   padding: 0;
 }
-
+a{
+  text-decoration: none;
+  color: inherit;
+}
 body.app-body {
-  background: "yellow";
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -51,6 +53,40 @@ body.app-body {
 
 .flowing-particle-terrain canvas {
   display: block;
+}
+
+.contact-energy-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.contact-energy-field canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.living-abstract-sphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.living-abstract-sphere canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .particle-hero-shell {
@@ -86,4 +122,18 @@ body.app-body {
       hsla(220, 100%, 41%, 0.986) 100%);
   filter: blur(300px);
   transform: rotate(-114.2deg) translate(0, 0);
+}
+.body-gradient1{
+  position: absolute;
+   width: 300px;
+  height: 320px;
+  left: 0%;
+  top: 10%;
+  z-index:0;
+  background : radial-gradient(#5303b6 10%, #0051ff 100%);
+   opacity: 1;
+     filter: blur(150px);
+  transform: rotate(-114.2deg) translate(0, 0);
+
+
 }

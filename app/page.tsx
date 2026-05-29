@@ -30,14 +30,14 @@ export default function Home() {
           <Box component="main" sx={{ flexGrow: 1 }}>
             <HeroSection />
             <IntroSection />
-            <ServicesSection />
-            <PortfolioSection />
-            <AboutSection />
+            {/* <ServicesSection />
+            <PortfolioSection /> */}
+            {/* <AboutSection /> */}
             <ContactSection />
+            <Footer/>
           </Box>
         </div>
       </div>
-      <Footer />
     </Paper>
   );
 }
