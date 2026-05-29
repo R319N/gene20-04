@@ -3,12 +3,8 @@ import pxToRem from '@/assets/theme/functions/pxToRem';
 import Globe3D from '@/components/Globe3D';
 import { styles } from '@/styles/styles';
 import { Box, Button, Stack, Typography } from '@mui/material';
-import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded';
 import NearMeOutlined from '@mui/icons-material/NearMeOutlined';
 import RemoveRedEyeOutlined from '@mui/icons-material/RemoveRedEyeOutlined';
-import StarRounded from '@mui/icons-material/StarRounded';
-import WorkOutlineRounded from '@mui/icons-material/WorkOutlineRounded';
-import { Share_Tech } from 'next/font/google';
 import ScrollIndicator from '@/components/ScrollIndicator';
 
 export default function HeroSection() {

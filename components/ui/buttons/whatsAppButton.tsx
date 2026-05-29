@@ -1,7 +1,7 @@
 import React from "react";
 import IconButton from '@mui/material/IconButton';
-import RotatingCard from '@/components/cards/RotatingCard'
 import { WhatsApp } from "@mui/icons-material";
+import RotatingCard from "../cards/RotatingCard";
 // import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 

@@ -1,25 +1,20 @@
-import { mandalore, orbitron } from "@/assets/fonts/fonts";
+import { orbitron } from "@/assets/fonts/fonts";
 import pxToRem from "../functions/pxToRem";
 import colors from "./colors";
-import { Montserrat, Nova_Flat, Nova_Round, Share_Tech, Roboto_Condensed, Roboto_Mono, Share_Tech_Mono} from "next/font/google";
+import { Share_Tech_Mono } from "next/font/google";
 
 const { text } = colors;
 
-const montserrat = Montserrat({
-  weight: ["300", "400", "500", "700", "900"],
-  subsets: ["latin"],
-  display: "swap",
-});
 const roboto = Share_Tech_Mono({
-  weight: ["400", ],
+  weight: ["400",],
   subsets: ["latin"],
   display: "swap",
 });
-const nova_round = Share_Tech({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-});
+// const nova_round = Share_Tech({
+//   weight: ["400"],
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
 const baseProperties = {
   fontFamily: `${roboto.style.fontFamily}, sans-serif`,
