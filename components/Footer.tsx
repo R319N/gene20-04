@@ -1,10 +1,9 @@
-import { Box, Container, Typography, Link, IconButton, Stack, Grid, Divider, TextField } from '@mui/material'
+import { Box, Typography, Link, IconButton, Stack, Grid, Divider, TextField } from '@mui/material'
 import React from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import LogoThumbnail from '@/assets/logo/LogoThumbnail'
 import { styles } from '@/styles/styles'
 import navigation from '@/constants/navigation_Links'
 import Address from './footer-components/address'
@@ -63,7 +62,7 @@ const Footer = () => {
               </Box>
             </Stack>
           </Grid>
-          <Grid size={{ xs: 12, lg: 2.5 , xl:2}}>
+          <Grid size={{ xs: 12, lg: 2.5, xl: 2 }}>
             <Stack sx={{ width: "100%" }} >
               <Typography variant="h6" component="h4" sx={{ mb: 2, fontWeight: 'bold' }}>
                 Explore.
@@ -81,7 +80,7 @@ const Footer = () => {
               </Stack>
             </Stack>
           </Grid>
-          <Grid size={{ xs: 12, lg: 2.5, lg: 2 }}>
+          <Grid size={{ xs: 12, lg: 2.5 }}>
             <Stack sx={{ width: "100%" }} >
               <Typography variant="h6" component="h4" sx={{ mb: 2, fontWeight: 'bold' }}>
                 Contact.

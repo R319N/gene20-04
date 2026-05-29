@@ -1,9 +1,8 @@
 "use client";
 
-import LivingAbstractSphere from "@/components/three/LivingAbstractSphere";
+// import LivingAbstractSphere from "@/components/three/LivingAbstractSphere";
 import { styles } from "@/styles/styles";
-import { Box, Button, Divider, Stack, Typography, Link, Container } from "@mui/material";
-import { QuestionMark } from "@mui/icons-material";
+import { Box, Divider, Stack, Typography, Link, Container } from "@mui/material";
 import LinkButton from "@/components/ui/buttons/LinkButton";
 import socialMediaRoutes from "@/constants/socialMediaRoutes";
 
@@ -74,7 +73,7 @@ export default function ContactSection() {
               Ready to build the future
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, mb: 4, width: "100%", textAlign: "center", fontSize: "14px", color: "rgba(255, 255, 255, 0.8)", }}>
-              Let&apos; s connect and create something amazing together. Whether you have a project in mind or just want to say hi, I'm always open to new opportunities and collaborations.
+              Let&apos; s connect and create something amazing together. Whether you have a project in mind or just want to say hi, I&apos;m always open to new opportunities and collaborations.
             </Typography>
             <Stack direction="row" spacing={2}>
 

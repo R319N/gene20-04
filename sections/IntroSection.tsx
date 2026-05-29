@@ -2,17 +2,17 @@
 
 import MountainField3D from '@/components/MountainField3D';
 import { styles } from '@/styles/styles';
-import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
+// import AutoAwesomeRounded from '@mui/icons-material/AutoAwesomeRounded';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
-import ShieldRounded from '@mui/icons-material/ShieldRounded';
-import BoltRounded from '@mui/icons-material/BoltRounded';
-import { Box, Button, Stack, Typography } from '@mui/material';
+// import ShieldRounded from '@mui/icons-material/ShieldRounded';
+// import BoltRounded from '@mui/icons-material/BoltRounded';
+import { Box, Button, Typography } from '@mui/material';
 
-const laptopStats = [
-  { icon: <AutoAwesomeRounded />, label: 'Visual Identity', value: 'Brand-led UI' },
-  { icon: <BoltRounded />, label: 'Performance', value: 'Fast pages' },
-  { icon: <ShieldRounded />, label: 'Credibility', value: 'Trust signals' },
-];
+// const laptopStats = [
+//   { icon: <AutoAwesomeRounded />, label: 'Visual Identity', value: 'Brand-led UI' },
+//   { icon: <BoltRounded />, label: 'Performance', value: 'Fast pages' },
+//   { icon: <ShieldRounded />, label: 'Credibility', value: 'Trust signals' },
+// ];
 
 const IntroSection = () => {
   return (
