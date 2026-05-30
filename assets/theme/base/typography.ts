@@ -57,7 +57,7 @@ const typography = {
   color: text.primary,
 
   h1: {
-    fontSize: baseProperties.fontSize5XL,
+    fontSize: baseProperties.fontSize3XL,
     lineHeight: 1.5,
     ...baseHeadingProperties,
     fontWeight: baseProperties.fontWeightBold,

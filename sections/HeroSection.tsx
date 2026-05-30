@@ -96,7 +96,7 @@ export default function HeroSection() {
             variant="h1"
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: 42, sm: 58, md: 38, xxl:48 },
+              fontSize: { xs: 30, sm: 58, md: 38, xxl:48 },
               lineHeight: "1.2",
               maxWidth: "100%",
               mb: { xs: 3, md: 4 },
@@ -122,8 +122,9 @@ export default function HeroSection() {
             {' '}of the product development journey.
           </Typography>
 
-          <Stack direction="row" spacing={2.5} sx={{ flexWrap: 'wrap', rowGap: 2, mb: { xs: 5, md: 7 } }}>
+          <Stack direction={{xs:"column", lg:"row"}} spacing={2.5} sx={{  rowGap:2, mb: { xs: 5, md: 7 } }}>
             <Button
+            sx={{width:"200px"}}
               variant="outlined"
               startIcon={<RemoveRedEyeOutlined />}
             >

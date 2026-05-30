@@ -61,7 +61,7 @@ export default function ContactSection() {
             ...styles.glassOutlinedTheme,
             width: "700px",
             height: "100%",
-            p: "1rem 4rem",
+            p: "1rem",
             // ...styles.column_flex,
             gap: 2,
           }}>

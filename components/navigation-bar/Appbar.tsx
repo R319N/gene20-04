@@ -83,7 +83,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
         sx={{
           top: "0",
           zIndex: 99,
-          width: "100%",
+          width: "100vw",
           p: { xs: "0.5rem", md: "1rem 4rem", xxl: "1rem 8rem" },
         }}
       >
