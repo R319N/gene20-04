@@ -131,7 +131,7 @@ export default function HeroSection() {
             </Button>
 
             <Button
-              sx={{width:"200px"}
+              sx={{width:"200px"}}
               variant="contained"
               startIcon={<NearMeOutlined  />}
             >
