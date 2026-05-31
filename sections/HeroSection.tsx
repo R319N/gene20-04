@@ -40,7 +40,6 @@ export default function HeroSection() {
           alignItems: 'center',
           minHeight: '100vh',
           width: '100%',
-          maxWidth: pxToRem(1500),
           mx: 'auto',
           px: { xs: 3, md: 8, xl: pxToRem(40) },
           pt: { xs: 14, md: 16 },
@@ -58,7 +57,7 @@ export default function HeroSection() {
             alignItems: 'flex-start',
           }}
         >
-          <Typography
+         {/* <Typography
             color="primary"
             sx={{
               ...styles.center_flex,
@@ -90,7 +89,7 @@ export default function HeroSection() {
               }}
             />
             WE BUILD DIGITAL SOLUTIONS
-          </Typography>
+          </Typography> */}
 
           <Typography
             variant="h1"
@@ -122,7 +121,7 @@ export default function HeroSection() {
             {' '}of the product development journey.
           </Typography>
 
-          <Stack direction={{xs:"column", lg:"row"}} spacing={2.5} sx={{  rowGap:2, mb: { xs: 5, md: 7 } }}>
+          <Stack direction={{xs:"column", lg:"row"}} spacing={2.5} sx={{  rowGap:1, mb: { xs: 5, md: 2 } }}>
             <Button
             sx={{width:"200px"}}
               variant="outlined"
@@ -132,6 +131,7 @@ export default function HeroSection() {
             </Button>
 
             <Button
+              sx={{width:"200px"}
               variant="contained"
               startIcon={<NearMeOutlined  />}
             >
