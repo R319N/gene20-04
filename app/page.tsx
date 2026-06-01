@@ -30,7 +30,7 @@ export default function Home() {
           <Box component="main" sx={{ flexGrow: 1 }}>
             <HeroSection />
             <IntroSection />
-            {/* <ServicesSection />
+             <ServicesSection />
             <PortfolioSection /> */}
             {/* <AboutSection /> */}
             <ContactSection />
