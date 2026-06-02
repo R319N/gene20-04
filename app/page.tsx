@@ -24,7 +24,7 @@ export default function Home() {
         position: "relative"
       }}
     >
- {/*   /<Appbar />*/}
+  <Appbar />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <Box component="main" sx={{ flexGrow: 1 }}>
