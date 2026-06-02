@@ -29,9 +29,11 @@ import NavTabs from "./NavTabs";
 import NavigationMenu from "./NavigationMenu";
 // import Logo from "../logo";
 // import ContactBar from "../contactBar";
-import { Button, Link } from "@mui/material";
+import { Button, Link, useMediaQuery } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 import { styles } from "@/styles/styles";
 import LogoThumbnail from "@/assets/logo/LogoThumbnail";
+import LogoIcon from "@/assets/logo/LogoIcon";
 
 interface Props {
   window?: () => Window;
@@ -70,7 +72,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const container = window !== undefined ? () => window().document.body : undefined;
-
+  const phone = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,
@@ -83,7 +85,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
         sx={{
           top: "0",
           zIndex: 99,
-          width: "100vw",
+          width: "100%",
           p: { xs: "0.5rem", md: "1rem 4rem", xxl: "1rem 8rem" },
         }}
       >
@@ -116,6 +118,11 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                   width: "100%",
                 }}
               >
+                <Link href="/">
+                  {/* {phone ? <LogoIcon /> : <LogoThumbnail />} */}
+                  <LogoThumbnail />
+
+                </Link>
                 <Box display="flex" alignItems="center" gap={4}>
                   <IconButton
                     size="medium"
@@ -130,9 +137,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                   >
                     {!mobileOpen ? <MenuIcon /> : <Close />}
                   </IconButton>
-                  <Link href="/" sx={{ display: { xs: "none", xl: "flex" }, }}>
-                    <LogoThumbnail />
-                  </Link>
+
                 </Box>
                 <Box
                   sx={{
