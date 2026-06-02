@@ -32,9 +32,9 @@ export default function Home() {
            {/* <IntroSection />
              <ServicesSection />
             <PortfolioSection /> 
-             <AboutSection /> 
+             <AboutSection /> */}
             <ContactSection />
-            <Footer/>*/}
+            <Footer/>
           </Box>
         </div>
       </div>
