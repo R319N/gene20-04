@@ -19,22 +19,22 @@ export default function Home() {
         margin: 0,
         p: 0,
         display: "flex",
+        justifyContent: "center",
         flexDirection: "column",
         backgroundColor: `(theme) => theme.palette.background.default`,
-        position: "relative"
       }}
     >
-  <Appbar />
+      <Appbar />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <Box component="main" sx={{ flexGrow: 1 }}>
             <HeroSection />
-           {/* <IntroSection />
+            {/* <IntroSection />
              <ServicesSection />
             <PortfolioSection /> 
              <AboutSection /> */}
-            <ContactSection />
-            <Footer/>
+            {/* <ContactSection />
+            <Footer /> */}
           </Box>
         </div>
       </div>

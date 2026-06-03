@@ -42,6 +42,19 @@ body.app-body {
   position: relative;
   will-change: transform;
 }
+
+.hero_main {
+  position: relative;
+
+  .planet-3D {
+    position: relative;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+  }
+}
+
+
 .flowing-particle-terrain {
   position: absolute;
   inset: 0;
