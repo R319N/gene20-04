@@ -22,7 +22,7 @@ const initPlanet = (): { scene: THREE.Scene; } => {
     const camera = new THREE.PerspectiveCamera(15, size.width / size.height, 0.1, 10000);
     camera.position.x = 0;
     camera.position.y = 0.1;
-    camera.position.z = 10;
+    camera.position.z = 30;
     scene.add(camera);
 
 
