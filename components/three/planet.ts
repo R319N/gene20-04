@@ -2,6 +2,7 @@ import gsap from "gsap";
 import * as THREE from "three";
 import VertexShader from './shaders/earth/vertex.glsl';
 import FragmentShader from './shaders/earth/fragment.glsl';
+import getStarField from './getStarField'
 
 const initPlanet = (): { scene: THREE.Scene; } => {
     //target
@@ -21,7 +22,7 @@ const initPlanet = (): { scene: THREE.Scene; } => {
     const camera = new THREE.PerspectiveCamera(15, size.width / size.height, 0.1, 10000);
     camera.position.x = 0;
     camera.position.y = 0.1;
-    camera.position.z = 19;
+    camera.position.z = 10;
     scene.add(camera);
 
 
@@ -71,6 +72,8 @@ const initPlanet = (): { scene: THREE.Scene; } => {
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 
     scene.add(earth);
+    const stars = getStarfield({ numStars: 2000 });
+    scene.add(stars);
 
     const updatePlanetPosition = () => {
         earth.position.x = window.innerWidth >= 1024 ? 2.2 : 0;
