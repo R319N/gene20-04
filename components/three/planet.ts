@@ -2,7 +2,7 @@ import gsap from "gsap";
 import * as THREE from "three";
 import VertexShader from './shaders/earth/vertex.glsl';
 import FragmentShader from './shaders/earth/fragment.glsl';
-import getStarField from './getStarField'
+import getStarfield from './getStarField'
 
 const initPlanet = (): { scene: THREE.Scene; } => {
     //target
