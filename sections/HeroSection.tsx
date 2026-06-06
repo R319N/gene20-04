@@ -1,11 +1,10 @@
 "use client";
 import initPlanet from '@/components/three/planet';
-import pxToRem from '@/assets/theme/functions/pxToRem';
+
 import Globe3D from '@/components/Globe3D';
 import { styles } from '@/styles/styles';
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import NearMeOutlined from '@mui/icons-material/NearMeOutlined';
-import RemoveRedEyeOutlined from '@mui/icons-material/RemoveRedEyeOutlined';
+import { Box } from '@mui/material';
+
 import ScrollIndicator from '@/components/ScrollIndicator';
 
 // // export default function HeroSection() {
@@ -139,75 +138,28 @@ import ScrollIndicator from '@/components/ScrollIndicator';
 // // }
 
 import React, { useEffect } from 'react'
+import HeroContent from '@/components/hero/HeroContent';
 
 const HeroSection = () => {
 
-  useEffect(() => {
-  initPlanet()
-}, [])
+   useEffect(() => {
+    const {scene, renderer} = initPlanet()
+    
+    return () => {
+      if (renderer) {
+        const gl = renderer.getContext();
+        gl.getExtension("WEBGL_lose_context")?.loseContext();
+        renderer.dispose()
+      }
+    }
+  }, [])
+  
   return (
     <section id="home" className='hero-section h-screen relative top-0 inset-0' data-speed="4">
-     <Box sx={{ ...styles.section_container, justifyContent: "space-between", alignItems: "center", zIndex: 2, px:{xs:"1rem", lg:"10vw"}, py:"auto" }} >
-        <Box
-          sx={{
-            position: 'relative',
-            zIndex: 2,
-            width: "100%",
-            height:"100%",
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent:"center"
-          }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: "bold",
-              fontSize: { xs: 30, sm: 58, md: 38, xxl: 48 },
-              lineHeight: "1.2",
-            width:{xs:"12ch", lg:"20ch"},
-              // textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
-              textWrap: "wrap",
-              textTransform: "uppercase"
-            }}
-          >
-            Crafting Exceptional
-            Digital Experiences
-          </Typography>
-
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'rgba(238, 243, 255, 0.78)',
-              maxWidth: pxToRem(650),
-            }}
-          >
-            Elevate your brand with our comprehensive tech services. From innovative
-            web and graphic design to cutting-edge software development, <Box component="strong" sx={{ color: '#fff' }}>we guide you through every step</Box>
-            {' '}of the product development journey.
-          </Typography>
-
-          <Stack direction={{ xs: "column", lg: "row" }} spacing={2.5} sx={{ rowGap: 1, mb: { xs: 5, md: 2 } }}>
-            <Button
-              sx={{ width: "200px" }}
-              variant="outlined"
-              startIcon={<RemoveRedEyeOutlined />}
-            >
-              Our Work
-            </Button>
-
-            <Button
-              sx={{ width: "200px" }}
-              variant="contained"
-              startIcon={<NearMeOutlined />}
-            >
-              Let&apos;s Discuss Your Project
-            </Button>
-          </Stack>
-        </Box>
-         {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
-          {/* <Box
+      <Box sx={{ ...styles.section_container, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, py: "auto" }} >
+        <HeroContent />
+        {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
+        {/* <Box
             sx={{
               position: "absolute",
               right: { xs: 'auto', md: 24, xl: "0%" },
@@ -223,11 +175,12 @@ const HeroSection = () => {
               pointerEvents: 'none',
             }}
           > */}
-              <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10'/>
-            {/* <Globe3D />
+        <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' />
+         <ScrollIndicator/>
+        {/* <Globe3D />
           </Box> */}
         {/* </Box> */}
-      </Box> 
+      </Box>
     </section >
   )
 }

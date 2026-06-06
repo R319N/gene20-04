@@ -7,7 +7,19 @@ export const mandalore = localFont({
   display: "swap",
 });
 export const orbitron = localFont({
-  src: "../../public/font-packages/Orbitron-Regular.ttf",
-  variable: "--font-orbitron",
-  display: "swap",
+  // src: "../../public/font-packages/Orbitron-Regular.ttf",
+  // variable: "--font-orbitron",
+  // display: "swap",
+  src: [
+    {
+      path: "../../public/font-packages/Orbitron-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+     {
+      path: "../../public/font-packages/Orbitron-ExtraBold.ttf",
+      weight: "400",
+      style: "bold",
+    },
+  ]
 });

@@ -7,9 +7,10 @@ import { ArrowForwardRounded } from '@mui/icons-material'
 interface LinkButtonProps {
     label: string
     pageUrl: string
+    color?:string
 }
 
-const LinkButton = ({ label, pageUrl }: LinkButtonProps) => {
+const LinkButton = ({ label, pageUrl , color}: LinkButtonProps) => {
     return (
         <Box
             className="slide-button"
@@ -20,7 +21,7 @@ const LinkButton = ({ label, pageUrl }: LinkButtonProps) => {
                 justifyContent: "flex-start",
                 gap: 2,
                 width: "fit-content",
-                color: "#ffffff",
+                color: {color},
                 textDecoration: "none",
             }}
         >
@@ -31,7 +32,7 @@ const LinkButton = ({ label, pageUrl }: LinkButtonProps) => {
                     height: 54,
                     borderRadius: "50%",
                     border: "1px solid rgba(214, 224, 255, 0.22)",
-                    color: "#ffffff",
+                    color: {color},
                     transition: "border-color 0.2s ease, transform 0.2s ease",
                     "& svg": { fontSize: 22 },
                     ".slide-button:hover &": {
@@ -42,7 +43,7 @@ const LinkButton = ({ label, pageUrl }: LinkButtonProps) => {
             >
                 <ArrowForwardRounded />
             </Box>
-            <Typography sx={{ fontSize: { xs: 14, md: 16 }, color: "#ffffff" }}>
+            <Typography sx={{fontWeight: 700, fontSize: { xs: 14, md: 16 }, color: {color}   }}>
                 {label}
             </Typography>
         </Box>
