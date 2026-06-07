@@ -177,9 +177,7 @@ const HeroSection = () => {
           > */}
         <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' />
          <ScrollIndicator/>
-        {/* <Globe3D />
-          </Box> */}
-        {/* </Box> */}
+  
       </Box>
     </section >
   )
