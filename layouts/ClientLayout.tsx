@@ -36,7 +36,7 @@ export default function ClientLayout(props: { children: React.ReactNode }) {
     <AppRouterCacheProvider options={{ enableCssLayer: true }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-      { <SmoothScrollProvider />
+      <SmoothScrollProvider />
      
         {children}
         {/* <ThemeSwitcher themes={themePresets} value={themeId} onChange={setThemeId} /> */}
