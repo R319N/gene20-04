@@ -156,10 +156,10 @@ const HeroSection = () => {
   
   return (
     <section id="home" className='hero-section h-screen relative top-0 inset-0' data-speed="4">
-      <Box sx={{ ...styles.section_container, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, py: "auto" }} >
+      <Box sx={{ ...styles.section_container, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, py: "auto", position:"relative" }} >
         <HeroContent />
         {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
-        {/* <Box
+         <Box
             sx={{
               position: "absolute",
               right: { xs: 'auto', md: 24, xl: "0%" },
@@ -174,8 +174,9 @@ const HeroSection = () => {
               zIndex: 1,
               pointerEvents: 'none',
             }}
-          > */}
-        <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' />
+          > 
+        <canvas id="planet-3D" className='planet-3D' />
+         </Box>
          <ScrollIndicator/>
   
       </Box>
