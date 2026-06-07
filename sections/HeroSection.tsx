@@ -167,17 +167,16 @@ const HeroSection = () => {
               top: { xs: 'auto', md: '0' },
               transform: { xs: 'none', md: 'translateY(0%)' },
               width: { xs: '100%', md: '46vw', xl: '100%' },
-              height: { xs: "100%", sm: 520, md: '78vh', xl: '100℅' },
+              height: { xs: "100%", sm: 520, md: '78vh', xl: '100vh' },
               mt: { xs: 5, md: 0 },
               opacity: { xs: 0.9, md: 1 },
               zIndex: 1,
               pointerEvents: 'none',
             }}
           > 
-        <canvas id="planet-3D" className='planet-3D h-full' />
+        <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' />
          </Box>
-         <ScrollIndicator/>
-  
+         <ScrollIndicator/>  
       </Box>
     </section >
   )
