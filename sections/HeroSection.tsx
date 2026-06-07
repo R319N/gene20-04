@@ -156,7 +156,7 @@ const HeroSection = () => {
   
   return (
     <section id="home" className='hero-section h-dvh rrelative top-0 inset-0' data-speed="4">
-      <Box sx={{...styles.section_container, py:0, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, position:"relative" }} >
+      <Box sx={{...styles.section_container, py:0, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, position:"relative", overflow:"hidden" }} >
         <HeroContent />
         {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
          <Box
