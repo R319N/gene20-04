@@ -29,8 +29,8 @@ export default function Home() {
         <div id="smooth-content">
           <Box component="main" sx={{ flexGrow: 1 }}>
             <HeroSection />
-            {/* <IntroSection /> */}
-            {/*   <ServicesSection />
+        {/*   <IntroSection /> 
+               <ServicesSection />
             <PortfolioSection /> 
              <AboutSection /> */}
             <ContactSection />

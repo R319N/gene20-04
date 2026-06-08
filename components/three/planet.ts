@@ -236,9 +236,8 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const nebula = getLayer({ path: './textures/rad-grad.png' });
     const networkGlobe = createNetworkGlobe();
     const earthGroup = new THREE.Group();
-    earthGroup.add(earth, atmosphere, networkGlobe, nebula, stars);
+    earthGroup.add(earth, atmosphere, networkGlobe, stars);
     earthGroup.rotation.z = -23.4 * Math.PI / 180;
-
 
 
     const sunDirection = new THREE.Vector3();
