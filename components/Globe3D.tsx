@@ -11,6 +11,49 @@ import getLayer from './three/getLayer';
 
 export default function Glove3d() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const PLANET_RADIUS = 2;
+  const getViewportSettings = () => {
+    const width = window.innerWidth;
+
+    if (width < 480) {
+      return {
+        cameraZ: 22,
+        cameraY: 0.05,
+        groupScale: 0.72,
+        groupX: 0,
+        groupY: 0,
+      };
+    }
+
+    if (width < 768) {
+      return {
+        cameraZ: 20,
+        cameraY: 0.05,
+        groupScale: 0.82,
+        groupX: 0,
+        groupY: 0,
+      };
+    }
+
+    if (width < 1024) {
+      return {
+        cameraZ: 16,
+        cameraY: 0.08,
+        groupScale: 0.8,
+        groupX: 0,
+        groupY: 0,
+      };
+    }
+
+    return {
+      cameraZ: 5,
+      cameraY: 0.1,
+      groupScale: 0.8,
+      groupX: 2.2,
+      groupY: 0,
+    };
+  };
+
 
   useEffect(() => {
     const container = containerRef.current;
@@ -19,7 +62,7 @@ export default function Glove3d() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
-      75,
+      50,
       container.clientWidth / container.clientHeight,
       0.5,
       100
@@ -44,7 +87,7 @@ export default function Glove3d() {
     earthGroup.rotation.z = (-23.4 * Math.PI) / 180;
     scene.add(earthGroup);
 
-    const earthGeometry = new THREE.IcosahedronGeometry(1, 12);
+    const earthGeometry = new THREE.IcosahedronGeometry(PLANET_RADIUS, 64, 64);
     const earthMaterial = new THREE.MeshStandardMaterial({
       map: new THREE.TextureLoader().load(earthDay.src),
     });
@@ -82,8 +125,8 @@ export default function Glove3d() {
 
     // const wireframe = new THREE.Mesh(wireGeometry, wireMaterial);
     // earthGroup.add(wireframe);
-    const nebula = getLayer({ path: './textures/rad-grad.png'});
-scene.add(nebula);
+    const nebula = getLayer({ path: './textures/rad-grad.png' });
+    scene.add(nebula);
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
     scene.add(ambientLight);
@@ -98,6 +141,20 @@ scene.add(nebula);
     // controls.enablePan = false;
     // controls.minDistance = 1.8;
     // controls.maxDistance = 6;
+
+
+    const updatePlanetLayout = () => {
+      const viewport = getViewportSettings();
+
+      camera.position.y = viewport.cameraY;
+      camera.position.z = viewport.cameraZ;
+      earthGroup.position.set(viewport.groupX, viewport.groupY, 0);
+      earthGroup.scale.setScalar(viewport.groupScale);
+      camera.updateProjectionMatrix();
+    };
+
+    updatePlanetLayout();
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     let animationId = 0;
@@ -118,6 +175,7 @@ scene.add(nebula);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
+      updatePlanetLayout();
     };
 
     handleResize();

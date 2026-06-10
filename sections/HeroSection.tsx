@@ -1,7 +1,5 @@
 "use client";
 import initPlanet from '@/components/three/planet';
-
-import Globe3D from '@/components/Globe3D';
 import { styles } from '@/styles/styles';
 import { Box } from '@mui/material';
 
@@ -139,42 +137,42 @@ import ScrollIndicator from '@/components/ScrollIndicator';
 
 import React, { useEffect } from 'react'
 import HeroContent from '@/components/hero/HeroContent';
+import Globe3d from '@/components/Globe3D';
 
 const HeroSection = () => {
 
-   useEffect(() => {
-    const {scene, renderer} = initPlanet()
+  //  useEffect(() => {
+  //   const {scene, renderer} = initPlanet()
     
-    return () => {
-      if (renderer) {
-        const gl = renderer.getContext();
-        gl.getExtension("WEBGL_lose_context")?.loseContext();
-        renderer.dispose()
-      }
-    }
-  }, [])
+  //   return () => {
+  //     if (renderer) {
+  //       const gl = renderer.getContext();
+  //       gl.getExtension("WEBGL_lose_context")?.loseContext();
+  //       renderer.dispose()
+  //     }
+  //   }
+  // }, [])
   
   return (
-    <section id="home" className='hero-section h-dvh rrelative top-0 inset-0' data-speed="4">
+    <section id="home" className='hero-section h-dvh rrelative top-0 inset-0' data-speed="4" style={{ overflow: 'visible' }}>
       <Box sx={{...styles.section_container, py:0, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, position:"relative", overflow:"visible" }} >
         <HeroContent />
-        {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
-         <Box
+        <Box
             sx={{
               position: "absolute",
-               inset:0,
-              right: { xs: 'auto', md: 24, xl: "0%" },
-              top: { xs: 'auto', md: '0' },
-              transform: { xs: 'none', md: 'translateY(0%)' },
+              left: { xs: 0, md: 'auto' },
+              top: 0,
+              bottom: { xs: '-8vh', md: '-18vh' },
+              right: { xs: 'auto', md: 24, xl: '0%' },
+              transform: { xs: 'none', md: 'translate(0%)' },
               width: { xs: '100%', md: '46vw', xl: '100%' },
-              height: { xs: "100%", sm: 520, md: '78vh', xl: '100vh' },
-              mt: { xs: 5, md: 0 },
               opacity: { xs: 0.9, md: 1 },
               zIndex: 1,
               pointerEvents: 'none',
             }}
-          > 
-        <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' />
+          >
+            <Globe3d/>
+          {/* <canvas id="planet-3D" className='planet-3D absolute inset-0 w-full h-full -z-10' /> */}
          </Box>
          <ScrollIndicator/>  
       </Box>

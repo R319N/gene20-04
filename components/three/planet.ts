@@ -35,9 +35,9 @@ const getViewportSettings = () => {
 
     if (width < 1024) {
         return {
-            cameraZ: 18,
+            cameraZ: 16,
             cameraY: 0.08,
-            groupScale: 0.92,
+            groupScale: 0.8,
             groupX: 0,
             groupY: 0,
         };
@@ -46,7 +46,7 @@ const getViewportSettings = () => {
     return {
         cameraZ: 15,
         cameraY: 0.1,
-        groupScale: 1,
+        groupScale: 0.8,
         groupX: 2.2,
         groupY: 0,
     };
@@ -54,8 +54,8 @@ const getViewportSettings = () => {
 
 const createNetworkGlobe = () => {
     const group = new THREE.Group();
-    const nodeCount = 84;
-    const radius = PLANET_RADIUS * 1.27;
+    const nodeCount = 72;
+    const radius = PLANET_RADIUS * 1.16;
     const positions: THREE.Vector3[] = [];
 
     for (let i = 0; i < nodeCount; i++) {
@@ -74,22 +74,22 @@ const createNetworkGlobe = () => {
     const pointGeometry = new THREE.BufferGeometry().setFromPoints(positions);
     const pointMaterial = new THREE.PointsMaterial({
         color: 0x6de7ff,
-        size: 0.035,
+        size: 0.025,
         transparent: true,
-        opacity: 0.78,
+        opacity: 0.65,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
     });
     const nodes = new THREE.Points(pointGeometry, pointMaterial);
 
     const linePositions: number[] = [];
-    const maxDistance = radius * 0.56;
+    const maxDistance = radius * 0.42;
 
     for (let i = 0; i < positions.length; i++) {
         let connections = 0;
 
         for (let j = i + 1; j < positions.length; j++) {
-            if (connections >= 3) break;
+            if (connections >= 2) break;
 
             if (positions[i].distanceTo(positions[j]) <= maxDistance) {
                 linePositions.push(
@@ -112,9 +112,9 @@ const createNetworkGlobe = () => {
     );
 
     const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0x7af2ff,
+        color: 0x71c9ff,
         transparent: true,
-        opacity: 0.18,
+        opacity: 0.12,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
     });
@@ -125,7 +125,7 @@ const createNetworkGlobe = () => {
     group.userData.update = (time: number) => {
         group.rotation.y = time * 0.08;
         group.rotation.x = Math.sin(time * 0.35) * 0.04;
-        const pulse = 1 + Math.sin(time * 1.4) * 0.018;
+        const pulse = 1 + Math.sin(time * 1.4) * 0.008;
         group.scale.setScalar(pulse);
     };
 
@@ -182,8 +182,8 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const earthGeometry = new THREE.SphereGeometry(PLANET_RADIUS, 64, 64);
     const atmosphereGeometry = new THREE.SphereGeometry(PLANET_RADIUS, 64, 64);
 
-    const atmosphereDayColor = "#4a96e8";
-    const atmosphereTwilightColor = "#1950E5";
+    const atmosphereDayColor = "#3fa9ff";
+    const atmosphereTwilightColor = "#0b2f8f";
 
     //material
     const earthMaterial = new THREE.ShaderMaterial({
@@ -229,14 +229,21 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
     const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
 
-    atmosphere.scale.set(1.08, 1.08, 1.08);
+    atmosphere.scale.set(1.025, 1.025, 1.025);
 
 
     const stars = getStarfield({ numStars: 5000 });
-    const nebula = getLayer({ path: './textures/rad-grad.png' });
+    const nebula = getLayer({
+        path: './textures/rad-grad.png',
+        radius: 6,
+        size: 14,
+        opacity: 0.12,
+        numSprites: 6,
+        z: -9,
+    });
     const networkGlobe = createNetworkGlobe();
     const earthGroup = new THREE.Group();
-    earthGroup.add(earth, atmosphere, networkGlobe, stars);
+    earthGroup.add(earth, atmosphere, networkGlobe, stars, nebula);
     earthGroup.rotation.z = -23.4 * Math.PI / 180;
 
 

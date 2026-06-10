@@ -16,6 +16,7 @@ export default function ContactSection() {
           width: "100%",
           minHeight: "100dvh",
           overflow: "visible",
+          zIndex: 2,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -61,15 +62,17 @@ export default function ContactSection() {
             ...styles.glassOutlinedTheme,
             width: "700px",
             height: "100%",
-            p: "1rem",
+            p: "1rem 2rem",
             // ...styles.column_flex,
             gap: 2,
           }}>
 
           <Stack sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", py: "1rem" }}>
-            <Typography variant="h1" 
-            sx={{ width: {xs:"100%", xxl:"20ch"}, textAlign: "center", fontWeight: 800, fontSize: "3rem",
-             background: "linear-gradient(90deg, #bbd4da, #3a47d5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <Typography variant="h1"
+              sx={{
+                width: { xs: "100%", xxl: "15ch" }, textAlign: "center", fontWeight: 800, fontSize: "3rem",
+                background: "linear-gradient(90deg, #bbd4da, #3a47d5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
+              }}>
               Ready to build the future
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, mb: 4, width: "100%", textAlign: "center", fontSize: "14px", color: "rgba(255, 255, 255, 0.8)", }}>

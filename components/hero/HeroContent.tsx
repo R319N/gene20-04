@@ -26,7 +26,7 @@ const HeroContent = () => {
             <Typography
                 variant="h1"
                 sx={{
-                    fontWeight: "900",
+                    fontWeight: "regular",
                     fontSize: { xs: 34, sm: 58, md: 38, xxl: 56 },
                     lineHeight: "1.2",
                     width: { xs: "12ch", lg: "20ch" },
