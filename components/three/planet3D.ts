@@ -15,8 +15,8 @@ const getViewportSettings = () => {
 
     if (width < 480) {
         return {
-            cameraZ: 15,
-            cameraY: 0,
+            cameraZ: 14,
+            cameraY: 1.4,
             groupScale: 0.72,
             groupX: 0,
             groupY: 0,
@@ -180,7 +180,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const nightTexture = Tl.load("/textures/earth_nightmap.jpg");
     const specularCloudsTexture = Tl.load("/textures/specularClouds.jpg");
     dayTexture.colorSpace = THREE.SRGBColorSpace;
-    // nightTexture.colorSpace = THREE.SRGBColorSpace;
+    nightTexture.colorSpace = THREE.SRGBColorSpace;
     const baseAnisotropy = renderer.capabilities.getMaxAnisotropy();
     dayTexture.anisotropy = baseAnisotropy;
     specularCloudsTexture.anisotropy = baseAnisotropy;
@@ -194,8 +194,8 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     const detail = 32;
 
-    const atmosphereDayColor = "#054274";
-    const atmosphereTwilightColor = "#3059c9";
+    const atmosphereDayColor = "#00376e";
+    const atmosphereTwilightColor = "#ffffff00";
     // earth material
     const earthGeometry = new THREE.IcosahedronGeometry(1, detail);
 
@@ -204,14 +204,14 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     //     map: nightTexture,
     //     blending: THREE.AdditiveBlending,
     //     transparent: true,
-    //     opacity: 0.8,
+    //     // opacity: 0.8,
     // });
 
     const earthMaterial = new THREE.ShaderMaterial({
         vertexShader: earthVertex,
         fragmentShader: earthFragment,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.3,
         uniforms: {
             uDayTexture: new THREE.Uniform(dayTexture),
             uNightTexture: new THREE.Uniform(nightTexture),
@@ -240,13 +240,15 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     // const nebula = getLayer({ path: './textures/rad-grad.png' });
     // scene.add(nebula);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+    const ambientLight = new THREE.AmbientLight(0x00ffff, 0.65);
     scene.add(ambientLight);
+
+
     const stars = getStarfield({ numStars: 5000 });
     scene.add(stars);
 
     const sunDirection = new THREE.Vector3();
-    sunDirection.set(-0.85, 0.18, -1).normalize();
+    sunDirection.set(-0.85, 0.78, -1).normalize();
 
     earthMaterial.uniforms.uSunDirection.value.copy(sunDirection);
 

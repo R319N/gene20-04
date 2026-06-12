@@ -19,7 +19,7 @@ const HeroContent = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                justifyContent: "flex-end",
+                justifyContent: { xs: 'center', md: 'flex-end' },
                 gap: 4
             }}
         >

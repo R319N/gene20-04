@@ -1,20 +1,20 @@
 import { orbitron } from "@/assets/fonts/fonts";
 import pxToRem from "../functions/pxToRem";
 import colors from "./colors";
-import { Share_Tech_Mono } from "next/font/google";
+import { Share_Tech_Mono, Roboto } from "next/font/google";
 
 const { text } = colors;
 
-const roboto = Share_Tech_Mono({
+const roboto = Roboto({
   weight: ["400",],
   subsets: ["latin"],
   display: "swap",
 });
-// const nova_round = Share_Tech({
-//   weight: ["400"],
-//   subsets: ["latin"],
-//   display: "swap",
-// });
+const shareTech = Share_Tech_Mono({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const baseProperties = {
   fontFamily: `${roboto.style.fontFamily}, sans-serif`,
@@ -138,7 +138,7 @@ const typography = {
   },
 
   caption: {
-    fontFamily: baseProperties.fontFamily,
+    fontFamily: shareTech.style.fontFamily,
     fontSize: baseProperties.fontSizeXXS,
     fontWeight: baseProperties.fontWeightRegular,
     lineHeight: 1.35,

@@ -3,14 +3,14 @@ import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { ArrowForwardRounded } from '@mui/icons-material'
- 
+
 interface LinkButtonProps {
     label: string
     pageUrl: string
-    color?:string
+    color?: string
 }
 
-const LinkButton = ({ label, pageUrl , color}: LinkButtonProps) => {
+const LinkButton = ({ label, pageUrl, color }: LinkButtonProps) => {
     return (
         <Box
             className="slide-button"
@@ -21,29 +21,56 @@ const LinkButton = ({ label, pageUrl , color}: LinkButtonProps) => {
                 justifyContent: "flex-start",
                 gap: 2,
                 width: "fit-content",
-                color: {color},
+                color: { color },
                 textDecoration: "none",
             }}
         >
             <Box
                 sx={{
+                    position: "relative",
                     ...styles.center_flex,
-                    width: 46,
-                    height: 46,
+                    width: 42,
+                    height: 42,
                     borderRadius: "50%",
-                    border: "1px solid rgba(214, 224, 255, 0.22)",
-                    color: {color},
-                    transition: "border-color 0.2s ease, transform 0.2s ease",
-                    "& svg": { fontSize: 22 },
+
+                    "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        inset: 0,
+                        borderRadius: "50%",
+                        padding: "0.8px",
+                        background: "linear-gradient(90deg, #31a6d8, #3a47d5)",
+                        WebkitMask:
+                            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                        WebkitMaskComposite: "xor",
+                        maskComposite: "exclude",
+                    },
+
                     ".slide-button:hover &": {
-                        borderColor: "rgba(214, 224, 255, 0.55)",
                         transform: "translateX(4px)",
                     },
                 }}
             >
-                <ArrowForwardRounded />
+
+                <ArrowForwardRounded
+                    sx={{
+                        fontSize: 22,
+                        background: "linear-gradient(45deg, #d831a9, #e9e9e9)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        color: "transparent",
+                        // fill: "url(#gradient)",
+                    }}
+                />
+
             </Box>
-            <Typography sx={{fontWeight: 700, fontSize: { xs: 14, md: 16 }, color: {color}  ,   background: "linear-gradient(90deg, #00a9d3, #3a47d5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <Typography sx={{
+                fontWeight: 700,
+                fontSize: { xs: 14, md: 16 }, color: { color },
+                background: "linear-gradient(90deg, #00a9d3, #3a47d5)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+            }}>
                 {label}
             </Typography>
         </Box>

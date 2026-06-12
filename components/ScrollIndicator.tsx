@@ -14,50 +14,46 @@ const ScrollIndicator = () => {
         <Box sx={{
             position: 'absolute',
             left: '50%',
-            bottom: 20,
+            bottom: 0,
             transform: 'translateX(-50%)',
-            zIndex: 3,
-            color: 'rgba(255,255,255,0.7)',
+            zIndex: 1,
             letterSpacing: 6,
-            fontSize: 13,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0.2rem",
             width: "100%",
         }}>
 
-            <Typography color="text.secondary" variant="body2" sx={{ ...shareTech.style, textAlign:"center", letterSpacing: 4, textTransform: 'uppercase' }}>SCROLL</Typography>
+            <Typography color="text.secondary" variant="caption" sx={{ ...shareTech.style, textAlign: "center", letterSpacing: 4, textTransform: 'uppercase' }}>
+                SCROLL
+            </Typography>
             <Box sx={{
+                ...styles.column_flex,
+                // gap: "0rem",
+                width: "0px",
 
-                ...styles.center_flex, flexDirection: "column", gap: "0rem",
-width:"0px",
-                animation: 'bounce 2s infinite',
-                '@keyframes bounce': {
-                    '0%, 100%': { transform: 'translate(-50%, 0)' },
-                    '50%': { transform: 'translate(-50%, -5px)' },
-                }
             }
 
             }>
-
-
-                <KeyboardArrowDownIcon sx={{ fontSize: 28, color: 'rgba(255,255,255,0.7)' }} />
+                <KeyboardArrowDownIcon sx={{
+                     fontSize: 28,
+                     color: 'rgba(255,255,255,0.7)',
+                    //  width:"0",
+                      }} />
                 <Box
                     sx={{
                         backgroundColor: (theme) => theme.palette.primary.main,
                         height: "20px",
-                        width: "2px",
-                        boxShadow: `0 0 2px 0 #ffffff77, 0 0 5px 0 #ffffff55`,
-                        // animation: 'bounce 2s infinite',
-                        // '@keyframes bounce': {
-                        //     '0%, 100%': { transform: 'translate(-50%, 0)' },
-                        //     '50%': { transform: 'translate(-50%, -5px)' },
-                        // },
+                        width: "1px",
+                        boxShadow: `0 0 4px 0 #ffffffbb, 0 0 5px 0 #3f0069d7`,
+                        animation: 'bounce 2s infinite',
+                        '@keyframes bounce': {
+                            '0%, 100%': { transform: 'translate(-50%, 0)' },
+                            '50%': { transform: 'translate(-50%, -5px)' },
+                        }
                     }} />
             </Box>
-
         </Box>
     )
 }

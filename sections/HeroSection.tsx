@@ -27,13 +27,13 @@ const HeroSection = () => {
         {/* <Box sx={{position:"relative", width:{xs:"100%", md:"100%"}, height:{xs:300, sm: 520, md: '78vh', xl: '100%'}, minHeight:{md:620}, maxHeight:{md:1000}, mt:{xs:5, md:0}}}> */}
          <Box
             sx={{
-              position: "absolute",
+              position: "fixed",
                inset:0,
               right: { xs: 'auto', md: 24, xl: "0%" },
               top: { xs: 'auto', md: '0' },
               transform: { xs: 'none', md: 'translateY(0%)' },
               width: { xs: '100%', md: '46vw', xl: '100%' },
-              height: { xs: "100%", sm: 520, md: '78vh', xl: '100vh' },
+              height: { xs: "100vh", sm: 520, md: '78vh', xl: '100vh' },
               mt: { xs: 5, md: 0 },
               opacity: { xs: 0.9, md: 1 },
               zIndex: 1,
