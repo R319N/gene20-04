@@ -43,7 +43,7 @@ const LinkButton = ({ label, pageUrl , color}: LinkButtonProps) => {
             >
                 <ArrowForwardRounded />
             </Box>
-            <Typography sx={{fontWeight: 700, fontSize: { xs: 14, md: 16 }, color: {color}   }}>
+            <Typography sx={{fontWeight: 700, fontSize: { xs: 14, md: 16 }, color: {color}  ,   background: "linear-gradient(90deg, #00a9d3, #3a47d5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 {label}
             </Typography>
         </Box>

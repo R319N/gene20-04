@@ -17,7 +17,7 @@ export default function Glove3d() {
 
     if (width < 480) {
       return {
-        cameraZ: 22,
+        cameraZ: 8,
         cameraY: 0.05,
         groupScale: 0.72,
         groupX: 0,
@@ -27,7 +27,7 @@ export default function Glove3d() {
 
     if (width < 768) {
       return {
-        cameraZ: 20,
+        cameraZ: 8,
         cameraY: 0.05,
         groupScale: 0.82,
         groupX: 0,
@@ -87,7 +87,7 @@ export default function Glove3d() {
     earthGroup.rotation.z = (-23.4 * Math.PI) / 180;
     scene.add(earthGroup);
 
-    const earthGeometry = new THREE.IcosahedronGeometry(PLANET_RADIUS, 64, 64);
+    const earthGeometry = new THREE.IcosahedronGeometry(1, 32);
     const earthMaterial = new THREE.MeshStandardMaterial({
       map: new THREE.TextureLoader().load(earthDay.src),
     });

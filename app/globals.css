@@ -30,7 +30,7 @@ body.app-body {
 
 /* GSAP ScrollSmoother styles */
 #smooth-wrapper {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
   top: 0;
@@ -47,14 +47,11 @@ body.app-body {
   position: relative;
 
   .planet-3D {
-    position: absolute;
+    position: relative;
     pointer-events: none;
     user-select: none;
-    top:0;
     z-index: 2;
-      outline: 2px solid red;
   }
-  
 }
 
 
@@ -124,10 +121,6 @@ body.app-body {
       hsla(220, 100%, 41%, 0.986) 100%);
   filter: blur(200px);
   transform: rotate(-114.2deg) translate(0, 0);
-}
-
-.hero-section {
-  overflow: visible;
 }
 .intro-gradient{
   position: absolute;

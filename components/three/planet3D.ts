@@ -1,12 +1,12 @@
 import gsap from "gsap";
-import * as THREE from "three";
-
+import * as THREE from "three"
 import earthVertex from "./shaders/earth/vertex.glsl";
 import earthFragment from "./shaders/earth/fragment.glsl";
 import atmosphereVertex from "./shaders/atmosphere/vertex.glsl";
 import atmosphereFragment from "./shaders/atmosphere/fragment.glsl"
 import getStarfield from './getStarField'
 import getLayer from "./getLayer";
+import { getFresnelMat } from './getFresnelMat';
 
 const PLANET_RADIUS = 2;
 
@@ -16,7 +16,7 @@ const getViewportSettings = () => {
     if (width < 480) {
         return {
             cameraZ: 15,
-            cameraY: 0.05,
+            cameraY: 0,
             groupScale: 0.72,
             groupX: 0,
             groupY: 0,
@@ -26,7 +26,7 @@ const getViewportSettings = () => {
     if (width < 768) {
         return {
             cameraZ: 15,
-            cameraY: 0.05,
+            cameraY: 0,
             groupScale: 0.82,
             groupX: 0,
             groupY: 0,
@@ -35,27 +35,28 @@ const getViewportSettings = () => {
 
     if (width < 1024) {
         return {
-            cameraZ: 16,
-            cameraY: 0.08,
+            cameraZ: 8,
+            cameraY: 0,
             groupScale: 0.8,
-            groupX: 0,
+            groupX: 1.4,
             groupY: 0,
         };
     }
 
     return {
-        cameraZ: 15,
-        cameraY: 0.1,
+        cameraZ: 8,
+        cameraY: 0,
         groupScale: 0.8,
-        groupX: 2.2,
+        groupX: 1.4,
         groupY: 0,
     };
 };
 
+
 const createNetworkGlobe = () => {
     const group = new THREE.Group();
-    const nodeCount = 72;
-    const radius = PLANET_RADIUS * 1.16;
+    const nodeCount = 140;
+    const radius = 1.005;
     const positions: THREE.Vector3[] = [];
 
     for (let i = 0; i < nodeCount; i++) {
@@ -74,7 +75,7 @@ const createNetworkGlobe = () => {
     const pointGeometry = new THREE.BufferGeometry().setFromPoints(positions);
     const pointMaterial = new THREE.PointsMaterial({
         color: 0x6de7ff,
-        size: 0.025,
+        size: 0.02,
         transparent: true,
         opacity: 0.65,
         depthWrite: false,
@@ -83,13 +84,13 @@ const createNetworkGlobe = () => {
     const nodes = new THREE.Points(pointGeometry, pointMaterial);
 
     const linePositions: number[] = [];
-    const maxDistance = radius * 0.42;
+    const maxDistance = radius * 0.45;
 
     for (let i = 0; i < positions.length; i++) {
         let connections = 0;
 
         for (let j = i + 1; j < positions.length; j++) {
-            if (connections >= 2) break;
+            if (connections >= 4) break;
 
             if (positions[i].distanceTo(positions[j]) <= maxDistance) {
                 linePositions.push(
@@ -132,63 +133,85 @@ const createNetworkGlobe = () => {
     return group;
 };
 
-
 const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => {
     const canvas = document.querySelector(
         "canvas.planet-3D",
-    ) as HTMLCanvasElement;
+    ) as HTMLCanvasElement | null;
+
+    if (!canvas) {
+        throw new Error("Planet canvas not found: expected <canvas class='planet-3D'> in the Hero section.");
+    }
 
     // scene
     const scene = new THREE.Scene();
 
-    //camera setup
-
+    //***camera setup
     const size = {
         width: window.innerWidth,
         height: window.innerHeight,
         pixelRatio: window.devicePixelRatio
     }
 
-    const camera = new THREE.PerspectiveCamera(15, size.width / size.height, 0.1, 10000);
+    const camera = new THREE.PerspectiveCamera(12, size.width / size.height, 0.1, 10000);
     camera.position.x = 0;
     camera.position.y = 0.1;
-    camera.position.z = 15;
+    camera.position.z = 3;
     scene.add(camera);
 
-
-    // renderer
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setSize(size.width, size.height);
-    renderer.setPixelRatio(Math.min(size.pixelRatio, 2));
+    renderer.setPixelRatio(Math.min(size.pixelRatio, 1));
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.domElement.style.display = 'block';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    // container.appendChild(renderer.domElement);
+
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
     // texture loader
     const Tl = new THREE.TextureLoader();
     const dayTexture = Tl.load("/textures/earth_daymap.jpg");
     const nightTexture = Tl.load("/textures/earth_nightmap.jpg");
     const specularCloudsTexture = Tl.load("/textures/specularClouds.jpg");
-
     dayTexture.colorSpace = THREE.SRGBColorSpace;
-    nightTexture.colorSpace = THREE.SRGBColorSpace;
-
+    // nightTexture.colorSpace = THREE.SRGBColorSpace;
     const baseAnisotropy = renderer.capabilities.getMaxAnisotropy();
-
     dayTexture.anisotropy = baseAnisotropy;
     specularCloudsTexture.anisotropy = baseAnisotropy;
     nightTexture.anisotropy = baseAnisotropy;
 
-    // geometry
-    const earthGeometry = new THREE.SphereGeometry(PLANET_RADIUS, 64, 64);
-    const atmosphereGeometry = new THREE.SphereGeometry(PLANET_RADIUS, 64, 64);
+    // Geometry
 
-    const atmosphereDayColor = "#3fa9ff";
-    const atmosphereTwilightColor = "#0b2f8f";
+    const earthGroup = new THREE.Group();
+    earthGroup.rotation.z = (-23.4 * Math.PI) / 180;
+    scene.add(earthGroup);
 
-    //material
+    const detail = 32;
+
+    const atmosphereDayColor = "#054274";
+    const atmosphereTwilightColor = "#3059c9";
+    // earth material
+    const earthGeometry = new THREE.IcosahedronGeometry(1, detail);
+
+
+    // const earthMaterial = new THREE.MeshStandardMaterial({
+    //     map: nightTexture,
+    //     blending: THREE.AdditiveBlending,
+    //     transparent: true,
+    //     opacity: 0.8,
+    // });
+
     const earthMaterial = new THREE.ShaderMaterial({
         vertexShader: earthVertex,
         fragmentShader: earthFragment,
+        transparent: true,
+        opacity: 0.8,
         uniforms: {
             uDayTexture: new THREE.Uniform(dayTexture),
             uNightTexture: new THREE.Uniform(nightTexture),
@@ -201,61 +224,33 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
                 new THREE.Color(atmosphereTwilightColor),
             ),
         },
-        transparent: true,
-        toneMapped: false,
-    });
-
-    const atmosphereMaterial = new THREE.ShaderMaterial({
-        transparent: true,
-        side: THREE.BackSide,
-        vertexShader: atmosphereVertex,
-        fragmentShader: atmosphereFragment,
-        uniforms: {
-            uOpacity: { value: 1 },
-            uSunDirection: new THREE.Uniform(new THREE.Vector3(-1, 0, 0)),
-            uAtmosphereDayColor: new THREE.Uniform(
-                new THREE.Color(atmosphereDayColor),
-            ),
-            uAtmosphereTwilightColor: new THREE.Uniform(
-                new THREE.Color(atmosphereTwilightColor),
-            ),
-        },
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
         toneMapped: false,
     });
 
 
-    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-    const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-
-    atmosphere.scale.set(1.025, 1.025, 1.025);
-
-
-    const stars = getStarfield({ numStars: 5000 });
-    const nebula = getLayer({
-        path: './textures/rad-grad.png',
-        radius: 6,
-        size: 14,
-        opacity: 0.12,
-        numSprites: 6,
-        z: -9,
-    });
     const networkGlobe = createNetworkGlobe();
-    const earthGroup = new THREE.Group();
-    earthGroup.add(earth, atmosphere, networkGlobe, stars, nebula);
-    earthGroup.rotation.z = -23.4 * Math.PI / 180;
+    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+    earthGroup.add(earth);
 
+    const atmosphereMaterial = getFresnelMat();
+    const glowMesh = new THREE.Mesh(earthGeometry, atmosphereMaterial);
+    glowMesh.scale.setScalar(1.005);
+    earthGroup.add(glowMesh, networkGlobe);
+
+    // const nebula = getLayer({ path: './textures/rad-grad.png' });
+    // scene.add(nebula);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+    scene.add(ambientLight);
+    const stars = getStarfield({ numStars: 5000 });
+    scene.add(stars);
 
     const sunDirection = new THREE.Vector3();
     sunDirection.set(-0.85, 0.18, -1).normalize();
 
     earthMaterial.uniforms.uSunDirection.value.copy(sunDirection);
-    atmosphereMaterial.uniforms.uSunDirection.value.copy(sunDirection);
 
     scene.add(earthGroup);
-    //stars
-
 
     const updatePlanetLayout = () => {
         const viewport = getViewportSettings();
@@ -269,10 +264,9 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     updatePlanetLayout();
 
-    // animation loop
     gsap.ticker.add((time) => {
         earth.rotation.y = time * 0.2;
-        atmosphere.rotation.y = time * 0.2;
+        glowMesh.rotation.y = time * 0.2;
         networkGlobe.userData.update(time);
         renderer.render(scene, camera);
         stars.userData.update(time);
@@ -293,5 +287,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     });
 
     return { scene, renderer };
+
 }
+
 export default initPlanet;

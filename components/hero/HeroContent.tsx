@@ -30,7 +30,7 @@ const HeroContent = () => {
                     fontSize: { xs: 34, sm: 58, md: 38, xxl: 56 },
                     lineHeight: "1.2",
                     width: { xs: "12ch", lg: "20ch" },
-                    // textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
+                    textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
                     textWrap: "wrap",
                     textTransform: "uppercase"
                 }}
