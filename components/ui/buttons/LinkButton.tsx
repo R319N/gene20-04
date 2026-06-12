@@ -28,8 +28,8 @@ const LinkButton = ({ label, pageUrl , color}: LinkButtonProps) => {
             <Box
                 sx={{
                     ...styles.center_flex,
-                    width: 54,
-                    height: 54,
+                    width: 46,
+                    height: 46,
                     borderRadius: "50%",
                     border: "1px solid rgba(214, 224, 255, 0.22)",
                     color: {color},

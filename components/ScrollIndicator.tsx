@@ -24,15 +24,15 @@ const ScrollIndicator = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0.5rem",
+            gap: "0.2rem",
             width: "100%",
         }}>
 
-            <Typography color="text.secondary" variant="body2" sx={{ ...shareTech.style, letterSpacing: 4, textTransform: 'uppercase' }}>SCROLL</Typography>
+            <Typography color="text.secondary" variant="body2" sx={{ ...shareTech.style, textAlign:"center", letterSpacing: 4, textTransform: 'uppercase' }}>SCROLL</Typography>
             <Box sx={{
 
                 ...styles.center_flex, flexDirection: "column", gap: "0rem",
-
+width:"0px",
                 animation: 'bounce 2s infinite',
                 '@keyframes bounce': {
                     '0%, 100%': { transform: 'translate(-50%, 0)' },
@@ -47,7 +47,7 @@ const ScrollIndicator = () => {
                 <Box
                     sx={{
                         backgroundColor: (theme) => theme.palette.primary.main,
-                        height: "30px",
+                        height: "20px",
                         width: "2px",
                         boxShadow: `0 0 2px 0 #ffffff77, 0 0 5px 0 #ffffff55`,
                         // animation: 'bounce 2s infinite',
