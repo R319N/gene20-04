@@ -10,7 +10,21 @@ import { getFresnelMat } from './three/getFresnelMat';
 import getLayer from './three/getLayer';
 
 export default function Glove3d() {
+  //camera setup
+  const scene = new THREE.Scene();
+    const size = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        pixelRatio: window.devicePixelRatio
+    }
+
+    const camera = new THREE.PerspectiveCamera(15, size.width / size.height, 0.1, 10000);
+    camera.position.x = 0;
+    camera.position.y = 0.1;
+    camera.position.z = 15;
+    scene.add(camera);
   const containerRef = useRef<HTMLDivElement>(null);
+  
   const PLANET_RADIUS = 2;
   const getViewportSettings = () => {
     const width = window.innerWidth;
@@ -53,6 +67,7 @@ export default function Glove3d() {
       groupY: 0,
     };
   };
+  
 
 
   useEffect(() => {
