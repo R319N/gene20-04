@@ -50,23 +50,20 @@ const HeroContent = () => {
                 web and graphic design to cutting-edge software development, <Box component="strong" sx={{ color: '#fff' }}>we guide you through every step</Box>
                 {' '}of the product development journey.
             </Typography>
-
-            {/* <Stack direction={{ xs: "column", lg: "row" }} spacing={2.5} sx={{ rowGap: 1, mb: { xs: 5, md: 2 } }}>
-
-                <liButton
+    <Button
                     sx={{ width: "100%" }}
                     variant="contained"
                     startIcon={<NearMeOutlined />}
                 >
                     Let&apos;s Discuss Your Project
                 </Button>
-            </Stack> */}
-            <LinkButton
+        
+          {/*   <LinkButton
                 pageUrl="/contact"
                 label="Let&apos;s Discuss Your Project"
                 color="#4392F1"
             />
-        </Box>
+        </Box>*/}
     )
 }
 
