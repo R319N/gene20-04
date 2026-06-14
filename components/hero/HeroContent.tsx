@@ -62,8 +62,8 @@ const HeroContent = () => {
                 pageUrl="/contact"
                 label="Let&apos;s Discuss Your Project"
                 color="#4392F1"
-            />
-        </Box>*/}
+            />*/}
+        </Box>
     )
 }
 
