@@ -51,9 +51,9 @@ const HeroContent = () => {
                 {' '}of the product development journey.
             </Typography>
     <Button
-                    sx={{ width: "100%" }}
+                    sx={{ width: "40px" }}
                     variant="contained"
-                    startIcon={<NearMeOutlined />}
+                    startIcon={<NearMeOutlined sx={{width:“32px“,height:“32px“/>}
                 >
                     Let&apos;s Discuss Your Project
                 </Button>
