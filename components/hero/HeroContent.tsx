@@ -1,9 +1,11 @@
 import React from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material';
-import NearMeOutlined from '@mui/icons-material/NearMeOutlined';
-import RemoveRedEyeOutlined from '@mui/icons-material/RemoveRedEyeOutlined';
+import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded';
 import pxToRem from '@/assets/theme/functions/pxToRem';
 import LinkButton from '../ui/buttons/LinkButton';
+import { TbClock24 } from 'react-icons/tb';
+import { styles } from '@/styles/styles';
+import { AccessTime, LockClockRounded, PunchClockSharp } from '@mui/icons-material';
 
 // import { Box } from '@mui/material';
 
@@ -50,19 +52,27 @@ const HeroContent = () => {
                 web and graphic design to cutting-edge software development, <Box component="strong" sx={{ color: '#fff' }}>we guide you through every step</Box>
                 {' '}of the product development journey.
             </Typography>
-    <Button
-                    sx={{ width: "40px" }}
+            <Stack gap="4" sx={{spacing:"4"}}>
+                <Button
+                    sx={{ width: "fit-content" }}
                     variant="contained"
-                    startIcon={<NearMeOutlined sx={{width:“32px“,height:“32px“}}
+                    color="secondary"
+                    startIcon={
+                        <ArrowForwardRounded
+                            sx={{ width: "22px", height: "22px" }}
+                        />}
                 >
+
                     Let&apos;s Discuss Your Project
                 </Button>
-        
-          {/*<LinkButton
-                pageUrl="/contact"
-                label="Let&apos;s Discuss Your Project"
-                color="#4392F1"
-            />*/}
+                <Box color="#777777" sx={{ display: "flex", alignItems: "center", gap: 1,  height:"100%" }}>
+                    <AccessTime />
+                    <Typography variant="body2"  lineHeight="1" my="1rem" color="#d6d1d1" fontWeight="900" >
+                        We respond within 24 hours
+                    </Typography>
+                </Box>
+
+            </Stack>
         </Box>
     )
 }

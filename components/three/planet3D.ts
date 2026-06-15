@@ -7,8 +7,9 @@ import atmosphereFragment from "./shaders/atmosphere/fragment.glsl"
 import getStarfield from './getStarField'
 import getLayer from "./getLayer";
 import { getFresnelMat } from './getFresnelMat';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const PLANET_RADIUS = 2;
+gsap.registerPlugin(ScrollTrigger);
 
 const getViewportSettings = () => {
     const width = window.innerWidth;
@@ -275,6 +276,20 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     });
 
     gsap.ticker.lagSmoothing(0);
+
+    const startY = earthGroup.position.y;
+
+    gsap.to(earthGroup.position, {
+        y: startY + 5,
+        z: 2,
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#smooth-content",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+        },
+    });
 
     //handle resizing
     window.addEventListener("resize", () => {
