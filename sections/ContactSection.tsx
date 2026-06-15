@@ -8,7 +8,7 @@ import socialMediaRoutes from "@/constants/socialMediaRoutes";
 
 export default function ContactSection() {
   return (
-    <section id="contact">
+    <section id="contact" style={{background:"transparent"}}>
       <Container
 
         sx={{
@@ -16,7 +16,7 @@ export default function ContactSection() {
           width: "100%",
           minHeight: "100dvh",
           overflow: "visible",
-          zIndex: 2,
+          zIndex: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

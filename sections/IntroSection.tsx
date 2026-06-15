@@ -66,6 +66,7 @@ const IntroSection = () => {
           inset: { xs: '-8% -28% 0 -28%', md: '19% -8% -18% -8%' },
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
+          width:"100%",
         }}
       >
         <MountainField3D />

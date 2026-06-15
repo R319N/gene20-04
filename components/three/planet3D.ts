@@ -7,8 +7,9 @@ import atmosphereFragment from "./shaders/atmosphere/fragment.glsl"
 import getStarfield from './getStarField'
 import getLayer from "./getLayer";
 import { getFresnelMat } from './getFresnelMat';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const PLANET_RADIUS = 2;
+gsap.registerPlugin(ScrollTrigger);
 
 const getViewportSettings = () => {
     const width = window.innerWidth;
@@ -194,7 +195,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     const detail = 32;
 
-    const atmosphereDayColor = "#00376e";
+    const atmosphereDayColor = "#000000";
     const atmosphereTwilightColor = "#ffffff00";
     // earth material
     const earthGeometry = new THREE.IcosahedronGeometry(1, detail);
@@ -211,7 +212,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
         vertexShader: earthVertex,
         fragmentShader: earthFragment,
         transparent: true,
-        opacity: 0.3,
+        opacity: 1,
         uniforms: {
             uDayTexture: new THREE.Uniform(dayTexture),
             uNightTexture: new THREE.Uniform(nightTexture),
@@ -235,7 +236,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const atmosphereMaterial = getFresnelMat();
     const glowMesh = new THREE.Mesh(earthGeometry, atmosphereMaterial);
     glowMesh.scale.setScalar(1.005);
-    earthGroup.add(glowMesh, networkGlobe);
+    earthGroup.add(glowMesh);
 
     // const nebula = getLayer({ path: './textures/rad-grad.png' });
     // scene.add(nebula);
@@ -275,6 +276,20 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     });
 
     gsap.ticker.lagSmoothing(0);
+
+    const startY = earthGroup.position.y;
+
+    gsap.to(earthGroup.position, {
+        y: startY + 3,
+        z: 2,
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#smooth-content",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+        },
+    });
 
     //handle resizing
     window.addEventListener("resize", () => {
