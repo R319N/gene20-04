@@ -67,6 +67,7 @@ const IntroSection = () => {
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
           width:"100%",
+          overflow:"hidden"
         }}
       >
         <MountainField3D />
