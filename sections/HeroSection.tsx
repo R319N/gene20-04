@@ -10,8 +10,7 @@ const HeroSection = () => {
   return (
     <section id="home" className='hero-section h-dvh relative '>
       <Box sx={{ ...styles.section_container, py: 0, justifyContent: "space-between", alignItems: "center", zIndex: 2, px: { xs: "1rem", lg: "10vw" }, position: "relative", overflow: "visible" }} >
-        <HeroContent />
-       
+        <HeroContent />     
         <ScrollIndicator />
       </Box>
     </section >

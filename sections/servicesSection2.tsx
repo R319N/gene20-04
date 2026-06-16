@@ -501,7 +501,8 @@ const ServicesSection = () => {
         width: "100%"
       }}
     >
-      <Box sx={{ width: "3vw", height: "100vh", position: 'absolute', inset: 0, px: "2rem", top: 0, display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center', justifyContent: "space-evenly", borderRight: '1px solid rgba(153, 170, 255, 0.1)', zIndex: 6 }}  >
+      <Box
+        sx={{ width: "3vw", height: "100vh", position: 'absolute', inset: 0, px: "2rem", top: 0, display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center', justifyContent: "space-evenly", borderRight: '1px solid rgba(153, 170, 255, 0.1)', zIndex: 6 }}  >
         <Stack gap={2}>
           {slides.map((_, i) => (
             <Box
@@ -537,10 +538,10 @@ const ServicesSection = () => {
           <Box
             sx={{ height: "3rem", width: "1px", ...styles.glow1 }}
           />
-          </Box>
+        </Box>
 
 
-            {/* <Box
+        {/* <Box
               ref={trackRef}
               className='track'
               sx={{
@@ -580,9 +581,9 @@ const ServicesSection = () => {
                 </Box>
               ))}
             </Box> */}
-        </Box>
+      </Box>
 
-         <Box
+      <Box
         sx={{
           position: "absolute",
           inset: 0,

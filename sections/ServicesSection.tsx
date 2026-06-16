@@ -2,7 +2,7 @@
 // import ourServices from '@/constants/our_services-data'
 import { styles } from '@/styles/styles'
 import { useGSAP } from '@gsap/react'
-import { Box, Grid, styled, } from '@mui/material'
+import { Box, Grid, styled, Stack, Typography } from '@mui/material'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import React, { useRef, useState } from 'react'
@@ -10,6 +10,7 @@ import React, { useRef, useState } from 'react'
 import rgba from '@/assets/theme/functions/rgba'
 import ourServices from '@/constants/our_services'
 import ServiceSlide from '@/components/services-components/ServiceSlide'
+import ScrollIndicator from '@/components/ScrollIndicator'
 // import TitleHeader from '@/components/headers/TitleHeader'
 // import ScrollIndicator2 from '@/components/ScrollIndicator2'
 
@@ -148,6 +149,8 @@ const ServicesSection = () => {
 
     return () => ctx.revert()
   }, [slides.length])
+
+  //return
   return (
     <Box
       ref={sectionRef}
@@ -159,11 +162,9 @@ const ServicesSection = () => {
         height: "100dvh",
         boxSizing: "border-box",
         overflow: "hidden",
-
-        pb: { xs: 2, lg: 3 },
       }}
     >
-      {slides.map((slide, i) => (
+      {/* {slides.map((slide, i) => (
         <Background
           key={slide.key}
           image={slide.image}
@@ -177,10 +178,10 @@ const ServicesSection = () => {
           animation: 'scanline 8s linear infinite',
         }}
       />
-      {/* <div className="math-bg" /> */}
+      {/* <div className="math-bg" /> 
 
-      <Overlay />
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <Overlay /> */}
+      {/* <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(167, 139, 250, 0.032) 1px, transparent 1px),
@@ -189,7 +190,7 @@ const ServicesSection = () => {
           backgroundSize: '50px 50px',
           maskImage: 'radial-gradient(circle at center, black, transparent)',
         }} />
-      </div>
+      </div> */}
 
       <Grid
         container
@@ -204,14 +205,156 @@ const ServicesSection = () => {
           pt: { xs: "0vh", lg: "10vh", xxl: "0vh" },
         }}
       >
-        {/* <Grid
-          size={12}
-          sx={{ ...styles.alignRight, width: "100%", px: { xs: 0, lg: "10vw" } }} >
-          <Box sx={{ display: "flex", flexDirection: "column", }}>
-            <TitleHeader title='what i do' />
+        <Box
+          sx={{ width: "3vw", height: "100vh", position: 'absolute', inset: 0, px: "2rem", top: 0, display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center', justifyContent: "space-evenly", borderRight: '1px solid rgba(153, 170, 255, 0.1)', zIndex: 6 }}  >
+          <Stack gap={2}>
+            {slides.map((_, i) => (
+              <Box
+                key={i}
+                sx={{
+                  position: "relative",
+                  height: "10px",
+                  width: "10px",
+                  borderRadius: '50%',
+                  ...styles.glow1,
+                  backgroundColor: active === i ? (theme) => theme.palette.primary.main : (theme) => theme.palette.text.primary,
+                  transition: "width 0.25s ease, background-color 0.25s ease",
+                }}
+              />
+            ))}
+          </Stack>
+          <Box
+            sx={{
+              position: "absolute", maxWidth: "2rem",
+              display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center", bottom: 54
+            }}
+            gap={4} >
+            <Typography
+              variant="caption"
+              sx={{
+                letterSpacing: 2,
+                textTransform: 'uppercase',
+                writingMode: 'vertical-rl',
+                transform: 'rotate(180deg)',
+              }}>
+              scroll
+            </Typography>
+            <Box
+              sx={{ height: "3rem", width: "1px", ...styles.glow1 }}
+            />
           </Box>
-        </Grid> */}
-        <Box sx={{ width: "100%", flex: 1, overflow: "hidden", height: "100%" }} >
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "linear-gradient(rgba(120, 98, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(120, 98, 255, 0.08) 1px, transparent 1px)",
+            backgroundSize: "74px 74px",
+            maskImage: "radial-gradient(circle at 72% 54%, black, transparent 68%)",
+            opacity: 0.72,
+            pointerEvents: "none",
+          }}
+        />
+        <Box sx={{ width: "100%", flex: 1, overflow: "hidden", height: "100%", position: "relative" }} >
+          <Box
+            sx={{
+              ...styles.between_flex,
+              position: "absolute",
+              top: { xs: 22, md: 54 },
+              left: { xs: 24, md: 80, lg: 128 },
+              right: { xs: 24, md: 80, lg: 128 },
+              zIndex: 5,
+              gap: 1.5,
+              width: "auto",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(235, 239, 255, 0.72)",
+                fontSize: { xs: 12, md: 13 },
+                fontWeight: 400,
+                letterSpacing: 4,
+                lineHeight: 1,
+                textTransform: "uppercase",
+                width: "100%",
+                "&::before": {
+                  content: '""',
+                  display: "inline-block",
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  bgcolor: "#8f7cff",
+                  boxShadow: "0 0 14px rgba(143, 124, 255, 0.7)",
+                  mr: 1.8,
+                  verticalAlign: "middle",
+                },
+              }}
+            >
+              Our Services
+            </Typography>
+            <Box
+              sx={{
+                ...styles.center_flex,
+                alignItems: "center",
+                gap: 1.5,
+                width: { xs: "min(210px, 50%)", md: "min(370px, 100%)" },
+                maxWidth: "100%",
+                color: "#5db2ff",
+                py: 1.35,
+              }}
+            >
+              <Typography
+                component="span"
+                variant="body2"
+                sx={{
+                  color: "#ffffff",
+                  flexShrink: 0,
+                  fontWeight: 400,
+                  letterSpacing: 1.2,
+                  lineHeight: 1,
+                }}
+              >
+                {String(active + 1).padStart(2, "0")}
+              </Typography>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 2,
+                  overflow: "hidden",
+                  borderRadius: 999,
+                  bgcolor: "rgba(93, 178, 255, 0.18)",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: `${slides.length > 1 ? (active / (slides.length - 1)) * 100 : 100}%`,
+                    height: "100%",
+                    borderRadius: "inherit",
+                    bgcolor: "#5db2ff",
+                    boxShadow: "0 0 16px rgba(77, 140, 255, 0.55)",
+                    transition: "width 0.25s ease",
+                  }}
+                />
+              </Box>
+              <Typography
+                component="span"
+                variant="body2"
+                sx={{
+                  color: "rgba(93, 178, 255, 0.62)",
+                  flexShrink: 0,
+                  fontWeight: 400,
+                  letterSpacing: 1.2,
+                  lineHeight: 1,
+                }}
+              >
+                {String(slides.length).padStart(2, "0")}
+              </Typography>
+            </Box>
+          </Box>
           <Box
             ref={trackRef}
             className='track'
@@ -254,38 +397,17 @@ const ServicesSection = () => {
             ))}
           </Box>
         </Box>
-        <Grid size={12} px={"16vw"} sx={{ flexShrink: 0 }} >
-          <Box sx={{ position: "relative" }}>
-            <Box
-              sx={{
-                position: "relative",
-                // height: "100%",
-                display: "flex",
-                gap: 2,
-              }}
-            >
-              {slides.map((_, i) => (
-                <Box
-                  key={i}
-                  sx={{
-                    ...styles.glow1,
-                    positiion: "relative",
-                    width: { xs: "25vw", lg: "40px" },
-                    display: "flex",
-                    borderRadius: "50px",
-                    height: 6,
-                    backgroundColor: active === i ? (theme) => theme.palette.primary.main : rgba("#7E78D2", 0.2),
-                    transition: "width 0.25s ease, background-color 0.25s ease",
-                  }}
-                />
-              ))}
-            </Box>
-
-          </Box>
-        </Grid>
-        {/* <Grid className="relative">
-         
-        </Grid> */}
+        <Box
+          sx={{
+            flexShrink: 0,
+            display: { xs: "block", lg: "none" },
+            position: "relative",
+            width: "100%",
+            gap: 2,
+          }}
+        >
+          <ScrollIndicator />
+        </Box>
       </Grid>
     </Box >
   )
