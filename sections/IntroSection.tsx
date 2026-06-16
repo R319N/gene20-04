@@ -20,6 +20,7 @@ const IntroSection = () => {
       component="section"
       id="services"
       sx={{
+        width:"100%",
         position: 'relative',
         minHeight: "100vh",
         color: '#dbe7ff',
