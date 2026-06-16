@@ -25,6 +25,20 @@ interface props {
 const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables, outcomes, description, heading, features, importance, pageUrl, color = "#8f7cff", index = 0 }) => {
     const slideRef = React.useRef<HTMLDivElement>(null)
     return (
+
+        <Container
+            ref={slideRef}
+            className="service-slide"
+            sx={{
+                height: '100%',
+                flexGrow: 1,
+                width: "100%",
+                position: "relative",
+                // bgcolor:"red",
+                ...styles.between_flex
+            }}
+        >
+            {/* </Container>
         <Container
             ref={slideRef}
             className="service-slide"
@@ -41,7 +55,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 alignItems: "center",
                 gap: { xs: 5, lg: 0 },
             }}
-        >
+        > */}
 
 
             <Box sx={{ position: "relative", zIndex: 1, width: 700, gap: 2 }}>
@@ -83,7 +97,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         variant='body1'
                         sx={{
                             color: "rgba(235, 239, 255, 0.78)",
-                            fontSize: { xs: 18, md: 20 , xxl:26},
+                            fontSize: { xs: 18, md: 20, xxl: 26 },
                             fontWeight: 400,
                             lineHeight: 1.34,
                             maxWidth: 455,
@@ -100,9 +114,9 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     variant='body2'
                     sx={{
                         color: "rgba(235, 239, 255, 0.68)",
-                        fontSize: { xs: 14, lg: 14, xxl:14 },
+                        fontSize: { xs: 14, lg: 14, xxl: 14 },
                         lineHeight: 1.55,
-                       width: "60ch",
+                        width: "60ch",
                         mb: 1.6,
                     }}
                 >
