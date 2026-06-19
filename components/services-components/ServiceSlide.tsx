@@ -356,6 +356,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         flexDirection: { xs: "column", lg: "row-reverse" },
                         width: "100%",
                         justifyContent: "space-between",
+                        flexGrow:1
 
                     }}
                 >
@@ -422,7 +423,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         // right: { xs: "-10%", md: "-2%" },
                         // bottom: { xs: "0%", md: "3%" },
                         width: { xs: "100%", md: "50vw" },
-                        // height: { xs: "78%", md: "40vw" },
+                        height: { xs: "fit-content", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
 
 
@@ -462,7 +463,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                              ...styles.center_flex,
                                              mt: 0.3,
                                              color,
-                                             "& svg": { fontSize: 10 },
+                                             "& svg": { fontSize: 14 },
                                          }}
                                      >
                                         {feature.icon}
@@ -516,7 +517,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"0%", right:0}}>
+                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:0, right:0}}>
                         <Image
                             src={image}
                             alt={name}
