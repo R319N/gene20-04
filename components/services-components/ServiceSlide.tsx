@@ -407,17 +407,18 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             {heading}
                         </Typography>
                     </Stack>
-                        
-                    </Box>
-                
-
-               
-              <Box
+                        <Box
                         className="slide-rule slide-animate"
                         sx={{
                             width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, mb: 3.2
                         }}
                     />
+                        
+                    </Box>
+                
+
+               
+              
              {/* <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
