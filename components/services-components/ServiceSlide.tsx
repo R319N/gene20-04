@@ -380,7 +380,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             variant='h1'
                             sx={{
                                 width: "15ch",
-                                fontSize: { xs: 32, sm: 62, md: 42, xxl: 54 },
+                                fontSize: { xs: 28, sm: 62, md: 42, xxl: 54 },
                                 fontWeight: 800,
                                 lineHeight: 1.2,
                                 mb: 0.4,
@@ -399,22 +399,24 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 fontSize: { xs: 16, md: 20, xxl: 26 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
-                                // maxWidth: "20ch",
+                                maxWidth: "20ch",
                                 mb: 3.2,
                             }}
                         >
                             {heading}
                         </Typography>
                     </Stack>
-                    <Box
+                    
+                </Box>
+
+              {/* 
+              <Box
                         className="slide-rule slide-animate"
                         sx={{
                             width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, mb: 3.2
                         }}
                     />
-                </Box>
-
-              {/*  <Box
+              <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
                         position: "relative",
