@@ -428,8 +428,76 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
                     }}
                 >
+
+                                      <Box
+                        className="slide-feature-card slide-animate"
+                        sx={{
+                            position: "relative",
+                            // left: { xs: "2%", md: "8%" },
+                          // top: { xs: "6%", md: "31%" },
+                          zIndex: 3,
+                           width: { xs: 190, md: 210 },
+                            // p: 2.2,
+                             borderRadius: 2,
+                             border: "1px solid rgba(207, 218, 255, 0.18)",
+                             bgcolor: "rgba(7, 10, 31, 0.68)",
+                            backdropFilter: "blur(18px)",
+                             boxShadow: "0 26px 60px rgba(0,0,0,0.34)",
+                        }}
+                     >
+                        <Grid container spacing={2.2}>
+                            {features.map((feature, featureIndex) => (
+                                <Grid
+                                     size={12}
+                                    key={featureIndex}
+                                     sx={{
+                                         display: "flex",
+                                         alignItems: "flex-start",
+                                         gap: 1.3,
+                                         minHeight: pxToRem(20),
+                                     }}
+                                 >
+                                     <Box
+                                         sx={{
+                                             ...styles.center_flex,
+                                             mt: 0.3,
+                                             color,
+                                             "& svg": { fontSize: 10 },
+                                         }}
+                                     >
+                                        {feature.icon}
+                                    </Box>
+                                     <Box>
+                                        <Typography
+                                             variant="body2"
+                                             sx={{
+                                             color: "#ffffff",
+                                                 fontSize: { xs: 12, md: 13 },
+                                                fontWeight: 500,
+                                                lineHeight: 1.2,
+                                             }}
+                                         >
+                                             {feature.text}
+                                         </Typography>
+                                         <Typography
+                                            variant="caption"
+                                             sx={{
+                                                color: "rgba(235,239,255,0.52)",
+                                                display: "block",
+                                                 fontSize: 11,
+                                               lineHeight: 1.4,
+                                              mt: 0.4,
+                                             }}
+                                       >
+                                           {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
+                                       </Typography>
+                                    </Box>
+                                            </Grid>
+                             ))}
+                        </Grid>
+                   </Box>
                     <Box
-                        // className="slide-icon-tile slide-animate"
+                        //className="slide-icon-tile slide-animate"
                         sx={{
                             ...styles.center_flex,
                             position: "absolute",
