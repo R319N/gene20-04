@@ -419,7 +419,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                  <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
-                        position: "absolute",
+                        position: "relative",
                         // right: { xs: "-10%", md: "-2%" },
                          bottom: { xs: "50%", md: "3%" },
                         width: { xs: "100%", md: "50vw" },
@@ -528,6 +528,10 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         />
                     </Box>
                 </Box>
+
+                    <Typography>
+                    continuation
+                    </Typography>
                 {/* wrapper end */}
             </Box>
         </Container >
