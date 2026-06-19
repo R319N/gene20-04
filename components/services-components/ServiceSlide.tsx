@@ -529,10 +529,12 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     </Box>
                 </Box>
 
-                    <Typography>
+                    
+                {/* wrapper end 
+                <Typography>
                     continuation
                     </Typography>
-                {/* wrapper end */}
+                */}
             </Box>
         </Container >
 
