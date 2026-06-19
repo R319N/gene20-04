@@ -414,7 +414,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     />
                 </Box>
 
-                <Box
+              {/*  <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
                         position: "relative",
