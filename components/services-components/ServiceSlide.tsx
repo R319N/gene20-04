@@ -497,7 +497,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         </Grid>
                    </Box>
                     <Box
-                        //className="slide-icon-tile slide-animate"
+                        className="slide-icon-tile slide-animate"
                         sx={{
                             ...styles.center_flex,
                             position: "absolute",
@@ -516,7 +516,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"0%"}}>
+                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"0%", right:0}}>
                         <Image
                             src={image}
                             alt={name}
