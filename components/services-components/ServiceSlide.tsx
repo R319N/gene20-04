@@ -347,7 +347,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 ...styles.between_flex
             }}
         >
-            <Box>
+            
                 <Box
                     sx={{
                         display: "flex",
@@ -407,7 +407,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         </Typography>
                     </Stack>
                     
-                </Box>
+                
 
                
             {/*  <Box
