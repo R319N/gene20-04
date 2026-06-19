@@ -364,7 +364,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         variant="h1"
                         sx={{
                             position: "relative",
-                            left: { xs: -10, md: -36 },
+            
                             color: "rgba(255,255,255,0.055)",
                             fontSize: { xs: 132, lg: 190, xl: 200 },
                             fontWeight: 900,
@@ -380,7 +380,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             variant='h1'
                             sx={{
                                 width: "15ch",
-                                fontSize: { xs: 28, sm: 62, md: 42, xxl: 54 },
+                                fontSize: { xs: 24, sm: 62, md: 42, xxl: 54 },
                                 fontWeight: 800,
                                 lineHeight: 1.2,
                                 mb: 0.4,
@@ -399,7 +399,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 fontSize: { xs: 16, md: 20, xxl: 26 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
-                                maxWidth: "20ch",
+                               // maxWidth: "20ch",
                                 mb: 3.2,
                             }}
                         >
