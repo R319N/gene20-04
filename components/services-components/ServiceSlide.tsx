@@ -359,6 +359,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
                     }}
                 >
+                    <Box>
                     <Typography
                         aria-hidden
                         variant="h1"
@@ -406,7 +407,8 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             {heading}
                         </Typography>
                     </Stack>
-                    
+                        
+                    </Box>
                 
 
                
