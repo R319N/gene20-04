@@ -356,7 +356,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         flexDirection: { xs: "column", lg: "row-reverse" },
                         width: "100%",
                         justifyContent: "space-between",
-                        flexGrow:1
+                        flexGrow:1, py:"2rem"
 
                     }}
                 >
@@ -419,11 +419,11 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                  <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
-                        position: "relative",
+                        position: "absolute",
                         // right: { xs: "-10%", md: "-2%" },
-                        // bottom: { xs: "0%", md: "3%" },
+                         bottom: { xs: "50%", md: "3%" },
                         width: { xs: "100%", md: "50vw" },
-                        height: { xs: "fit-content", md: "40vw" },
+                        height: { xs: "100%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
 
 
