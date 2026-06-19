@@ -492,7 +492,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                            {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
                                        </Typography>
                                     </Box>
-                                            </Grid>
+                                 </Grid>
                              ))}
                         </Grid>
                    </Box>
@@ -516,7 +516,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "300px", height: "400px" }}>
+                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"50%"}}>
                         <Image
                             src={image}
                             alt={name}
