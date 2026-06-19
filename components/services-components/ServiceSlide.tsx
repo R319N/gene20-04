@@ -511,12 +511,12 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             border: `1px solid ${color}`,
                             boxShadow: `0 24px 60px ${color}55`,
                             transform: "rotate(5deg)",
-                            "& svg": { fontSize: { xs: 34, md: 44 } },
+                            "& svg": { fontSize: { xs: 44, md: 44 } },
                         }}
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"50%"}}>
+                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:"0%"}}>
                         <Image
                             src={image}
                             alt={name}
