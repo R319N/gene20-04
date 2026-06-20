@@ -343,8 +343,12 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 flexGrow: 0,
                 width: "100%",
                 position: "relative",
+<<<<<<< HEAD
                 flexDirection: "column",
                 py: "2rem"
+=======
+                flexDirection: "column"
+>>>>>>> 5d928ff4c8a64e38b96fa9800e244a98deef72c3
             }}
         >
 
@@ -356,8 +360,12 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     flexDirection: { xs: "column", lg: "row-reverse" },
                     width: "100%",
                     justifyContent: "space-between",
+<<<<<<< HEAD
                     py: "2rem",
                     height: "100%"
+=======
+                    py: "2rem"
+>>>>>>> 5d928ff4c8a64e38b96fa9800e244a98deef72c3
 
                 }}
             >
@@ -425,7 +433,11 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         height: { xs: "100%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
+<<<<<<< HEAD
                         alignItems: "flex-start",
+=======
+                        alignItems: "flex-end",
+>>>>>>> 5d928ff4c8a64e38b96fa9800e244a98deef72c3
                         justifyContent: "flex-start"
                     }}
                 >
@@ -503,7 +515,11 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             ...styles.center_flex,
                             position: "absolute",
                             right: { xs: "0%", md: "28%" },
+<<<<<<< HEAD
                             top: { xs: "20%", md: "12%" },
+=======
+                            top: { xs: "50%", md: "12%" },
+>>>>>>> 5d928ff4c8a64e38b96fa9800e244a98deef72c3
                             width: { xs: 74, md: 90 },
                             height: { xs: 74, md: 90 },
                             borderRadius: 2,
@@ -529,6 +545,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 style={{ objectFit: "contain" }}
                             />
                         </Box>
+<<<<<<< HEAD
                     </Box>
                 </Box>
                 <Stack sx={{ gap: 2 }}>
@@ -546,6 +563,105 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         }}
                     >
                         {importance}
+=======
+                    </Box>
+                </Box>
+                {/* <Box
+                    className="slide-image-wrap slide-animate"
+                    sx={{
+                        position: "relative",
+                        width: { xs: "100%", md: "50vw" },
+                        height: { xs: "100%", md: "40vw" },
+                        filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
+                        display:"flex",
+                        alignItems:"flex-start",
+                        justifyContent:"flex-start"
+                    }}
+                >
+                    <Box
+                        className="slide-feature-card slide-animate"
+                        sx={{
+                            position: "relative",
+                            zIndex: 3,
+                            width: { xs: "80dvw", md: 210 },
+                            p: {xs:"1rem 0.5rem"},
+                            borderRadius: 2,
+                            border: "1px solid rgba(207, 218, 255, 0.18)",
+                            bgcolor: "rgba(7, 10, 31, 0.68)",
+                            backdropFilter: "blur(18px)",
+                            boxShadow: "0 26px 60px rgba(0,0,0,0.34)",
+                        }}
+                    >
+                        <Grid container spacing={2.2}>
+                            {features.map((feature, featureIndex) => (
+                                <Grid
+                                    size={12}
+                                    key={featureIndex}
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        gap: 1.3,
+                                        minHeight: pxToRem(20),
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            ...styles.center_flex,
+                                            mt: 0.3,
+                                            color,
+                                            "& svg": { fontSize: 16 },
+                                        }}
+                                    >
+                                        {feature.icon}
+                                    </Box>
+                                    <Box>
+                                        <Typography
+                                            variant="body2"
+                                            sx={{
+                                                color: "#ffffff",
+                                                fontSize: { xs: 12, md: 13 },
+                                                fontWeight: 500,
+                                                lineHeight: 1.2,
+                                            }}
+                                        >
+                                            {feature.text}
+                                        </Typography>
+                                        <Typography
+                                            variant="caption"
+                                            sx={{
+                                                color: "rgba(235,239,255,0.52)",
+                                                display: "block",
+                                                fontSize: 11,
+                                                lineHeight: 1.4,
+                                                mt: 0.4,
+                                            }}
+                                        >
+                                            {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+                    <Box sx={{width:"100%", display:"flex", justifyContent:"flex-start", alignItems:"flex-start"}}>
+                   
+                    <Box sx={{ width: "90dvw", height: "100%", position: "absolute", top: 0, right: 0 }}>
+                        <Image
+                            src={image}
+                            alt={name}
+                            fill
+                            unoptimized
+                            sizes="(max-width: 900px) 90vw, 98vw"
+                            style={{ objectFit: "contain" }}
+                        />
+                    </Box>
+                    </Box>
+                </Box> */}
+
+                {/* wrapper end 
+                <Typography>
+                    continuation
+>>>>>>> 5d928ff4c8a64e38b96fa9800e244a98deef72c3
                     </Typography>
 
                     <Box
