@@ -423,7 +423,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         // right: { xs: "-10%", md: "-2%" },
                          bottom: { xs: "50%", md: "3%" },
                         width: { xs: "100%", md: "50vw" },
-                        height: { xs: "100%", md: "40vw" },
+                        // height: { xs: "100%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
 
 
