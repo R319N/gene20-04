@@ -77,7 +77,7 @@ export const styles = {
     width: "100%",
     position: "relative",
     minHeight: "100dvh",
-    pt: "14vh",
+    pt: "10vh",
   },
   section_container: {
     position: "relative",
