@@ -343,40 +343,41 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 flexGrow: 0,
                 width: "100%",
                 position: "relative",
-                // bgcolor:"red",
-                ...styles.between_flex
+                flexDirection: "column",
+                py: "2rem"
             }}
         >
-            
-                <Box
-                    sx={{
-                        display: "flex",
-                        alignItems: "start",
-                        position: "relative",
-                        flexDirection: { xs: "column", lg: "row-reverse" },
-                        width: "100%",
-                        justifyContent: "space-between",
-                        py:"2rem"
 
-                    }}
-                >
-                    <Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "start",
+                    position: "relative",
+                    flexDirection: { xs: "column", lg: "row-reverse" },
+                    width: "100%",
+                    justifyContent: "space-between",
+                    py: "2rem",
+                    height: "100%"
+
+                }}
+            >
+                <Box>
                     <Typography
                         aria-hidden
                         variant="h1"
                         sx={{
                             position: "relative",
-            
+
                             color: "rgba(255,255,255,0.055)",
                             fontSize: { xs: 132, lg: 190, xl: 200 },
                             fontWeight: 900,
-                            lineHeight: 0.5,
+                            lineHeight: 0,
                             zIndex: -1,
                         }}
                     >
                         {String(index + 1).padStart(2, "0")}
                     </Typography>
-                    <Stack gap={1.6}>
+                    <Stack gap={1}>
                         <Typography
                             className="title1 slide-animate"
                             variant='h1'
@@ -401,109 +402,108 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 fontSize: { xs: 16, md: 20, xxl: 26 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
-                               // maxWidth: "20ch",
+                                // maxWidth: "20ch",
                                 mb: 3.2,
                             }}
                         >
                             {heading}
                         </Typography>
                     </Stack>
-                        <Box
+                    <Box
                         className="slide-rule slide-animate"
                         sx={{
                             width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, mb: 3.2
                         }}
                     />
-                        
-                    </Box>
-                 <Box
+
+                </Box>
+                <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
                         position: "relative",
-                        // right: { xs: "-10%", md: "-2%" },
-                         bottom: { xs: "50%", md: "3%" },
                         width: { xs: "100%", md: "50vw" },
-                        // height: { xs: "100%", md: "40vw" },
+                        height: { xs: "100%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
-
-
+                        display: "flex",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-start"
                     }}
                 >
 
-                                      <Box
+                    <Box
                         className="slide-feature-card slide-animate"
                         sx={{
                             position: "relative",
                             // left: { xs: "2%", md: "8%" },
-                          // top: { xs: "6%", md: "31%" },
-                          zIndex: 3,
-                           width: { xs: 190, md: 210 },
+                            // top: { xs: "6%", md: "31%" },
+                            zIndex: 3,
+                            width: { xs: "80dvw", md: 210 },
                             p: 2.2,
-                             borderRadius: 2,
-                             border: "1px solid rgba(207, 218, 255, 0.18)",
-                             bgcolor: "rgba(7, 10, 31, 0.68)",
-                            backdropFilter: "blur(18px)",
-                             boxShadow: "0 26px 60px rgba(0,0,0,0.34)",
+                            borderRadius: 2,
+                            border: "1px solid rgba(207, 218, 255, 0.18)",
+                            bgcolor: "rgba(7, 10, 31, 0.68)",
+                            backdropFilter: "blur(20px)",
+                            boxShadow: "0 26px 60px rgba(0,0,0,0.34)",
                         }}
-                     >
+                    >
                         <Grid container spacing={2.2}>
                             {features.map((feature, featureIndex) => (
                                 <Grid
-                                     size={12}
+                                    size={12}
                                     key={featureIndex}
-                                     sx={{
-                                         display: "flex",
-                                         alignItems: "flex-start",
-                                         gap: 1.3,
-                                         minHeight: pxToRem(20),
-                                     }}
-                                 >
-                                     <Box
-                                         sx={{
-                                             ...styles.center_flex,
-                                             mt: 0.3,
-                                             color,
-                                             "& svg": { fontSize: 14 },
-                                         }}
-                                     >
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        gap: 1.3,
+                                        minHeight: pxToRem(20),
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            ...styles.center_flex,
+                                            mt: 0.3,
+                                            color,
+                                            "& svg": { fontSize: 16 },
+                                        }}
+                                    >
                                         {feature.icon}
                                     </Box>
-                                     <Box>
+                                    <Box>
                                         <Typography
-                                             variant="body2"
-                                             sx={{
-                                             color: "#ffffff",
-                                                 fontSize: { xs: 12, md: 13 },
+                                            variant="body2"
+                                            sx={{
+                                                color: "#ffffff",
+                                                fontSize: { xs: 12, md: 13 },
                                                 fontWeight: 500,
                                                 lineHeight: 1.2,
-                                             }}
-                                         >
-                                             {feature.text}
-                                         </Typography>
-                                         <Typography
+                                            }}
+                                        >
+                                            {feature.text}
+                                        </Typography>
+                                        <Typography
                                             variant="caption"
-                                             sx={{
+                                            sx={{
                                                 color: "rgba(235,239,255,0.52)",
                                                 display: "block",
-                                                 fontSize: 11,
-                                               lineHeight: 1.4,
-                                              mt: 0.4,
-                                             }}
-                                       >
-                                           {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
-                                       </Typography>
+                                                fontSize: 11,
+                                                lineHeight: 1.4,
+                                                mt: 0.4,
+                                            }}
+                                        >
+                                            {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
+                                        </Typography>
                                     </Box>
-                                 </Grid>
-                             ))}
+                                </Grid>
+                            ))}
                         </Grid>
-                   </Box>
+                    </Box>
                     <Box
                         className="slide-icon-tile slide-animate"
                         sx={{
                             ...styles.center_flex,
                             position: "absolute",
-                            left: { xs: "8%", md: "28%" },
-                            top: { xs: "50%", md: "12%" },
+                            right: { xs: "0%", md: "28%" },
+                            top: { xs: "20%", md: "12%" },
                             width: { xs: 74, md: 90 },
                             height: { xs: 74, md: 90 },
                             borderRadius: 2,
@@ -517,24 +517,75 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "300px", height: "400px" , position:"absolute", top:0, right:0}}>
-                        <Image
-                            src={image}
-                            alt={name}
-                            fill
-                            unoptimized
-                            sizes="(max-width: 900px) 90vw, 98vw"
-                            style={{ objectFit: "contain" }}
-                        />
+                    <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}>
+
+                        <Box sx={{ width: "100%", height: "100%", position: "absolute", top: 0, right: 0 }}>
+                            <Image
+                                src={image}
+                                alt={name}
+                                fill
+                                unoptimized
+                                // sizes="(max-width: 900px) 90vw, 98vw"
+                                style={{ objectFit: "contain" }}
+                            />
+                        </Box>
                     </Box>
                 </Box>
+                <Stack sx={{ gap: 2 }}>
+                    <Typography
+                        className="slide-importance slide-animate"
+                        variant='body1'
+                        sx={{
+                            textTransform: "capitalize",
+                            // fontSize: { xs: 13, md: 10, xxl: 16 },
+                            lineHeight: 1.4,
+                            maxWidth: "25ch",
+                            fontWeight: "light",
+                            color:"#fff"
 
-                    
-                {/* wrapper end 
-                <Typography>
-                    continuation
+                        }}
+                    >
+                        {importance}
                     </Typography>
-                */}
+
+                    <Box
+                        className="slide-button slide-animate"
+                        component={Link}
+                        href={pageUrl}
+                        sx={{
+                            ...styles.center_flex,
+                            justifyContent: "flex-start",
+                            gap: 2,
+                            width: "fit-content",
+                            color: "#ffffff",
+                            textDecoration: "none",
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                ...styles.center_flex,
+                                width: 40,
+                                height: 40,
+                                borderRadius: "50%",
+                                border: "1px solid rgba(214, 224, 255, 0.22)",
+                                color: `{color},66`,
+                                transition: "border-color 0.2s ease, transform 0.2s ease",
+                                "& svg": { fontSize: 22 },
+                                ".slide-button:hover &": {
+                                    borderColor: color,
+                                    transform: "translateX(4px)",
+                                },
+                            }}
+                        >
+                            <ArrowForwardRounded />
+                        </Box>
+                        <Typography sx={{ fontSize: { xs: 14, md: 16 }, color: "{color}55"}}>
+                            Explore {name}
+                        </Typography>
+                    </Box>
+                </Stack>
+
+                {/* wrapper end  */}
             </Box>
         </Container >
 

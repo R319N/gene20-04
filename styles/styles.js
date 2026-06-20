@@ -1,4 +1,3 @@
-import boxShadow from "@/assets/theme/functions/boxShadow";
 import pxToRem from "@/assets/theme/functions/pxToRem"
 import rgba from "@/assets/theme/functions/rgba";
 export const styles = {
@@ -77,7 +76,7 @@ export const styles = {
     width: "100%",
     position: "relative",
     minHeight: "100dvh",
-    pt: "14vh",
+    pt: "10vh",
   },
   section_container: {
     position: "relative",
