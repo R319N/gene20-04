@@ -83,7 +83,7 @@ const ourServices: Services[] = [
     key: "3",
     name: "Branding & Graphic Design",
     heading: "Content That Connects",
-    image: "/images/branding.png",
+    image: "/images/web-dev.png",
     pageUrl: "/services#content-creation",
     description:
       "We create engaging and relevant content that tells your story and speaks directly to your audience. From visuals to written content, we help your brand stay active and impactful.",

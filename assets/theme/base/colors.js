@@ -6,7 +6,8 @@ const colors = {
   },
 
   text: {
-    primary: "#ADC6FF",
+    // primary: "#ADC6FF",
+    primary:"#fafafa",
     secondary: "#8F9EB7",
   },
 
