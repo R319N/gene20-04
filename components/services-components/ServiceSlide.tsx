@@ -356,7 +356,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         flexDirection: { xs: "column", lg: "row-reverse" },
                         width: "100%",
                         justifyContent: "space-between",
-                        flexGrow:1, py:"2rem"
+                        py:"2rem"
 
                     }}
                 >
