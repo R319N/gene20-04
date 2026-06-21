@@ -586,13 +586,6 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
             </Box>
         </Container >
 
-
-
-
-
-
-
-
     )
 }
 
