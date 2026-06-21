@@ -2,7 +2,12 @@ import { Box, Typography } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { styles } from '@/styles/styles';
 
-const ScrollIndicator = () => {
+
+interface Props {
+    label: string
+}
+
+const ScrollIndicator: React.FC<Props> = ({ label }) => {
     return (
         <Box sx={{
             position: 'absolute',
@@ -19,7 +24,7 @@ const ScrollIndicator = () => {
         }}>
 
             <Typography color="text.secondary" variant="caption" sx={{ textAlign: "center", letterSpacing: 4, textTransform: 'uppercase' }}>
-                SCROLL
+                {label}
             </Typography>
             <Box sx={{
                 ...styles.column_flex,
