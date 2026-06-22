@@ -4,7 +4,7 @@ import { styles } from '@/styles/styles';
 
 
 interface Props {
-    label: string
+    label?: string
 }
 
 const ScrollIndicator: React.FC<Props> = ({ label }) => {
