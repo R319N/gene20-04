@@ -222,7 +222,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             gap:1
                         }}
                     >
-                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%", mx:"1rem"}}/> 
+                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%"}}/> 
                        {importance}
                     </Typography>
 
