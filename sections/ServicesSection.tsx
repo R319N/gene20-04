@@ -261,25 +261,31 @@ const ServicesSection = () => {
           <Box
             sx={{
               ...styles.between_flex,
-              position: "absolute",
-              top: { xs: 22, md: 54 },
-              left: { xs: 24, md: 80, lg: 128 },
-              right: { xs: 24, md: 80, lg: 128 },
+              position: "relative",
+              // top: { xs: 22, md: 54 },
+              // left: { xs: 24, md: 80, lg: 128 },
+              // right: { xs: 24, md: 80, lg: 128 },
               zIndex: 5,
               gap: 1.5,
-              width: "auto",
+              width: "100%",
+              p:{xs:"1rem", lg:"10vw"}
+             
             }}
           >
             <Typography
-              variant="h6"
+              variant="caption"
               sx={{
                 color: "rgba(235, 239, 255, 0.72)",
-                fontSize: { xs: 12, md: 13 },
+                 border:"1px solid #29adff4a",
+                fontSize: { xs: 10, md: 13 },
                 fontWeight: 400,
-                letterSpacing: 4,
-                lineHeight: 1,
+                letterSpacing: 2,
+                lineHeight: 1.5,
                 textTransform: "uppercase",
-                width: "100%",
+                width: "fit-content",
+                p:"0.3rem 0.5rem",
+                height:"100%",
+                borderRadius:"20px",
                 "&::before": {
                   content: '""',
                   display: "inline-block",
@@ -288,7 +294,7 @@ const ServicesSection = () => {
                   borderRadius: "50%",
                   bgcolor: "#8f7cff",
                   boxShadow: "0 0 14px rgba(143, 124, 255, 0.7)",
-                  mr: 1.8,
+                  mr: 1,
                   verticalAlign: "middle",
                 },
               }}
@@ -299,8 +305,8 @@ const ServicesSection = () => {
               sx={{
                 ...styles.center_flex,
                 alignItems: "center",
-                gap: 1.5,
-                width: { xs: "min(210px, 50%)", md: "min(370px, 100%)" },
+                gap: 0.8,
+                width: { xs: "min(210px, 30%)", md: "min(370px, 100%)" },
                 maxWidth: "100%",
                 color: "#5db2ff",
                 py: 1.35,
@@ -364,7 +370,7 @@ const ServicesSection = () => {
               width: `${slides.length * 100}vw`,
               minHeight: 0,
               willChange: "transform",
-              py: { xs: "5vh", lg: "0" }
+              py: { xs: "1rem", lg: "0" }
             }}>
             {slides.map((slide, i) => (
               <Box
@@ -403,6 +409,7 @@ const ServicesSection = () => {
             display: { xs: "block", lg: "none" },
             position: "relative",
             width: "100%",
+            height:"fit-content",
             gap: 2,
           }}
         >

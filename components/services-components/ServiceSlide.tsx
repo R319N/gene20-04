@@ -40,7 +40,6 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 width: "100%",
                 position: "relative",
                 flexDirection: "column",
-                py: "0 2rem"
             }}
         >
 
@@ -52,12 +51,12 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     flexDirection: { xs: "column", lg: "row-reverse" },
                     width: "100%",
                     height: "100%",
-                    justifyContent: "space-between",
-                    py: "2rem"
+                    justifyContent: "start",
+                    pb: "6rem",
 
                 }}
             >
-                <Box sx={{ height: "100%", zIndex: 1 }}>
+                <Box sx={{ height: "fit-content", zIndex: 1 }}>
                     <Typography
                         aria-hidden
                         variant="h1"
@@ -93,7 +92,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             variant='body1'
                             sx={{
                                 // color: "rgba(235, 239, 255, 0.78)",
-                                fontSize: { xs: 12, md: 20, xxl: 26 },
+                                fontSize: { xs: 14, md: 20, xxl: 26 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
                             }}
@@ -121,7 +120,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         display: "flex",
                         alignItems: "flex-start",
                         justifyContent: "flex-end",
-                        mb: 3.2
+                        pt:"1rem"
                     }}
                 >
                     <Box
@@ -222,7 +221,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             gap:1
                         }}
                     >
-                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%", mx:"1rem"}}/> 
+                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%"}}/> 
                        {importance}
                     </Typography>
 
