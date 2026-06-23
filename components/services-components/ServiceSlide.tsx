@@ -72,16 +72,15 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {String(index + 1).padStart(2, "0")}
                     </Typography>
-                    <Stack gap={1.6}>
+                    <Stack gap={1} mb="0.5rem">
                         <Typography
                             className="title1 slide-animate"
                             variant='h1'
                             sx={{
                                 width: "15ch",
-                                fontSize: { xs: 22, sm: 62, md: 42, xxl: 54 },
-                                fontWeight: 800,
-                                lineHeight: 1.2,
-                                mb: 0.4,
+                                fontSize: { xs: 22, sm: 24, md: 42, xxl: 54 },
+                                fontWeight: 900,
+                                lineHeight: 1.3,
                                 textTransform: "uppercase",
                                 textShadow: "0 16px 44px rgba(255,255,255,0.14)",
                             }}
@@ -93,8 +92,8 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             className="slide-text slide-animate"
                             variant='body1'
                             sx={{
-                                color: "rgba(235, 239, 255, 0.78)",
-                                fontSize: { xs: 16, md: 20, xxl: 26 },
+                                // color: "rgba(235, 239, 255, 0.78)",
+                                fontSize: { xs: 12, md: 20, xxl: 26 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
                             }}
@@ -111,10 +110,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
                 </Box>
 
-
-
                 {/* IMAGE-SECTION */}
-
                 <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
@@ -216,14 +212,18 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         variant='body2'
                         sx={{
                             textTransform: "capitalize",
-                            // fontSize: { xs: 13, md: 10, xxl: 16 },
+                            fontSize: { xs: 12, md: 10, xxl: 16 },
                             lineHeight: 1.4,
                             // maxWidth: "50ch",
-                            fontWeight: "light"
-
+                            fontWeight: "light",
+                            color:"#fff",
+                            display:"flex",
+                            alignItems:"start",
+                            gap:1
                         }}
                     >
-                        {importance}
+                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%", mx:"1rem"}}/> 
+                       {importance}
                     </Typography>
 
                     <Box

@@ -149,7 +149,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                 </Box>
                 <Box
                   sx={{
-                    display: { xs: "none", sm: "flex" },
+                    display: { xs: "none", lg: "flex" },
                     alignItems: "center",
                   }}
                 >
