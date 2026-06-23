@@ -364,7 +364,7 @@ const ServicesSection = () => {
               width: `${slides.length * 100}vw`,
               minHeight: 0,
               willChange: "transform",
-              pt: { xs: "2rem", lg: "0" }
+              py: { xs: "5vh", lg: "0" }
             }}>
             {slides.map((slide, i) => (
               <Box
