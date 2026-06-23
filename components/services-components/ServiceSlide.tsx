@@ -167,7 +167,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                     key={featureIndex}
                                     icon={feature.icon}
                                     text={feature.text}
-                                    sub={feature.sub}
+                                    sub={feature.sub || ""}
                                     color={color}
                                 />
                             ))}
