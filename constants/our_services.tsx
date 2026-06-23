@@ -20,7 +20,7 @@ const ourServices: Services[] = [
   {
     key: "1",
     name: "Website Development",
-    heading: "Build Powerful, Scalable Websites",   
+    heading: "Build Powerful, Scalable Websites",
     image: "/images/dev.png",
     pageUrl: "/services#website-development",
     description:
@@ -28,10 +28,26 @@ const ourServices: Services[] = [
     detailIntro:
       "This service is built for brands that need more than a brochure site. We plan, design, and build web experiences that are reliable under real traffic, clear on mobile, and flexible enough to grow with new content, offers, and product directions.",
     features: [
-      { text: "Custom-built, scalable solutions", icon: <DashboardCustomizeIcon className="icon-small" /> },
-      { text: "Mobile-first, responsive development", icon: <DevicesIcon className="icon-small" /> },
-      { text: "Optimized performance and speed", icon: <SpeedIcon className="icon-small" /> },
-      { text: "Ongoing support and maintenance", icon: <HandymanIcon className="icon-small" /> },
+      {
+        text: "Performance",
+        sub: "Fast loading",
+        icon: <DashboardCustomizeIcon className="icon-small" />
+      },
+      {
+        text: "Responsive",
+        sub: "All devices",
+        icon: <DevicesIcon className="icon-small" />
+      },
+      {
+        text: "Speed",
+        sub: "Optimized code",
+        icon: <SpeedIcon className="icon-small" />
+      },
+      {
+        text: "Support",
+        sub: "Ongoing care",
+        icon: <HandymanIcon className="icon-small" />
+      },
     ],
     deliverables: [
       "Custom website builds shaped around your brand, content, and goals",
@@ -59,10 +75,26 @@ const ourServices: Services[] = [
     detailIntro:
       "UI/UX work here is about making digital products feel obvious in the best way. We shape structure, hierarchy, and interaction patterns so visitors know where to look, what to do next, and why the experience feels trustworthy.",
     features: [
-      { text: "User-centered design approach", icon: <PersonSearchIcon className="icon-small" /> },
-      { text: "Simple and intuitive navigation", icon: <ExploreIcon className="icon-small" /> },
-      { text: "Improved usability and accessibility", icon: <AccessibilityNewIcon className="icon-small" /> },
-      { text: "Optimized user journeys", icon: <AltRouteIcon className="icon-small" /> },
+      {
+        text: "Research",
+        sub: "User insights",
+        icon: <PersonSearchIcon className="icon-small" />
+      },
+      {
+        text: "Scalability",
+        sub: "Future ready",
+        icon: <ExploreIcon className="icon-small" />
+      },
+      {
+        text: "Accessibility",
+        sub: "Inclusive design",
+        icon: <AccessibilityNewIcon className="icon-small" />
+      },
+      {
+        text: "SEO",
+        sub: "Search friendly",
+        icon: <AltRouteIcon className="icon-small" />
+      },
     ],
     deliverables: [
       "Wireframes and interface concepts tailored to your audience",
@@ -90,10 +122,26 @@ const ourServices: Services[] = [
     detailIntro:
       "Content creation is where your brand voice turns into something visible and useful. The focus is not just posting more, but building content that looks aligned, sounds intentional, and helps people understand what you offer.",
     features: [
-      { text: "Brand-aligned content strategy", icon: <CampaignIcon className="icon-small" /> },
-      { text: "Engaging visuals and messaging", icon: <PaletteIcon className="icon-small" /> },
-      { text: "Consistent content delivery", icon: <CalendarMonthIcon className="icon-small" /> },
-      { text: "Audience-focused storytelling", icon: <AutoStoriesIcon className="icon-small" /> },
+      {
+        text: "Strategy",
+        sub: "Brand focused",
+        icon: <CampaignIcon className="icon-small" />
+      },
+      {
+        text: "Visuals",
+        sub: "Creative assets",
+        icon: <PaletteIcon className="icon-small" />
+      },
+      {
+        text: "Consistency",
+        sub: "Unified presence",
+        icon: <CalendarMonthIcon className="icon-small" />
+      },
+      {
+        text: "Storytelling",
+        sub: "Audience connection",
+        icon: <AutoStoriesIcon className="icon-small" />
+      },
     ],
     deliverables: [
       "Visual and written content shaped around your brand tone",
@@ -121,10 +169,26 @@ const ourServices: Services[] = [
     detailIntro:
       "Digital marketing is about connecting with your audience where they are most active. It's about using data to inform decisions and create campaigns that resonate with your target market.",
     features: [
-      { text: "Search Engine Optimization (SEO)", icon: <SearchIcon className="icon-small" /> },
-      { text: "Pay-Per-Click (PPC) Advertising", icon: <MonetizationOnIcon className="icon-small" /> },
-      { text: "Social Media Marketing", icon: <SocialDistanceIcon className="icon-small" /> },
-      { text: "Email Marketing", icon: <EmailIcon className="icon-small" /> },
+      {
+        text: "SEO",
+        sub: "Organic growth",
+        icon: <SearchIcon className="icon-small" />
+      },
+      {
+        text: "PPC",
+        sub: "Targeted ads",
+        icon: <MonetizationOnIcon className="icon-small" />
+      },
+      {
+        text: "Social Media",
+        sub: "Brand engagement",
+        icon: <SocialDistanceIcon className="icon-small" />
+      },
+      {
+        text: "Email",
+        sub: "Lead nurturing",
+        icon: <EmailIcon className="icon-small" />
+      },
     ],
     deliverables: [
       "SEO audit and optimization plan",
@@ -138,7 +202,7 @@ const ourServices: Services[] = [
       "Stronger social media presence and engagement",
       "Improved email open and click-through rates",
     ],
-    color: "#FF6B6B",
+    color: "#00fbff",
     importance:
       "Effective digital marketing amplifies your reach, drives targeted traffic, and maximizes return on investment.",
   }

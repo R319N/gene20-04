@@ -21,6 +21,7 @@
     "@mui/material-nextjs": "^7.3.6",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
+    "@react-three/postprocessing": "^3.0.4",
     "@types/react-slick": "^0.23.13",
     "@types/three": "^0.182.0",
     "chroma-js": "^3.2.0",

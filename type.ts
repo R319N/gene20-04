@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 export type Feature = {
   text: string;
+  sub: string;
   icon: ReactNode;
+
 };
 export interface Portfolio {
   id: string;

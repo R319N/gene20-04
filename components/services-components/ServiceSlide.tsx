@@ -6,6 +6,13 @@ import { Box, Container, Grid, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import dynamic from "next/dynamic";
+import FeatureCard from './FeatureCard'
+
+const NetworkCanvas = dynamic(
+    () => import("./networkCanvas"),
+    { ssr: false }
+);
 
 interface props {
     image: string
@@ -44,13 +51,13 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     position: "relative",
                     flexDirection: { xs: "column", lg: "row-reverse" },
                     width: "100%",
-                    height:"100%",
+                    height: "100%",
                     justifyContent: "space-between",
                     py: "2rem"
 
                 }}
             >
-                <Box sx={{height:"100%", zIndex:1}}>
+                <Box sx={{ height: "100%", zIndex: 1 }}>
                     <Typography
                         aria-hidden
                         variant="h1"
@@ -106,7 +113,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
 
 
-{/* IMAGE-SECTION */}
+                {/* IMAGE-SECTION */}
 
                 <Box
                     className="slide-image-wrap slide-animate"
@@ -117,10 +124,25 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
                         alignItems: "flex-start",
-                        justifyContent: "flex-start",
-                        mb:3.2
+                        justifyContent: "flex-end",
+                        mb: 3.2
                     }}
                 >
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 0,
+                            overflow: "hidden",
+                            bottom: 50,
+                            right: 0,
+                            opacity: 0.9,
+                            width: "100%",
+                            height: "100%"
+                        }}
+                    >
+                        <NetworkCanvas />
+                    </Box>
 
                     <Box
                         className="slide-feature-card slide-animate"
@@ -132,60 +154,22 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             width: { xs: "100%", md: 210 },
                             height: "fit-content",
                             borderRadius: 2,
-                            border: "1px solid rgba(207, 218, 255, 0.18)",
-                            bgcolor: "rgba(7, 10, 31, 0.68)",
+                            color: "#ffffff",
+                            bgcolor: `${color}22`,
+                            border: `1px solid ${color}22`,
+                            boxShadow: `0 24px 60px ${color}22`,
                             backdropFilter: "blur(20px)",
-                            boxShadow: "0 26px 60px rgba(0,0,0,0.34)",
                         }}
                     >
-                        <Grid container spacing={2.2} p="1rem" width="100%">
+                        <Grid container spacing={2.2} p="0.5rem" width="100%">
                             {features.map((feature, featureIndex) => (
-                                <Grid
-                                    size={12}
+                                <FeatureCard
                                     key={featureIndex}
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "flex-start",
-                                        gap: 1.3,
-
-                                    }}
-                                >
-                                    <Box
-                                        sx={{
-                                            ...styles.center_flex,
-                                            height: "100%",
-                                            color,
-                                            "& svg": { fontSize: 16 },
-                                        }}
-                                    >
-                                        {feature.icon}
-                                    </Box>
-                                    <Box>
-                                        <Typography
-                                            variant="body2"
-                                            sx={{
-                                                color: "#ffffff",
-                                                fontSize: { xs: 12, md: 13 },
-                                                fontWeight: 500,
-                                                lineHeight: 1.2,
-                                            }}
-                                        >
-                                            {feature.text}
-                                        </Typography>
-                                        <Typography
-                                            variant="caption"
-                                            sx={{
-                                                color: "rgba(235,239,255,0.52)",
-                                                display: "block",
-                                                fontSize: 11,
-                                                lineHeight: 1.4,
-                                                mt: 0.4,
-                                            }}
-                                        >
-                                            {featureIndex === 0 ? "Optimized" : featureIndex === 1 ? "Future-ready" : featureIndex === 2 ? "Best practices" : "Built to last"}
-                                        </Typography>
-                                    </Box>
-                                </Grid>
+                                    icon={feature.icon}
+                                    text={feature.text}
+                                    sub={feature.sub}
+                                    color={color}
+                                />
                             ))}
                         </Grid>
                     </Box>
@@ -210,8 +194,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end", alignItems: "flex-end" }}>
-
+                    <Box sx={{ width: "100%",height:"100% ",display: "flex", justifyContent: "flex-end", alignItems: "flex-end", position: "relative" }}>
                         <Box sx={{ width: "340px", height: "340px", position: "absolute", bottom: 0, right: 0, zIndex: 0 }}>
                             <Image
                                 src={image}
