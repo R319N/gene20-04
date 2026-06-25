@@ -8,6 +8,7 @@ import Link from 'next/link'
 import React from 'react'
 import dynamic from "next/dynamic";
 import FeatureCard from './FeatureCard'
+import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 
 const NetworkCanvas = dynamic(
     () => import("./networkCanvas"),
@@ -81,7 +82,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         // position: "absolute",
                         left: 0,
                         // top: "50%",
-                         mt: { xs: "-25px", lg: "-90px", xl: "-110px" },
+                        mt: { xs: "-25px", lg: "-90px", xl: "-110px" },
                         zIndex: 2,
                     }}
 
@@ -232,10 +233,14 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             color: "#fff",
                             display: "flex",
                             alignItems: "start",
-                            gap: 1
+                            gap: 1.5,
+                            mt: "1rem",
+                            // pl: "1rem",
                         }}
                     >
-                        <span style={{ background: color, height: "10px", width: "10px", borderRadius: "50px" }} />
+                        <span>
+                            <LabelImportantIcon sx={{color:color}}/>
+                        </span>
                         {importance}
                     </Typography>
 
