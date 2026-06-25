@@ -50,7 +50,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     display: "flex",
                     alignItems: "flex-start",
                     position: "relative",
-                    flexDirection: { xs: "column", lg: "row-reverse" },
+                    flexDirection: { xs: "column", lg: "row" },
                     width: "100%",
                     height: "100%",
                     justifyContent: "flex-start",
@@ -65,7 +65,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         variant="h1"
                         sx={{
                             position: "relative",
-                            fontSize: { xs: 88, lg: 190, xl: 200 },
+                            fontSize: { xs: 88, lg: 190, xl: 154 },
                             fontWeight: 900,
                             lineHeight: 1,
                             color: "#ffffff71",
@@ -82,7 +82,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         // position: "absolute",
                         left: 0,
                         // top: "50%",
-                        mt: { xs: "-25px", lg: "-90px", xl: "-110px" },
+                        mt: { xs: "-25px", lg: "-90px", xl: "-50px" },
                         zIndex: 2,
                     }}
 
@@ -92,7 +92,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             variant='h1'
                             sx={{
                                 width: "15ch",
-                                fontSize: { xs: 22, sm: 24, md: 42, xxl: 54 },
+                                fontSize: { xs: 22, sm: 24, md: 42, xxl: 44 },
                                 fontWeight: 900,
                                 lineHeight: 1,
                                 textTransform: "uppercase",
@@ -107,7 +107,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             variant='body1'
                             sx={{
                                 // color: "rgba(235, 239, 255, 0.78)",
-                                fontSize: { xs: 14, md: 20, xxl: 26 },
+                                fontSize: { xs: 14, md: 20, xxl: 18 },
                                 fontWeight: 400,
                                 lineHeight: 1.34,
                             }}
@@ -128,30 +128,18 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     className="slide-image-wrap slide-animate"
                     sx={{
                         position: "relative",
-                        width: { xs: "100%", md: "50vw" },
+                        width: { xs: "100%", md: "100%" },
                         height: { xs: "100%", md: "40vw" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
-                        alignItems: "flex-start",
-                        justifyContent: "flex-end",
+                        alignItems: {xs:"flex-start", xl:"flex-end"},
+                        // justifyContent: {xs:"flex-end", xl:"space-between"},
+
+                        justifyContent:"flex-end",
                         pt: "1rem"
                     }}
                 >
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            inset: 0,
-                            zIndex: 0,
-                            overflow: "hidden",
-                            bottom: 50,
-                            right: 0,
-                            opacity: 0.9,
-                            width: "100%",
-                            height: "100%"
-                        }}
-                    >
-                        <NetworkCanvas />
-                    </Box>
+                   
 
                     <Box
                         className="slide-feature-card slide-animate"
@@ -205,13 +193,26 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         {features[0]?.icon}
                     </Box>
                     <Box sx={{ width: "100%", height: "100% ", display: "flex", justifyContent: "flex-end", alignItems: "flex-end", position: "relative" }}>
-                        <Box sx={{ width: "340px", height: "340px", position: "absolute", bottom: 0, right: 0, zIndex: 0 }}>
+                        <Box sx={{ width: {xs:"340px", xl:"500px"}, height:{xs:"340px", xl:"500px"}, position: "absolute", bottom: 0, right: 0, zIndex: 0 }}>
+                             <Box
+                        sx={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 0,
+                            overflow: "hidden",
+                            opacity: 0.9,
+                            width: "100%",
+                            height: "100%"
+                        }}
+                    >
+                        <NetworkCanvas />
+                    </Box>
                             <Image
                                 src={image}
                                 alt={name}
                                 fill
                                 unoptimized
-                                sizes="(max-width: 900px) 90vw, 98vw"
+                                // sizes="(max-width: 900px) 90vw, 98vw"
                                 style={{ objectFit: "contain" }}
                             />
                         </Box>
@@ -220,7 +221,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
 
                 {/* CTA */}
-                <Stack sx={{ gap: 2, zIndex: 1 }}>
+                <Stack sx={{ gap: 2, zIndex: 1, display:{xs:"block",xl: "none"} }}>
                     <Typography
                         className="slide-importance slide-animate"
                         variant='body2'

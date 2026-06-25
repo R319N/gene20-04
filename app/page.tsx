@@ -50,7 +50,7 @@ export default function Home() {
           }}>
 
             <HeroSection />
-            {/* <IntroSection /> */}
+            <IntroSection />
             <ServicesSection />
            {/*   <PortfolioSection /> 
              <AboutSection /> */}
