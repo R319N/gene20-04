@@ -52,7 +52,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     width: "100%",
                     height: "100%",
                     justifyContent: "start",
-                    pb: "6rem",
+                    pb: "8rem",
 
                 }}
             >
@@ -175,15 +175,15 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             position: "absolute",
                             right: { xs: "0%", md: "28%" },
                             top: { xs: "20%", md: "12%" },
-                            width: { xs: 74, md: 90 },
-                            height: { xs: 74, md: 90 },
+                            width: { xs: 44, md: 90 },
+                            height: { xs: 44, md: 90 },
                             borderRadius: 2,
                             color: "#ffffff",
                             bgcolor: `${color}66`,
                             border: `1px solid ${color}`,
                             boxShadow: `0 24px 60px ${color}55`,
                             transform: "rotate(5deg)",
-                            "& svg": { fontSize: { xs: 44, md: 44 } },
+                            "& svg": { fontSize: { xs: 34, md: 34 } },
                             zIndex: 1
                         }}
                     >
