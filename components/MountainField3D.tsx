@@ -86,7 +86,7 @@ export default function MountainField3D() {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100%' }} />;
+  return <div ref={containerRef} style={{ width: '100vw', height: '100%' }} />;
 }
 
 function createTerrain() {

@@ -64,6 +64,8 @@ const IntroSection = () => {
       <Box
         sx={{
           position: 'absolute',
+          left:0,
+          
           inset: 0,
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
