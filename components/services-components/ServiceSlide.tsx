@@ -40,38 +40,52 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                 width: "100%",
                 position: "relative",
                 flexDirection: "column",
+
             }}
         >
 
             <Box
                 sx={{
                     display: "flex",
-                    alignItems: "start",
+                    alignItems: "flex-start",
                     position: "relative",
                     flexDirection: { xs: "column", lg: "row-reverse" },
                     width: "100%",
                     height: "100%",
-                    justifyContent: "start",
+                    justifyContent: "flex-start",
                     pb: "8rem",
+                    pt: "0"
 
                 }}
             >
-                <Box sx={{ height: "fit-content", zIndex: 1 }}>
+                <Box sx={{ height: "100%", zIndex: 1, position: "relative" }}>
                     <Typography
                         aria-hidden
                         variant="h1"
                         sx={{
                             position: "relative",
-                            color: "rgba(255,255,255,0.055)",
                             fontSize: { xs: 88, lg: 190, xl: 200 },
                             fontWeight: 900,
-                            lineHeight: 0.3,
+                            lineHeight: 1,
+                            color: "#ffffff71",
                             zIndex: -1,
+                            maskImage:
+                                "linear-gradient(to bottom, black 0%, transparent 100%)",
+                            WebkitMaskImage:
+                                "linear-gradient(to bottom, black 0%, transparent 100%)",
                         }}
                     >
                         {String(index + 1).padStart(2, "0")}
                     </Typography>
-                    <Stack gap={1} mb="0.5rem">
+                    <Stack gap={1} sx={{
+                        // position: "absolute",
+                        left: 0,
+                        // top: "50%",
+                         mt: { xs: "-25px", lg: "-90px", xl: "-110px" },
+                        zIndex: 2,
+                    }}
+
+                    >
                         <Typography
                             className="title1 slide-animate"
                             variant='h1'
@@ -79,7 +93,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 width: "15ch",
                                 fontSize: { xs: 22, sm: 24, md: 42, xxl: 54 },
                                 fontWeight: 900,
-                                lineHeight: 1.3,
+                                lineHeight: 1,
                                 textTransform: "uppercase",
                                 textShadow: "0 16px 44px rgba(255,255,255,0.14)",
                             }}
@@ -99,14 +113,13 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         >
                             {heading}
                         </Typography>
+                        <Box
+                            className="slide-rule slide-animate"
+                            sx={{
+                                width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, my: "0.5rem 1rem"
+                            }}
+                        />
                     </Stack>
-                    <Box
-                        className="slide-rule slide-animate"
-                        sx={{
-                            width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, my: "0.5rem 1rem"
-                        }}
-                    />
-
                 </Box>
 
                 {/* IMAGE-SECTION */}
@@ -120,7 +133,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         display: "flex",
                         alignItems: "flex-start",
                         justifyContent: "flex-end",
-                        pt:"1rem"
+                        pt: "1rem"
                     }}
                 >
                     <Box
@@ -177,6 +190,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             top: { xs: "20%", md: "12%" },
                             width: { xs: 44, md: 90 },
                             height: { xs: 44, md: 90 },
+                            opacity: "0.7",
                             borderRadius: 2,
                             color: "#ffffff",
                             bgcolor: `${color}66`,
@@ -189,7 +203,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "100%",height:"100% ",display: "flex", justifyContent: "flex-end", alignItems: "flex-end", position: "relative" }}>
+                    <Box sx={{ width: "100%", height: "100% ", display: "flex", justifyContent: "flex-end", alignItems: "flex-end", position: "relative" }}>
                         <Box sx={{ width: "340px", height: "340px", position: "absolute", bottom: 0, right: 0, zIndex: 0 }}>
                             <Image
                                 src={image}
@@ -215,14 +229,14 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             lineHeight: 1.4,
                             // maxWidth: "50ch",
                             fontWeight: "light",
-                            color:"#fff",
-                            display:"flex",
-                            alignItems:"start",
-                            gap:1
+                            color: "#fff",
+                            display: "flex",
+                            alignItems: "start",
+                            gap: 1
                         }}
                     >
-                      <span style={{background:color, height:"0.8rem", width:"1rem", borderRadius:"50%"}}/> 
-                       {importance}
+                        <span style={{ background: color, height: "10px", width: "10px", borderRadius: "50px" }} />
+                        {importance}
                     </Typography>
 
                     <Box

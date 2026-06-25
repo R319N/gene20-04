@@ -161,7 +161,7 @@ const ServicesSection = () => {
         minHeight: "100dvh",
         height: "100dvh",
         boxSizing: "border-box",
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       {/* {slides.map((slide, i) => (
@@ -181,15 +181,11 @@ const ServicesSection = () => {
       {/* <div className="math-bg" /> 
 
       <Overlay /> */}
+
+      <div
+        className="services-gradient1"
+      />
       {/* <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(167, 139, 250, 0.032) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(167, 139, 250, 0.025) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          maskImage: 'radial-gradient(circle at center, black, transparent)',
-        }} />
       </div> */}
 
       <Grid
@@ -268,32 +264,37 @@ const ServicesSection = () => {
               zIndex: 5,
               gap: 1.5,
               width: "100%",
-              p:{xs:"1rem", lg:"10vw"}
-             
+              px: { xs: "1rem", lg: "10vw" },
+              pt: "1rem"
+
             }}
           >
             <Typography
               variant="caption"
               sx={{
-                color: "rgba(235, 239, 255, 0.72)",
-                 border:"1px solid #29adff4a",
+                background: `
+  linear-gradient(#0e1116, #0e1116) padding-box,
+  linear-gradient(90deg, #5876db, #4f5ad9, #3729ff) border-box
+`,
+                border: "1px solid transparent",
                 fontSize: { xs: 10, md: 13 },
                 fontWeight: 400,
                 letterSpacing: 2,
                 lineHeight: 1.5,
                 textTransform: "uppercase",
                 width: "fit-content",
-                p:"0.3rem 0.5rem",
-                height:"100%",
-                borderRadius:"20px",
+                p: "0.3rem 0.5rem",
+                height: "100%",
+                borderRadius: "20px",
                 "&::before": {
                   content: '""',
                   display: "inline-block",
                   width: 8,
                   height: 8,
                   borderRadius: "50%",
-                  bgcolor: "#8f7cff",
-                  boxShadow: "0 0 14px rgba(143, 124, 255, 0.7)",
+                  background:
+                    "linear-gradient(135deg, #29adff 0%, #8f7cff 100%)",
+                  boxShadow: "0 0 14px rgba(41,173,255,0.6)",
                   mr: 1,
                   verticalAlign: "middle",
                 },
@@ -370,7 +371,7 @@ const ServicesSection = () => {
               width: `${slides.length * 100}vw`,
               minHeight: 0,
               willChange: "transform",
-              py: { xs: "1rem", lg: "0" }
+              py: { xs: "0", lg: "0" }
             }}>
             {slides.map((slide, i) => (
               <Box
@@ -409,7 +410,7 @@ const ServicesSection = () => {
             display: { xs: "block", lg: "none" },
             position: "relative",
             width: "100%",
-            height:"fit-content",
+            height: "fit-content",
             gap: 2,
           }}
         >
