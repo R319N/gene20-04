@@ -94,7 +94,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
             position="sticky"
             sx={{
               ...styles.scrolledAppBar,
-              bgcolor: "#001a421a",
+              bgcolor: "#00041417",
               backdropFilter: "blur(10px)",
               boxShadow: "none",
             }}
@@ -102,7 +102,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
             <Toolbar
               sx={{
                 ...styles.between_flex,
-                border: (theme) => theme.palette.mode === "light" ? `1px solid ${theme.palette.text.primary}` : `1px solid ${theme.palette.text.primary}33`,
+                border: (theme) => theme.palette.mode === "light" ? `1px solid ${theme.palette.text.primary}33` : `1px solid ${theme.palette.text.primary}22`,
                 borderRadius: (theme) => theme.shape.borderRadius,
                 position: "relative",
                 maxWidth: "100%",

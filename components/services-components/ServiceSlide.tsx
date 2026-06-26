@@ -221,7 +221,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
 
                 {/* CTA */}
-                <Stack sx={{ gap: 2, zIndex: 1, display:{xs:"block",xl: "none"} }}>
+                <Stack gap={2} sx={{ zIndex: 1, display:{xs:"flex",xl: "none"}, py:"1rem" }}>
                     <Typography
                         className="slide-importance slide-animate"
                         variant='body2'
@@ -235,7 +235,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             display: "flex",
                             alignItems: "start",
                             gap: 1.5,
-                            mt: "1rem",
+                            // py: "1rem",
                             // pl: "1rem",
                         }}
                     >

@@ -21,6 +21,11 @@ export default function MountainField3D() {
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     container.appendChild(renderer.domElement);
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.inset = "0";
+    renderer.domElement.style.maxWidth = "100%";
+    renderer.domElement.style.maxHeight = "100%";
+    renderer.domElement.style.pointerEvents = "none";
 
     const terrain = createTerrain();
     scene.add(terrain.points);
@@ -86,7 +91,18 @@ export default function MountainField3D() {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100%' , overflow:"hidden"}} />;
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        position: "absolute",
+        left: 0,
+        width:"100%",
+        height:"100%",
+        overflow: "hidden",
+      }}
+    />
+  );
 }
 
 function createTerrain() {

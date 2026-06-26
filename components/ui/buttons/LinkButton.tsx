@@ -32,6 +32,7 @@ const LinkButton = ({ label, pageUrl, color }: LinkButtonProps) => {
                     width: 42,
                     height: 42,
                     borderRadius: "50%",
+                  
 
                     "&::before": {
                         content: '""',
@@ -39,7 +40,7 @@ const LinkButton = ({ label, pageUrl, color }: LinkButtonProps) => {
                         inset: 0,
                         borderRadius: "50%",
                         padding: "0.8px",
-                        background: "linear-gradient(90deg, #31a6d8, #3a47d5)",
+                        background: "linear-gradient(90deg, #31a6d8, #737eff)",
                         WebkitMask:
                             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                         WebkitMaskComposite: "xor",
@@ -69,7 +70,8 @@ const LinkButton = ({ label, pageUrl, color }: LinkButtonProps) => {
                 fontSize: { xs: 14, md: 16 }, color: { color },
                 background: "linear-gradient(90deg, #00a9d3, #3a47d5)",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent"
+                WebkitTextFillColor: "transparent",
+                  textTransform:"capitalize",
             }}>
                 {label}
             </Typography>
