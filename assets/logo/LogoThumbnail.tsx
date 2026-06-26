@@ -6,9 +6,9 @@ import logo from "@/public/images/logo-thumbnail.png"
 
 const LogoThumbnail = () => {
   return (
-   <span style={{ alignItems: "center", justifyContent: "center" }}>
+   <span style={{display:"flex", alignItems: "center", justifyContent: "center" }}>
         <Image src={logo.src}
-         alt="Gene20 Logo Thumbnail" width={120} height={40} />
+         alt="Gene20 Logo Thumbnail" width={100} height={30} />
    </span>
   )
 }

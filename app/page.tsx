@@ -40,9 +40,10 @@ export default function Home() {
         backgroundColor: `(theme) => theme.palette.background.default`,
       }}
     >
-      <Appbar />
+     <Appbar />
       <div id="smooth-wrapper">
         <div id="smooth-content">
+           
           <Box component="main" sx={{
             position: "relative",
             zIndex: 2,
@@ -52,12 +53,8 @@ export default function Home() {
             <HeroSection />
             <IntroSection />
             <ServicesSection />
-           {/*   <PortfolioSection /> 
-             <AboutSection /> */}
-             <Box>
-               <ContactSection />
-             </Box>
-           
+             <ContactSection />
+           {/*   <PortfolioSection /> */}
             <Box
               sx={{
                 position: "fixed",

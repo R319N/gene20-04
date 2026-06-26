@@ -1,6 +1,6 @@
 "use client";
 
-// import LivingAbstractSphere from "@/components/three/LivingAbstractSphere";
+import LivingAbstractSphere from "@/components/three/LivingAbstractSphere";
 import { styles } from "@/styles/styles";
 import { Box, Divider, Stack, Typography, Link, Container } from "@mui/material";
 import LinkButton from "@/components/ui/buttons/LinkButton";
@@ -34,7 +34,8 @@ export default function ContactSection() {
           zIndex: 0,
           left: "-40%",
           top: 0,
-          transform: "translateY(40%)",
+          transform: "translateY(30%)",
+          overflow:"hidden"
 
         }}>
         <LivingAbstractSphere />
@@ -51,7 +52,8 @@ export default function ContactSection() {
           zIndex: 0,
           right: "-45%",
           top: 0,
-          transform: "translateY(-45%)",
+          transform: "translateY(-20%)",
+           overflow:"hidden"
 
         }}>
         <LivingAbstractSphere />
@@ -62,7 +64,7 @@ export default function ContactSection() {
             ...styles.glassOutlinedTheme,
             width: "700px",
             height: "100%",
-            p: "1rem 2rem",
+            p: "1rem",
             // ...styles.column_flex,
             gap: 2,
           }}>
@@ -70,7 +72,8 @@ export default function ContactSection() {
           <Stack sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", py: "1rem" }}>
             <Typography variant="h1"
               sx={{
-                width: { xs: "100%", xxl: "15ch" }, textAlign: "center", fontWeight: 800, fontSize: "3rem",
+                width: { xs: "100%", xxl: "15ch" },
+                 textAlign: "center", fontWeight: 900, fontSize: {xs:"32px", lg:"3rem"},
                 background: "linear-gradient(90deg, #bbd4da, #3a47d5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
               }}>
               Ready to build the future
@@ -83,14 +86,14 @@ export default function ContactSection() {
               {/* <Button variant="contained" color="primary" startIcon={<QuestionMark />}>
               Ask Any Questions
             </Button> */}
-              <LinkButton pageUrl="/contact" label="Start your Project" />
+              <LinkButton pageUrl="/contact" label="get in touch with us" />
             </Stack>
           </Stack>
           <Divider />
-          <Stack direction="row" sx={{ justifyContent: "space-between", py: "1rem" }}>
+          <Stack direction="row" sx={{ justifyContent: "space-between", py: "1rem", px:"2rem" }}>
             {socialMediaRoutes.map((social, i) => (
               <Link href={social.url} key={i} sx={{ color: "textPrimary", textTransform: "capitalize" }}>
-                {social.name}
+                {social.icon}
               </Link>
             ))}
           </Stack>

@@ -20,45 +20,55 @@ const IntroSection = () => {
       component="section"
       id="services"
       sx={{
-        width:"100%",
+        width: "100%",
         position: 'relative',
         minHeight: "100dvh",
         color: '#dbe7ff',
         px: { xs: 1.4, sm: 4, md: 7 },
-      ...styles.center_flex,
-      overflow:"hidden"
+        ...styles.center_flex,
       }}
     >
-      <Box className="intro-gradient" />
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          // overflowX: "hidden",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        <div className="gradient-wrapper">
+          <div className="intro-gradient" />
+        </div>
+      </Box>
 
- <Box
+      <Box
         sx={{
           position: 'absolute',
-          left:0,
+          left: 0,
           // background:"yellow",
           inset: 0,
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
-          width:"100%",
-          height:"100%",
-          overflow:"hidden"
+          overflow: "hidden"
         }}
       >
         <MountainField3D />
       </Box>
-      <Box sx={{ 
-        ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, height:"100%"}}>
+      <Box sx={{
+        ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, height: "100%"
+      }}>
         <Typography variant='h1'
           sx={{
             background: 'linear-gradient(90deg, #84d8ff, #8157ff)',
             backgroundClip: 'text',
             textFillColor: 'transparent',
-            width:{xs:"100%", xl: "30ch"},
+            width: { xs: "100%", xl: "30ch" },
             textAlign: "center", lineHeight: 1.4,
             textTransform: "capitalize",
-            
+
           }}
-          >
+        >
           Your website shapes how people perceive your business.
         </Typography>
 
@@ -67,7 +77,7 @@ const IntroSection = () => {
           sx={{
             mt: 4,
             textTransform: "capitalize",
-            width: {xs:"100%", xl:"80ch"},
+            width: { xs: "100%", xl: "80ch" },
             textAlign: "center",
             lineHeight: "2"
           }}>
