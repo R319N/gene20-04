@@ -22,10 +22,11 @@ const IntroSection = () => {
       sx={{
         width:"100%",
         position: 'relative',
-        minHeight: "100vh",
+        minHeight: "100dvh",
         color: '#dbe7ff',
         px: { xs: 1.4, sm: 4, md: 7 },
-      ...styles.center_flex
+      ...styles.center_flex,
+      overflow:"hidden"
       }}
     >
       <Box className="intro-gradient" />
@@ -34,12 +35,12 @@ const IntroSection = () => {
         sx={{
           position: 'absolute',
           left:0,
-          
+          // background:"yellow",
           inset: 0,
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
           width:"100%",
-          // height:"100%",
+          height:"100%",
           overflow:"hidden"
         }}
       >
