@@ -29,8 +29,8 @@ const navigation: NavigationItem[] = [
   },
   {
     name: "services",
-    url: "/#services",
-    href: "/",
+    url: "/services",
+    href: "/services",
     isTab: true,
     isExplore: true,
     isNavigation: true,
