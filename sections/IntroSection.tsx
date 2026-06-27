@@ -29,6 +29,7 @@ const IntroSection = () => {
       }}
     >
       <Box
+<<<<<<< HEAD
         sx={{
           position: "absolute",
           inset: 0,
@@ -41,6 +42,18 @@ const IntroSection = () => {
           <div className="intro-gradient" />
         </div>
       </Box>
+=======
+  sx={{
+    position: "absolute",
+    inset: 0,
+    // overflowX: "hidden",
+    pointerEvents: "none",
+    zIndex: 0,
+  }}
+>
+  <Box className="intro-gradient" />
+</Box>
+>>>>>>> 0aabe8477dd799b726906bc252921b3640414faf
 
       <Box
         sx={{
@@ -50,7 +63,11 @@ const IntroSection = () => {
           inset: 0,
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
+<<<<<<< HEAD
           overflow: "hidden"
+=======
+          overflow:"hidden"
+>>>>>>> 0aabe8477dd799b726906bc252921b3640414faf
         }}
       >
         <MountainField3D />
