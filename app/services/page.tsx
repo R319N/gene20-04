@@ -59,7 +59,7 @@ export default function ServicesPage() {
               const serviceId = getServiceId(service.pageUrl, service.name);
 
               return (
-                <Grid size={{xs:"12", md:"6"}} key={service.key}>
+                <Grid size={{xs:12, md:6}} key={service.key}>
                   <Paper
                     id={serviceId}
                     elevation={0}
