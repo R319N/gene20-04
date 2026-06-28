@@ -177,7 +177,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     // texture loader
     const Tl = new THREE.TextureLoader();
-    const dayTexture = Tl.load("/textures/earth_daymap.jpg");
+    const dayTexture = Tl.load("/textures/earth.jpg");
     const nightTexture = Tl.load("/textures/earth_nightmap.jpg");
     const specularCloudsTexture = Tl.load("/textures/specularClouds.jpg");
     dayTexture.colorSpace = THREE.SRGBColorSpace;
@@ -196,7 +196,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const detail = 32;
 
     const atmosphereDayColor = "#000000";
-    const atmosphereTwilightColor = "#ffffff00";
+    const atmosphereTwilightColor = "#0044ff";
     // earth material
     const earthGeometry = new THREE.IcosahedronGeometry(1, detail);
 
