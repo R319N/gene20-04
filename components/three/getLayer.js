@@ -22,13 +22,15 @@ function getSprite({ hasFog, color, opacity, path, pos, size }) {
 function getLayer({
   hasFog = true,
   hue = 0.65,
-  numSprites = 8,
-  opacity = 0.2,
-  path = "./rad-grad.png",
-  radius = 10,
+  numSprites = 4,
+  opacity = 0.14,
+  path = "./textures/rad-grad.png",
+  radius = 1.8,
   sat = 0.5,
-  size = 24,
-  z = -10.5,
+  size = 1.6,
+  z = -14,
+  x = -3.2,
+  y = 1.4,
 } = {}) {
   const layerGroup = new THREE.Group();
   for (let i = 0; i < numSprites; i += 1) {
@@ -45,6 +47,7 @@ function getLayer({
     const sprite = getSprite({ hasFog, color, opacity, path, pos, size });
     layerGroup.add(sprite);
   }
+  layerGroup.position.set(x, y, 0);
   return layerGroup;
 }
 export default getLayer;

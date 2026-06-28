@@ -17,7 +17,7 @@ const getViewportSettings = () => {
     if (width < 480) {
         return {
             cameraZ: 12,
-            cameraY: 1,
+            cameraY: 1.4,
             groupScale: 0.72,
             groupX: 0,
             groupY: 0,
@@ -27,7 +27,7 @@ const getViewportSettings = () => {
     if (width < 768) {
         return {
             cameraZ: 15,
-            cameraY: 0,
+            cameraY: 1,
             groupScale: 0.82,
             groupX: 0,
             groupY: 0,
@@ -177,7 +177,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     // texture loader
     const Tl = new THREE.TextureLoader();
-    const dayTexture = Tl.load("/textures/earth_daymap.jpg");
+    const dayTexture = Tl.load("/textures/earth.jpg");
     const nightTexture = Tl.load("/textures/earth_nightmap.jpg");
     const specularCloudsTexture = Tl.load("/textures/specularClouds.jpg");
     dayTexture.colorSpace = THREE.SRGBColorSpace;
@@ -196,7 +196,7 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const detail = 32;
 
     const atmosphereDayColor = "#000000";
-    const atmosphereTwilightColor = "#ffffff00";
+    const atmosphereTwilightColor = "#0044ff";
     // earth material
     const earthGeometry = new THREE.IcosahedronGeometry(1, detail);
 
@@ -238,8 +238,11 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     glowMesh.scale.setScalar(1.005);
     earthGroup.add(glowMesh);
 
-    // const nebula = getLayer({ path: './textures/rad-grad.png' });
-    // scene.add(nebula);
+    const nebula = getLayer({
+        path: './textures/rad-grad.png',
+        size: window.innerWidth < 768 ? 2.2 : 1.8,
+    });
+    scene.add(nebula);
 
     const ambientLight = new THREE.AmbientLight(0x00ffff, 0.65);
     scene.add(ambientLight);

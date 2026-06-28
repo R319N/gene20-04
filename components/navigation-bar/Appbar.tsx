@@ -116,6 +116,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                 sx={{
                   ...styles.between_flex,
                   width: "100%",
+                  alignItems:"center"
                 }}
               >
                 <Link href="/">
