@@ -37,7 +37,7 @@ const HeroContent = () => {
                     textTransform: "uppercase"
                 }}
             >
-                Where Vision Becomes Reality
+                Digital Excellence Redefined
             </Typography>
 
             <Typography
