@@ -28,7 +28,7 @@ const HeroContent = () => {
             <Typography
                 variant="h1"
                 sx={{
-                    fontWeight: "regular",
+                    fontWeight: "900",
                     fontSize: { xs: 32, sm: 58, md: 38, xxl: 56 },
                     lineHeight: "1.2",
                     width: { xs: "12ch", lg: "20ch" },
@@ -47,10 +47,9 @@ const HeroContent = () => {
                     maxWidth: pxToRem(650),
                 }}
             >
-                We blend <strong>creativity</strong>,
-                <strong>strategy</strong> and <strong>technology</strong>
+                We blend <strong>creativity</strong>, <strong>strategy</strong> and <strong>technology</strong>
                 to build next generation digital products that drive growth
-                and deliver <strong>real strategic impact.</strong>
+                and deliver <strong style={{color:"#0044ff"}}>real strategic impact.</strong>
             </Typography>
             <Stack gap="4" sx={{spacing:"4"}}>
                 <Button
