@@ -17,7 +17,7 @@ const getViewportSettings = () => {
     if (width < 480) {
         return {
             cameraZ: 12,
-            cameraY: 1.4,
+            cameraY: 1.2,
             groupScale: 0.72,
             groupX: 0,
             groupY: 0,
