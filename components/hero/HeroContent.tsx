@@ -28,8 +28,8 @@ const HeroContent = () => {
             <Typography
                 variant="h1"
                 sx={{
-                    fontWeight: "regular",
-                    fontSize: { xs: 34, sm: 58, md: 38, xxl: 56 },
+                    fontWeight: "900",
+                    fontSize: { xs: 32, sm: 58, md: 38, xxl: 56 },
                     lineHeight: "1.2",
                     width: { xs: "12ch", lg: "20ch" },
                     textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
@@ -37,8 +37,7 @@ const HeroContent = () => {
                     textTransform: "uppercase"
                 }}
             >
-                Crafting Exceptional
-                Digital Experiences
+                Digital Excellence Redefined
             </Typography>
 
             <Typography
@@ -48,9 +47,9 @@ const HeroContent = () => {
                     maxWidth: pxToRem(650),
                 }}
             >
-                Elevate your brand with our comprehensive tech services. From innovative
-                web and graphic design to cutting-edge software development, <Box component="strong" sx={{ color: '#fff' }}>we guide you through every step</Box>
-                {' '}of the product development journey.
+                We blend <strong>creativity</strong>, <strong>strategy</strong> and <strong>technology</strong>
+                to build next generation digital products that drive growth
+                and deliver <strong style={{color:"#0044ff"}}>real strategic impact.</strong>
             </Typography>
             <Stack gap="4" sx={{spacing:"4"}}>
                 <Button
