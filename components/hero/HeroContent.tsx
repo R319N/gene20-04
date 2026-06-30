@@ -31,7 +31,7 @@ const HeroContent = () => {
                     fontWeight: "900",
                     fontSize: { xs: 32, sm: 58, md: 38, xxl: 56 },
                     lineHeight: "1.2",
-                    width: { xs: "12ch", lg: "20ch" },
+                    width: { xs: "12ch", lg: "12ch" },
                     textShadow: '0 12px 34px rgba(91, 139, 255, 0.32)',
                     textWrap: "wrap",
                     textTransform: "uppercase"
@@ -43,13 +43,15 @@ const HeroContent = () => {
             <Typography
                 variant="body1"
                 sx={{
+                    fontSize:{xs:"14px", xl:"20px"},
                     color: 'rgba(238, 243, 255, 0.78)',
-                    maxWidth: pxToRem(650),
+                    textTransform:"capitalize",
+                    maxWidth:"45ch"
+                 
                 }}
             >
-                We blend <strong>creativity</strong>, <strong>strategy</strong> and <strong>technology</strong>
-                to build next generation digital products that drive growth
-                and deliver <strong style={{color:"#0044ff"}}>real strategic impact.</strong>
+                We blend <strong>creativity</strong>, <strong>strategy</strong> and <strong>technology</strong> to build next generation digital products that drive growth
+                and deliver <strong style={{color:"#0044ff"}}> real strategic impact.</strong>
             </Typography>
             <Stack gap="4" sx={{spacing:"4"}}>
                 <Button

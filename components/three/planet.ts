@@ -235,15 +235,24 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     const stars = getStarfield({ numStars: 5000 });
     const nebula = getLayer({
         path: './textures/rad-grad.png',
-        radius: 6,
-        size: 14,
-        opacity: 0.12,
-        numSprites: 6,
-        z: -9,
+        radius: 12,
+        size: 24,
+        opacity: 0.35,
+        numSprites: 24,
+        z: -12,
+    });
+    const nebulaBack = getLayer({
+        path: './textures/rad-grad.png',
+        radius: 15,
+        size: 32,
+        opacity: 0.18,
+        numSprites: 28,
+        z: -20,
+        hue: 0.55,
     });
     const networkGlobe = createNetworkGlobe();
     const earthGroup = new THREE.Group();
-    earthGroup.add(earth, atmosphere, networkGlobe, stars, nebula);
+    earthGroup.add(earth, atmosphere, networkGlobe, stars, nebula, nebulaBack);
     earthGroup.rotation.z = -23.4 * Math.PI / 180;
 
 

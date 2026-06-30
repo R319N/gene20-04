@@ -132,16 +132,32 @@ export default function Glove3d() {
       transparent: true,
       opacity: 0.22,
     });
-    const stars = getStarfield({ numStars: 2000 });
-    scene.add(stars);
+    const stars = getStarfield({ numStars: 8000 });
     // const sunLight = new THREE.DirectionalLight(0xffffff, 4.0);
     // sunLight.position.copy(sunDirection);
     // scene.add(sunLight);
 
     // const wireframe = new THREE.Mesh(wireGeometry, wireMaterial);
     // earthGroup.add(wireframe);
-    const nebula = getLayer({ path: './textures/rad-grad.png' });
-    scene.add(nebula);
+    const nebula = getLayer({
+      path: './textures/rad-grad.png',
+      radius: 10,
+      size: 18,
+      opacity: 0.32,
+      numSprites: 20,
+      z: -10,
+    });
+    const nebulaBack = getLayer({
+      path: './textures/rad-grad.png',
+      radius: 14,
+      size: 26,
+      opacity: 0.15,
+      numSprites: 24,
+      z: -16,
+      hue: 0.55,
+    });
+    scene.add(nebula, nebulaBack);
+    scene.add(stars);
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
     scene.add(ambientLight);
@@ -177,6 +193,8 @@ export default function Glove3d() {
     const animate = (t = 0) => {
       animationId = window.requestAnimationFrame(animate);
       earthGroup.rotation.y += 0.004;
+      nebula.rotation.z += 0.00005;
+      nebulaBack.rotation.z -= 0.00003;
       stars.userData.update(t);
       controls.update();
       renderer.render(scene, camera);

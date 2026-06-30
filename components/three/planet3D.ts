@@ -21,6 +21,8 @@ const getViewportSettings = () => {
             groupScale: 0.72,
             groupX: 0,
             groupY: 0,
+            nebulaX: 0,
+            nebulaScale: 1.8,
         };
     }
 
@@ -31,6 +33,8 @@ const getViewportSettings = () => {
             groupScale: 0.82,
             groupX: 0,
             groupY: 0,
+            nebulaX: 0,
+            nebulaScale: 1.6,
         };
     }
 
@@ -41,6 +45,8 @@ const getViewportSettings = () => {
             groupScale: 0.8,
             groupX: 1.4,
             groupY: 0,
+            nebulaX: -1.1,
+            nebulaScale: 1.25,
         };
     }
 
@@ -50,6 +56,8 @@ const getViewportSettings = () => {
         groupScale: 0.8,
         groupX: 1.4,
         groupY: 0,
+        nebulaX: -2.8,
+        nebulaScale: 1,
     };
 };
 
@@ -239,16 +247,16 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     earthGroup.add(glowMesh);
 
     const nebula = getLayer({
-        path: './textures/rad-grad.png',
-        size: window.innerWidth < 768 ? 2.2 : 1.8,
+        path: '/textures/rad-grad.png',
+        size: 1.2,
     });
     scene.add(nebula);
 
-    const ambientLight = new THREE.AmbientLight(0x00ffff, 0.65);
+    const ambientLight = new THREE.AmbientLight(0x00ffff, 0.35);
     scene.add(ambientLight);
 
 
-    const stars = getStarfield({ numStars: 5000 });
+    const stars = getStarfield({ numStars: 12000 });
     scene.add(stars);
 
     const sunDirection = new THREE.Vector3();
@@ -265,6 +273,8 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
         camera.position.z = viewport.cameraZ;
         earthGroup.position.set(viewport.groupX, viewport.groupY, 0);
         earthGroup.scale.setScalar(viewport.groupScale);
+        nebula.position.x = viewport.nebulaX;
+        nebula.scale.setScalar(viewport.nebulaScale);
         camera.updateProjectionMatrix();
     };
 
