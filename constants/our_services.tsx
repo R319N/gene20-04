@@ -163,7 +163,7 @@ const ourServices: Services[] = [
     name: "Social Media & Digital Marketing",
     heading: "Reach Your Audience Effectively",
     image: "/images/digital-marketing.png",
-    pageUrl: "/services#digital-marketing",
+    pageUrl: "/services#digital-markerting",
     description:
       "We develop and execute data-driven digital marketing strategies to increase your online visibility, attract qualified leads, and drive conversions.",
     detailIntro:
