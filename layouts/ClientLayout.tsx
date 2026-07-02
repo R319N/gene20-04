@@ -7,6 +7,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import SmoothScrollProvider from "@/assets/providers/smooth-scroll-provider";
 import themePresets from "@/assets/theme/themePresets";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import SiteTransition from "./SiteTransition";
 
 const defaultThemeId = "classic";
 const themeMap = themePresets.reduce((acc, themePreset) => {
@@ -36,9 +37,9 @@ export default function ClientLayout(props: { children: React.ReactNode }) {
     <AppRouterCacheProvider options={{ enableCssLayer: true }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-      <SmoothScrollProvider />
-     
-        {children}
+        <SmoothScrollProvider />
+
+        <SiteTransition>{children}</SiteTransition>
         {/* <ThemeSwitcher themes={themePresets} value={themeId} onChange={setThemeId} /> */}
       </ThemeProvider>
     </AppRouterCacheProvider>
