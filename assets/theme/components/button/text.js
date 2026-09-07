@@ -19,7 +19,7 @@ const buttonText = {
     lineHeight: 1,
     borderRadius: 0,
     padding: `${pxToRem(0)} ${pxToRem(0)}`,
-      borderBottom: `1px solid ${rgba(text.primary, 0.2)}`,
+      // borderBottom: `1px solid ${rgba(text.primary, 0.2)}`,
 
     '&:hover': {
       boxShadow: 'none'

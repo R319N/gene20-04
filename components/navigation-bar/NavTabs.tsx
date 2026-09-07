@@ -31,7 +31,7 @@ const NavTabs = () => {
             value={index}
             href={nav.url}
             sx={{
-              width: "100px",
+              width: { md: "80px", xxl: "100px" },
               color:
                 pageTab === index
                   ? (theme) => theme.palette.primary.dark

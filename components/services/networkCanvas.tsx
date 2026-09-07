@@ -1,9 +1,8 @@
 "use client";
-
-import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { Canvas, useFrame } from "@react-three/fiber";
+// import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 const GRID_POSITIONS = generateGridPositions();
 const NODE_POSITIONS = generateNodePositions();
@@ -95,6 +94,7 @@ function Nodes() {
 export default function NetworkCanvas() {
   return (
     <Canvas
+      dpr={[1, 1]}
       camera={{
         position: [0, 8, 18],
         fov: 50,

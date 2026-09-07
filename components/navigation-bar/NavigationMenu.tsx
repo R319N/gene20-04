@@ -3,7 +3,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import NavigationDrawer from "./NavigationDrawer";
 import navigation from "@/constants/navigation_Links";
-import SocialContacts from "../contact-components/socialContact";
+import SocialContacts from "../contact/socialContact";
 
 interface NavigationMenuProps {
   open: boolean;

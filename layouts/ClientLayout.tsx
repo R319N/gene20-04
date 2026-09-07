@@ -39,7 +39,9 @@ export default function ClientLayout(props: { children: React.ReactNode }) {
         <CssBaseline />
         <SmoothScrollProvider />
 
-        <SiteTransition>{children}</SiteTransition>
+        {/* <SiteTransition> */}
+          {children}
+          {/* </SiteTransition> */}
         {/* <ThemeSwitcher themes={themePresets} value={themeId} onChange={setThemeId} /> */}
       </ThemeProvider>
     </AppRouterCacheProvider>

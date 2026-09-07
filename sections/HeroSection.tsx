@@ -5,9 +5,11 @@ import { Box } from '@mui/material';
 import ScrollIndicator from '@/components/ScrollIndicator';
 import React, { useEffect } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
+import { ScrollTrigger } from 'gsap/all'
+   
 import HeroContent from '@/components/hero/HeroContent';
+
+// gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
 

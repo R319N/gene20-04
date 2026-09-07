@@ -17,23 +17,16 @@ import Toolbar from "@mui/material/Toolbar";
 // *** MUI5 Icon imports ***
 import MenuIcon from "@mui/icons-material/Menu";
 import Close from "@mui/icons-material/Close";
+import { Button, Link } from "@mui/material";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 // *** style imports ***
-// import { styles } from "@/styles/styles";
+import { styles } from "@/styles/styles";
 
 // *** component imports ***
-// import Gene20Logo from "../gene20Logo";
-// import GlowingButtonOutlined from "../glowingButtonOutlined";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
 import NavTabs from "./NavTabs";
 import NavigationMenu from "./NavigationMenu";
-// import Logo from "../logo";
-// import ContactBar from "../contactBar";
-import { Button, Link, useMediaQuery } from "@mui/material";
-import type { Theme } from "@mui/material/styles";
-import { styles } from "@/styles/styles";
 import LogoThumbnail from "@/assets/logo/LogoThumbnail";
-import LogoIcon from "@/assets/logo/LogoIcon";
 
 interface Props {
   window?: () => Window;
@@ -72,11 +65,6 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const container = window !== undefined ? () => window().document.body : undefined;
-  const phone = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100,
-  });
 
   return (
     <>
@@ -122,7 +110,6 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                 <Link href="/">
                   {/* {phone ? <LogoIcon /> : <LogoThumbnail />} */}
                   <LogoThumbnail />
-
                 </Link>
                 <Box display="flex" alignItems="center" gap={4}>
                   <IconButton
@@ -156,7 +143,6 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                 >
                   <Button
                     variant="contained"
-
                   >
                     contact us
                   </Button>
@@ -191,7 +177,6 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
           handleDrawerToggle={handleDrawerToggle}
         />
       </Drawer>
-      {/* </Box> */}
     </>
   );
 };

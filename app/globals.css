@@ -18,6 +18,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
@@ -28,19 +29,18 @@ body.app-body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* GSAP ScrollSmoother styles */
+/* Normal document flow scroll container */
 #smooth-wrapper {
-  position: fixed;
-  height: 100vh;
+  position: relative;
   width: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 #smooth-content {
   position: relative;
-  will-change: transform;
+  min-height: 100%;
+  will-change: auto;
 }
 
 .hero_main {
