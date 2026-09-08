@@ -1,18 +1,50 @@
+
 "use client"
+// import ServiceSlide from '@/components/my-services/ServiceSlide'
+// import ourServices from '@/constants/our_services-data'
 import { styles } from '@/styles/styles'
 import { useGSAP } from '@gsap/react'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, styled, Stack, Typography } from '@mui/material'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import React, { useRef, useState } from 'react'
+// import '@/styles/animatedButton.css'
+import rgba from '@/assets/theme/functions/rgba'
 import ourServices from '@/constants/our_services'
 import ServiceSlide from '@/components/services/ServiceSlide'
 import ScrollIndicator from '@/components/ui/ScrollIndicator'
-import SlideIndicator from '@/components/services/SlideIndicator'
-import HeaderText from '@/components/headers/HeaderText'
+// import TitleHeader from '@/components/headers/TitleHeader'
+// import ScrollIndicator2 from '@/components/ScrollIndicator2'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const Background = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "image" && prop !== "isActive",
+})<{ image: string; isActive: boolean }>(({ image, isActive }) => ({
+  position: "absolute",
+  inset: 0,
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${image})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  zIndex: -1,
+  opacity: isActive ? 0.9 : 0,
+  transition: "opacity 0.6s ease-in-out"
+}));
+
+const Overlay = styled(Box)({
+  position: "absolute",
+  inset: 0,
+  zIndex: -1
+  , width: "100%",
+  height: "100%",
+  background: "#0e1116f2",
+  backdropFilter: "blur(2px)"
+
+})
 const ServicesSection = () => {
   const slides = ourServices
   const cardsRef = React.useRef<(HTMLDivElement | null)[]>([])
@@ -21,8 +53,6 @@ const ServicesSection = () => {
   const [active, setActive] = useState(0)
 
   useGSAP(() => {
-    if (typeof window !== 'undefined' && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 900)) return
-
     const ctx = gsap.context(() => {
       const track = trackRef.current
       const section = sectionRef.current
@@ -122,6 +152,7 @@ const ServicesSection = () => {
     return () => ctx.revert()
   }, [slides.length])
 
+  //return
   return (
     <Box
       ref={sectionRef}
@@ -136,9 +167,30 @@ const ServicesSection = () => {
         overflow: "visible",
       }}
     >
+      {/* {slides.map((slide, i) => (
+        <Background
+          key={slide.key}
+          image={slide.image}
+          isActive={active === i}
+        />
+      ))}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(68, 221, 255, 0.03) 2px, rgba(68, 221, 255, 0.03) 4px)',
+          animation: 'scanline 8s linear infinite',
+        }}
+      />
+      {/* <div className="math-bg" /> 
+
+      <Overlay /> */}
+
       <div
         className="services-gradient1"
       />
+      {/* <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      </div> */}
+
       <Grid
         container
         sx={{
@@ -149,11 +201,50 @@ const ServicesSection = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          pt: { xs: "1rem", lg: "8vh", xxl: "5vh" },
+          pt: { xs: "0vh", lg: "10vh", xxl: "0vh" },
         }}
       >
-        <SlideIndicator slides={slides} active={active} />
-        <Box 
+        <Box
+          sx={{ width: "3vw", height: "100vh", position: 'absolute', inset: 0, px: "2rem", top: 0, display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center', justifyContent: "space-evenly", borderRight: '1px solid rgba(153, 170, 255, 0.1)', zIndex: 6 }}  >
+          <Stack gap={2}>
+            {slides.map((_, i) => (
+              <Box
+                key={i}
+                sx={{
+                  position: "relative",
+                  height: "10px",
+                  width: "10px",
+                  borderRadius: '50%',
+                  ...styles.glow1,
+                  backgroundColor: active === i ? (theme) => theme.palette.primary.main : (theme) => theme.palette.text.primary,
+                  transition: "width 0.25s ease, background-color 0.25s ease",
+                }}
+              />
+            ))}
+          </Stack>
+          <Box
+            sx={{
+              position: "absolute", maxWidth: "2rem",
+              display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center", bottom: 54
+            }}
+            gap={4} >
+            <Typography
+              variant="caption"
+              sx={{
+                letterSpacing: 2,
+                textTransform: 'uppercase',
+                writingMode: 'vertical-rl',
+                transform: 'rotate(180deg)',
+              }}>
+              scroll
+            </Typography>
+            <Box
+              sx={{ height: "3rem", width: "1px", ...styles.glow1 }}
+            />
+          </Box>
+        </Box>
+        <Box
           sx={{
             position: "absolute",
             inset: 0,
@@ -170,19 +261,56 @@ const ServicesSection = () => {
             sx={{
               ...styles.between_flex,
               position: "relative",
+              // top: { xs: 22, md: 54 },
+              // left: { xs: 24, md: 80, lg: 128 },
+              // right: { xs: 24, md: 80, lg: 128 },
               zIndex: 5,
               gap: 1.5,
               width: "100%",
-              px: { xs: "1rem", md: "8vw", xxl: "10vw" },
+              px: { xs: "1rem", lg: "10vw" },
+              pt: "1rem"
+
             }}
           >
-            <HeaderText label="Our Services" />
+            <Typography
+              variant="caption"
+              sx={{
+                background: `
+  linear-gradient(#0e1116, #0e1116) padding-box,
+  linear-gradient(90deg, #5876db, #4f5ad9, #3729ff) border-box
+`,
+                border: "1px solid transparent",
+                fontSize: { xs: 10, md: 13 },
+                fontWeight: 400,
+                letterSpacing: 2,
+                lineHeight: 1.5,
+                textTransform: "uppercase",
+                width: "fit-content",
+                p: "0.3rem 0.5rem",
+                height: "100%",
+                borderRadius: "20px",
+                "&::before": {
+                  content: '""',
+                  display: "inline-block",
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  background:
+                    "linear-gradient(135deg, #29adff 0%, #8f7cff 100%)",
+                  boxShadow: "0 0 14px rgba(41,173,255,0.6)",
+                  mr: 1,
+                  verticalAlign: "middle",
+                },
+              }}
+            >
+              Our Services
+            </Typography>
             <Box
               sx={{
                 ...styles.center_flex,
                 alignItems: "center",
                 gap: 0.8,
-                width: { xs: "min(210px, 30%)", md: "min(240px, 100%)", xxl: "min(370px, 100%)" },
+                width: { xs: "min(210px, 30%)", md: "min(370px, 100%)" },
                 maxWidth: "100%",
                 color: "#5db2ff",
                 py: 1.35,
@@ -243,7 +371,7 @@ const ServicesSection = () => {
             sx={{
               ...styles.center_flex,
               height: "100%",
-              width:  `${slides.length * 100}vw`,
+              width: `${slides.length * 100}vw`,
               minHeight: 0,
               willChange: "transform",
               py: { xs: "0", lg: "0" }
@@ -256,10 +384,9 @@ const ServicesSection = () => {
                   if (el) cardsRef.current[i] = el
                 }}
                 sx={{
-                  width: { xs: "100%", lg: "100vw" },
+                  width: { xs: "100vw", lg: "100vw" },
                   height: "100%",
                   minHeight: 0,
-                  // px: { xs: "1rem", md: "2rem", xxl: "8rem" },
                 }}
               >
                 <ServiceSlide

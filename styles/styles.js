@@ -40,6 +40,9 @@ export const styles = {
     // width: "32px",
     border: "1px solid #7E78D255",
   },
+   icons: {
+    fontSize: { xs: pxToRem(16), lg: pxToRem(22), xxl: pxToRem(32) }
+  },
   iconXS: {
     display: "flex",
     alignItems: "center",

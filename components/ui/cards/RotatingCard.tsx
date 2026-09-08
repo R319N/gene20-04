@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, ReactNode } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
@@ -9,6 +8,7 @@ import { styles } from "@/styles/styles";
 interface RotatingCardProps {
   children: ReactNode;
   href?: string; // Optional href for wrapping the card with a link
+  ariaLabel?: string; // Optional aria-label for accessibility
 }
 
 const RotatingCard: React.FC<RotatingCardProps> = ({ children, href }) => {

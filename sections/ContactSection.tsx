@@ -99,7 +99,10 @@ function ContactSection() {
       if (cancelled) return;
 
       const worldData = world as unknown as { objects: { countries: unknown } };
-      const countries = feature(worldData, worldData.objects.countries) as unknown as CountryCollection;
+      const countries = feature(
+        worldData as never,
+        worldData.objects.countries as never,
+      ) as unknown as CountryCollection;
       const sa = countries.features.find((country) => Number(country.id) === 710);
 
       function draw() {
@@ -132,19 +135,19 @@ function ContactSection() {
         off.width = W;
         off.height = H;
         const octx = off.getContext("2d")!;
-        const pathGen = geoPath(proj as unknown, octx);
+        const pathGen = geoPath(proj, octx);
 
         // All land: muted gray
         octx.fillStyle = "rgba(120,120,120,1)";
         countries.features.forEach((country) => {
-          pathGen(country);
+          pathGen(country as never);
           octx.fill();
         });
 
         // South Africa: solid red (for detection)
         if (sa) {
           octx.fillStyle = "rgba(255,0,0,1)";
-          pathGen(sa);
+          pathGen(sa as never);
           octx.fill();
         }
 
@@ -153,7 +156,7 @@ function ContactSection() {
         // SA centroid → screen coords
         let saXY: [number, number] | null = null;
         if (sa) {
-          const c = geoCentroid(sa as unknown);
+          const c = geoCentroid(sa as Parameters<typeof geoCentroid>[0]);
           const p = proj(c as [number, number]);
           if (p) saXY = p as [number, number];
         }
