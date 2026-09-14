@@ -45,7 +45,7 @@ const HeroSection = () => {
       className="hero-section relative overflow-hidden"
       style={{
         minHeight: "100svh",
-        height: "100svh",
+        height: "100%",
         isolation: "isolate",
       }}
     >
@@ -74,18 +74,18 @@ const HeroSection = () => {
             width: { xs: "100%", md: "46vw", xl: "100%" },
             zIndex: 0,
             pointerEvents: "none",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
           <canvas
             className="planet-3D"
             style={{
               position: "absolute",
-              inset: 0,
+              inset: 1,
               width: "100%",
               height: "100%",
               display: "block",
-              overflow: "hidden",
+              overflow: "visible",
             }}
           />
         </Box>

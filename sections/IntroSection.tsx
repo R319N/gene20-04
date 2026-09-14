@@ -24,6 +24,7 @@ const IntroSection = () => {
         position: 'relative',
         minHeight: "100dvh",
         color: '#dbe7ff',
+        bgColor:"yellow",
         px: { xs: 1.4, sm: 4, md: 7 },
         ...styles.center_flex,
       }}
@@ -37,16 +38,16 @@ const IntroSection = () => {
           zIndex: 0,
         }}
       >
-        <div className="gradient-wrapper">
+        {/* <div className="gradient-wrapper">
           <div className="intro-gradient" />
-        </div>
+        </div> */}
       </Box>
 
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           left: 0,
-          // background:"yellow",
+          background:"transparent",
           inset: 0,
           opacity: { xs: 0.46, md: 0.2 },
           pointerEvents: 'none',
@@ -54,7 +55,7 @@ const IntroSection = () => {
         }}
       >
         <MountainField3D />
-      </Box>
+      </Box> */}
       <Box sx={{
         ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, height: "100%"
       }}>

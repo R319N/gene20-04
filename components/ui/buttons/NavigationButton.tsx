@@ -13,8 +13,9 @@ const NavigationButton = ({ onClick, icon, ariaLabel }: Props) => {
             aria-label={ariaLabel}
             onClick={onClick}
             sx={{
-                width: { xs: 58, md: 40 },
-                height: { xs: 58, md: 40 },
+                width: { xs: 32, md: 40 },
+                height: { xs: 32, md: 40 },
+                p:"1.2rem",
                 border: '1px solid rgba(255,255,255,0.42)',
                 color: 'text.primary',
                 boxShadow: '0 0 24px rgba(82, 111, 255, 0.18)',

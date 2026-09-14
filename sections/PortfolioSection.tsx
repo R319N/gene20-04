@@ -212,6 +212,7 @@ const PortfolioSection = () => {
                     height: "100%",
                     boxSizing: "border-box",
                     px: { xs: "1rem", md: "8vw", xxl: "10vw" },
+                    pt:"6rem"
                 }}
             >
                 <Box width="100%" display="flex" justifyContent="start" alignItems="flex-start" flexDirection="column" gap={4}>
@@ -224,7 +225,7 @@ const PortfolioSection = () => {
 
                     />
                 </Box>
-                <Box height={"100%"} pt="2rem" width="100%">
+                <Box height={"100%"} width="100%">
                     <PortfolioSlider
                         activeProject={activeProject}
                         totalProjects={myProjects.length}
