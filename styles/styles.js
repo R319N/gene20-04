@@ -85,7 +85,7 @@ export const styles = {
     position: "relative",
     minHeight: "100dvh",
     width: "100%",
-    pt: "18vh",
+    pt: "16vh",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",

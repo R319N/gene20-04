@@ -353,7 +353,10 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
                     ))}
                 </Stack> */}
             </Box>
-            <ExternalLink activeProject={activeProject} />
+            <Box sx={{ display: { xs: "flex", md: "none" }, width: "100%", justifyContent: "flex-end", alignItems: "flex-end", gap: 2, mt: 4 }}>
+                <ExternalLink activeProject={activeProject} />
+            </Box>
+
             <Stack
                 spacing={{ xs: 2, md: 8 }}
                 flexDirection="row"
