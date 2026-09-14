@@ -7,6 +7,7 @@ import HeaderBanner from '@/components/headers/HeaderBanner'
 import ContactDetails from '@/components/contact/ContactDetails'
 import '@/styles/animatedButton.css'
 import GlowButton from '@/components/ui/buttons/GlowButton'
+import SocialContacts from '@/components/contact/socialContact'
 
 type CountryFeature = {
   id?: string | number;
@@ -222,12 +223,16 @@ function ContactSection() {
     <Box
       ref={sectionRef}
       className="relative"
-      sx={{ ...styles.section_container, minHeight: "100svh", background: "transparent", isolation: "isolate" }}
+      sx={{ ...styles.section_container, 
+        ...styles.between_flex, flexDirection: "column",
+        pt:"12svh", minHeight: "100svh", height:"100%", isolation: "isolate", px:"1rem", py:"12vh" }}
     >
       {/* Map canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-30" style={{ zIndex: 0, scale:"0.5" }} />
+      {/* <Box sx={{height:"100%", position: "absolute", top: 0, left: 0, width: "100%",  zIndex: 0, pointerEvents: "none", opacity: "10%", transform: "translate(0%, 20%)"}}> */}
+        <canvas ref={canvasRef} className=" absolute bottom-0 w-full h-full inset-0 pointer-events-none opacity-30" style={{ zIndex: 0, }} />
+      {/* </Box> 
+      
 
-      {/* Bottom fade so content reads clean */}
       <div
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
         style={{
@@ -236,7 +241,7 @@ function ContactSection() {
         }}
       />
 
-      {/* SA ping dot */}
+     
       {saPing && (
         <div
           className="absolute pointer-events-none"
@@ -253,7 +258,7 @@ function ContactSection() {
             />
           </span>
         </div>
-      )}
+      )} */}
 
       {/* Content */}
       {/* <div
@@ -345,17 +350,18 @@ function ContactSection() {
           </div>
         </div>
       </div> */}
-      <Box
+      {/* <Box
         sx={{
           ...styles.between_flex,
           position: "relative",
           zIndex: 10,
           flexDirection: "column",
           width: "100%",
+          // height:"100%",
           px: { xs: "1rem", md: "8vw", xxl: "10vw" },
         }}
-      >
-        <Stack spacing={4}>
+      > */}
+        <Stack spacing={4} sx={{height:"100%"}}>
           <HeaderText label='get in touch' />
           <HeaderBanner
             text="Let&apos;s create something"
@@ -365,15 +371,18 @@ function ContactSection() {
 
           />
         </Stack>
+       
         <Box sx={{
           ...styles.between_flex,
-          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems:{xs:"start", md: "center"},
           height: "100%",
-          width: "100%"
+          width: "100%",
+         gap:4
         }}>
-          <Stack mt={4}>
+          <Stack mt={4} >
             <ContactDetails />
-            {/* <SocialContacts /> */}
+            <SocialContacts />
           </Stack>
 
           <GlowButton
@@ -383,7 +392,7 @@ function ContactSection() {
 
 
         </Box>
-      </Box>
+      {/* </Box> */}
     </Box>
   );
 }
