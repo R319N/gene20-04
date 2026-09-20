@@ -1,6 +1,4 @@
 "use client"
-import Appbar from "@/components/navigation/Appbar";
-import Footer from "@/components/Footer";
 import ourServices from "@/constants/our_services";
 import { Box, Button, Chip, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import Image from "next/image";
@@ -27,7 +25,6 @@ export default function ServicesPage() {
         color: "common.white",
       }}
     >
-      <Appbar />
 
       <Box component="main" sx={{ pt: { xs: 16, md: 20 }, pb: 10 }}>
         <Container maxWidth="xl">
@@ -162,8 +159,6 @@ export default function ServicesPage() {
           </Grid>
         </Container>
       </Box>
-
-      <Footer />
     </Paper>
   );
 }
