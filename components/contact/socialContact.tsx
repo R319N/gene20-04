@@ -11,18 +11,10 @@ export default function SocialContacts() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        width:"100%"
       }}
       gap={1}
     >
-      <Typography
-        variant="body2"
-        sx={{
-          textTransform: "capitalize",
-          color: '#5C6584',
-        }}
-      >
-        follow us on social media
-      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -32,9 +24,12 @@ export default function SocialContacts() {
         gap={1}
       >
         {socialMediaRoutes.map((social, index) => (
-          <Box component="a" href={social.url} key={index}>
-            <RotatingCard>{social.icon}</RotatingCard>
-          </Box>
+         
+          <RotatingCard href={social.url} key={index} >
+            {social.icon}
+            </RotatingCard>
+            
+        
         ))}
       </Box>
     </Box>

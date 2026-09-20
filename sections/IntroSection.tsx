@@ -38,12 +38,12 @@ const IntroSection = () => {
           zIndex: 0,
         }}
       >
-        {/* <div className="gradient-wrapper">
+        <div className="gradient-wrapper">
           <div className="intro-gradient" />
-        </div> */}
+        </div>
       </Box>
 
-      {/* <Box
+      <Box
         sx={{
           position: 'absolute',
           left: 0,
@@ -55,7 +55,7 @@ const IntroSection = () => {
         }}
       >
         <MountainField3D />
-      </Box> */}
+      </Box>
       <Box sx={{
         ...styles.center_flex, flexDirection: "column", gap: 0, zIndex: 1, height: "100%"
       }}>

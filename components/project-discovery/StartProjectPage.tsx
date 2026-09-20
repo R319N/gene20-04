@@ -1,6 +1,6 @@
 "use client";
 
-import Appbar from "@/components/navigation-bar/Appbar";
+import Appbar from "@/components/navigation/Appbar";
 import {
   AutoAwesomeRounded,
   ArrowBackRounded,

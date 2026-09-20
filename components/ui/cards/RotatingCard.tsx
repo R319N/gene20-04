@@ -1,4 +1,3 @@
-"use client";
 import { useState, ReactNode } from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";

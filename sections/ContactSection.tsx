@@ -1,5 +1,5 @@
 "use client"
-import { Box, Stack } from '@mui/material'
+import { Box, Stack, Container } from '@mui/material'
 import React from 'react'
 import { styles } from '@/styles/styles'
 import HeaderText from '@/components/headers/HeaderText'
@@ -7,7 +7,7 @@ import HeaderBanner from '@/components/headers/HeaderBanner'
 import ContactDetails from '@/components/contact/ContactDetails'
 import '@/styles/animatedButton.css'
 import GlowButton from '@/components/ui/buttons/GlowButton'
-import SocialContacts from '@/components/contact/socialContact'
+
 
 type CountryFeature = {
   id?: string | number;
@@ -23,7 +23,7 @@ type CountryCollection = {
 //     <Box
 //      component={"section"} 
 //      id="contact"
-     
+
 //       sx={{ ...styles.section_container }}
 //       >
 //               <Box
@@ -104,6 +104,13 @@ function ContactSection() {
         worldData as never,
         worldData.objects.countries as never,
       ) as unknown as CountryCollection;
+      const mapFeatures = countries.features.filter(
+        (country) => Number(country.id) !== 10,
+      );
+      const mapShape = {
+        type: "FeatureCollection",
+        features: mapFeatures,
+      };
       const sa = countries.features.find((country) => Number(country.id) === 710);
 
       function draw() {
@@ -111,8 +118,8 @@ function ContactSection() {
         const section = sectionRef.current;
         if (!canvas || !section || cancelled) return;
 
-        const W = section.offsetWidth;
-        const H = section.offsetHeight;
+        const W = Math.round(section.clientWidth);
+        const H = Math.round(section.clientHeight);
         if (W === 0 || H === 0) return;
 
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -122,14 +129,21 @@ function ContactSection() {
         canvas.style.height = `${H}px`;
 
         const ctx = canvas.getContext("2d")!;
-        ctx.scale(dpr, dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, W, H);
 
         // Mercator projection — scale fills full width
-        const scale = W / 6.4;
-        const proj = geoMercator()
-          .scale(scale)
-          .translate([W / 2, H / 2 + H * 0.14]);
+        const isSmall = W < 600;
+        const paddingX = Math.max(isSmall ? 10 : 24, W * (isSmall ? 0.03 : 0.05));
+        const paddingTop = Math.max(isSmall ? 48 : 32, H * (isSmall ? 0.12 : 0.08));
+        const paddingBottom = Math.max(isSmall ? 56 : 32, H * (isSmall ? 0.12 : 0.08));
+        const proj = geoMercator().fitExtent(
+          [
+            [paddingX, paddingTop],
+            [W - paddingX, H - paddingBottom],
+          ],
+          mapShape as never,
+        );
 
         // ── Offscreen rasterize land + SA ──────────────────────────
         const off = document.createElement("canvas");
@@ -140,7 +154,8 @@ function ContactSection() {
 
         // All land: muted gray
         octx.fillStyle = "rgba(120,120,120,1)";
-        countries.features.forEach((country) => {
+        mapFeatures.forEach((country) => {
+          octx.beginPath();
           pathGen(country as never);
           octx.fill();
         });
@@ -148,6 +163,7 @@ function ContactSection() {
         // South Africa: solid red (for detection)
         if (sa) {
           octx.fillStyle = "rgba(255,0,0,1)";
+          octx.beginPath();
           pathGen(sa as never);
           octx.fill();
         }
@@ -166,8 +182,8 @@ function ContactSection() {
         if (saXY) {
           const [sx, sy] = saXY;
           const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, Math.min(W, H) * 0.18);
-          g.addColorStop(0, "rgba(116, 56, 246, 0.2)");
-          g.addColorStop(0.45, "rgba(88, 34, 197, 0.06)");
+          g.addColorStop(0, "rgba(116, 56, 246, 0.32)");
+          g.addColorStop(0.45, "rgba(88, 34, 197, 0.1)");
           g.addColorStop(1, "rgba(34,197,94,0)");
           ctx.fillStyle = g;
           ctx.fillRect(0, 0, W, H);
@@ -195,7 +211,7 @@ function ContactSection() {
               ctx.fill();
             } else if (r > 60) {
               // Other land
-              ctx.fillStyle = "rgba(255,255,255,0.055)";
+              ctx.fillStyle = "rgba(255,255,255,0.22)";
               ctx.beginPath();
               ctx.arc(x, y, R_LAND, 0, Math.PI * 2);
               ctx.fill();
@@ -221,17 +237,23 @@ function ContactSection() {
 
   return (
     <Box
-      ref={sectionRef}
-      className="relative"
-      sx={{ ...styles.section_container, 
-        ...styles.between_flex, flexDirection: "column",
-        pt:"12svh", minHeight: "100svh", height:"100%", isolation: "isolate", px:"1rem", py:"12vh" }}
-    >
+  ref={sectionRef}
+  className="relative"
+  sx={{
+    display: "flex",
+    justifyContent: "end",
+    alignItems: "center",
+    minHeight: "100svh",
+    height: "100%",
+    isolation: "isolate",
+    overflow: "hidden",
+  }}
+>
       {/* Map canvas */}
-      {/* <Box sx={{height:"100%", position: "absolute", top: 0, left: 0, width: "100%",  zIndex: 0, pointerEvents: "none", opacity: "10%", transform: "translate(0%, 20%)"}}> */}
-        <canvas ref={canvasRef} className=" absolute bottom-0 w-full h-full inset-0 pointer-events-none opacity-30" style={{ zIndex: 0, }} />
-      {/* </Box> 
-      
+      {/* <Box sx={{ height: "100%",  width: "100%", zIndex: 0, pointerEvents: "none", opacity: "10%", transform: "translate(0%, 20%)" }}> */}
+      <canvas ref={canvasRef} className="absolute top-[10%] w-full inset-0 pointer-events-none opacity-100 " style={{ zIndex: 0, }} />
+      {/* </Box> */}
+
 
       <div
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
@@ -240,128 +262,13 @@ function ContactSection() {
           zIndex: 1,
         }}
       />
-
-     
-      {saPing && (
-        <div
-          className="absolute pointer-events-none"
-          style={{ left: saPing[0], top: saPing[1], transform: "translate(-50%,-50%)", zIndex: 2 }}
-        >
-          <span className="relative flex h-3 w-3">
-            <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
-              style={{ backgroundColor: "#3b22c5" }}
-            />
-            <span
-              className="relative inline-flex rounded-full h-3 w-3"
-              style={{ backgroundColor: "#227cc5", boxShadow: "0 0 10px rgba(34, 173, 197, 0.9)" }}
-            />
-          </span>
-        </div>
-      )} */}
-
-      {/* Content */}
-      {/* <div
-        className="relative flex flex-col justify-between h-full px-8 py-16 md:px-20 md:py-24"
-        style={{ minHeight: "100svh", zIndex: 3 }}
-      >
-        //  Headline block 
-        <div>
-          <p
-            className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase font-semibold mb-6 md:mb-10"
-            style={{ color: "#4f6ef7" }}
-          >
-            Based in South Africa
-          </p>
-          <h2
-            className="font-black text-white leading-none tracking-tight"
-            style={{ fontSize: "clamp(3rem, 9vw, 8.5rem)" }}
-          >
-            Building
-            <br />
-            beyond
-            <br />
-            <span style={{ color: "rgba(255,255,255,0.18)" }}>borders.</span>
-          </h2>
-        </div>
-
-        Contact row
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-10 pt-16">
-          <div className="flex flex-col gap-1">
-            <p className="text-[10px] tracking-[0.28em] uppercase text-white/25 mb-1">
-              Get in touch
-            </p>
-            <a
-              href="mailto:hello@studio.co.za"
-              className="group flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300"
-              style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)", fontWeight: 300 }}
-            >
-              hello@studio.co.za
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 11 11"
-                fill="none"
-                className="opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <path
-                  d="M1.5 9.5L9.5 1.5M9.5 1.5H3.5M9.5 1.5V7.5"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </a>
-          </div>
-
-          Socials + CTA
-          <div className="flex items-center gap-6">
-            {["Li", "Be", "Gh", "Tw"].map((s) => (
-              <button
-                key={s}
-                className="text-[10px] font-semibold tracking-widest text-white/25 hover:text-white/60 transition-colors duration-300"
-              >
-                {s}
-              </button>
-            ))}
-            <div className="w-px h-4 bg-white/10" />
-            <button
-              className="group flex items-center gap-3 transition-colors duration-300"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
-              <span className="text-[10px] tracking-[0.28em] uppercase font-medium group-hover:text-white transition-colors duration-300">
-                Let&apos;s work together
-              </span>
-              <span
-                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
-                style={{ border: "1px solid rgba(255,255,255,0.12)" }}
-              >
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                  <path
-                    d="M1.5 6.5H11.5M11.5 6.5L7.5 2.5M11.5 6.5L7.5 10.5"
-                    stroke="currentColor"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div> */}
-      {/* <Box
-        sx={{
-          ...styles.between_flex,
-          position: "relative",
-          zIndex: 10,
-          flexDirection: "column",
-          width: "100%",
-          // height:"100%",
-          px: { xs: "1rem", md: "8vw", xxl: "10vw" },
-        }}
-      > */}
-        <Stack spacing={4} sx={{height:"100%"}}>
+      <Container sx={{
+        ...styles.section_container,
+        ...styles.between_flex,
+        position: "relative", zIndex: 10, flexDirection: "column",
+        width: "100%", height: "100%", px: { xs: "1rem", md: "8vw", xxl: "10vw" },
+      }}>
+        <Stack spacing={4} sx={{ height: "100%", width: "100%", }}>
           <HeaderText label='get in touch' />
           <HeaderBanner
             text="Let&apos;s create something"
@@ -371,28 +278,26 @@ function ContactSection() {
 
           />
         </Stack>
-       
+
         <Box sx={{
           ...styles.between_flex,
           flexDirection: { xs: "column", md: "row" },
-          alignItems:{xs:"start", md: "center"},
+          alignItems: { xs: "start", md: "center" },
           height: "100%",
           width: "100%",
-         gap:4
+          gap: 4
         }}>
           <Stack mt={4} >
             <ContactDetails />
-            <SocialContacts />
+            {/* <SocialContacts /> */}
           </Stack>
 
           <GlowButton
             title="START A PROJECT"
             subtitle="Tell me about your project and let's bring your ideas to life."
           />
-
-
         </Box>
-      {/* </Box> */}
+      </Container>
     </Box>
   );
 }
