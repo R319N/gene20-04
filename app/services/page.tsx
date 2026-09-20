@@ -1,5 +1,5 @@
 "use client"
-import Appbar from "@/components/navigation-bar/Appbar";
+import Appbar from "@/components/navigation/Appbar";
 import Footer from "@/components/Footer";
 import ourServices from "@/constants/our_services";
 import { Box, Button, Chip, Container, Grid, Paper, Stack, Typography } from "@mui/material";

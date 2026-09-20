@@ -12,7 +12,7 @@ interface Props {
 
 const HeaderBanner = ({ text, spanText, spanColor, subtitle }: Props) => {
     return (
-        <Stack gap={2} width="100%" >
+        <Stack gap={2} width="90%" >
             <Typography variant="h1" textTransform={"capitalize"}
                 sx={{
                     width: { xs: "80vw", lg: "16ch", xxl: "14ch" },
@@ -40,8 +40,10 @@ const HeaderBanner = ({ text, spanText, spanColor, subtitle }: Props) => {
                 </Box>
                 <Typography
                     variant="body1"
-                    color="#656464f1"
-                    sx={{ maxWidth: { xs: "100%", lg: "60ch", xxl: "60ch" }, lineHeight: "130%", textAlign: "left", fontSize: { xs: pxToRem(12), sm: "1.2rem", md: "1.4rem", lg: pxToRem(12), xxl: pxToRem(14) } }}
+                    color="textSecondary"
+                    sx={{ maxWidth: { xs: "100%", lg: "60ch", xxl: "60ch" },
+                     lineHeight: "120%", textAlign: "left", 
+                     fontSize: { xs: pxToRem(14), sm: "1.2rem", md: "1.4rem", lg: pxToRem(12), xxl: pxToRem(14) } }}
                 >
 
                     {subtitle}

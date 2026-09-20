@@ -12,8 +12,8 @@ const HeaderText = ({ label }: { label: string }) => {
       linear-gradient(90deg, #5876db, #4f5ad9, #3729ff) border-box
     `,
                 border: "1px solid transparent",
-                fontSize: { xs: pxToRem(14), md: pxToRem(14), xxl: pxToRem(14) },
-                fontWeight: "bold",
+                fontSize: { xs: pxToRem(12), md: pxToRem(14), xxl: pxToRem(14) },
+                fontWeight: "regular",
                 letterSpacing: 2,
                 lineHeight: 1.5,
                 fontVariant: "all-small-caps",

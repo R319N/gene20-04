@@ -13,8 +13,8 @@ interface Contact {
 const contactDetailsdata: Contact[] = [
   {
     name: "email",
-    details: "wilfredr319n@gmail.com",
-    component: <EmailButton emailAddress="wilfredr319n@gmail.com" />,
+    details: "info@gene20.co.za",
+    component: <EmailButton emailAddress="info@gene20.co.za" />,
   },
   {
     name: "cell contact",

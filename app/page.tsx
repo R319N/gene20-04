@@ -1,5 +1,3 @@
-import Appbar from "@/components/navigation-bar/Appbar";
-import Footer from "@/components/Footer";
 import HeroSection from "@/sections/HeroSection";
 import TestimonialSection from "@/sections/TestimonialSection";
 import ContactSection from "@/sections/ContactSection";
@@ -12,7 +10,7 @@ export default function Home() {
   return (
     <Paper
       sx={{
-        minHeight: "100dvh",
+        minHeight: "100svh",
         height: "100%",
         width: "100%",
         borderRadius: 0,
@@ -25,7 +23,6 @@ export default function Home() {
         backgroundColor: `(theme) => theme.palette.background.default`,
       }}
     >
-      <Appbar />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <Box component="main" sx={{
@@ -40,7 +37,6 @@ export default function Home() {
             <PortfolioSection />
             <TestimonialSection />
             <ContactSection />
-            <Footer />
           </Box>
         </div>
       </div>
