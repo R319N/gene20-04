@@ -28,7 +28,7 @@ export default function Home() {
           <Box component="main" sx={{
             position: "relative",
             zIndex: 2,
-            // flexGrow: 0,
+            flexGrow: 0,
           }}>
 
             <HeroSection />

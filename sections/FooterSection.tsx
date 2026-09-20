@@ -239,4 +239,4 @@ const FooterSection = () => {
   )
 }
 
-export default FooterSetion
+export default FooterSection
