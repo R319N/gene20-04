@@ -1,5 +1,7 @@
 "use client"
-import { Box, Stack, Container } from '@mui/material'
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Container from '@mui/material/Container';
 import React from 'react'
 import { styles } from '@/styles/styles'
 import HeaderText from '@/components/headers/HeaderText'
@@ -237,31 +239,31 @@ function ContactSection() {
 
   return (
     <Box
-  ref={sectionRef}
-  className="relative"
-  sx={{
-    display: "flex",
-    justifyContent: "end",
-    alignItems: "center",
-    minHeight: "100svh",
-    height: "100%",
-    isolation: "isolate",
-    overflow: "hidden",
-  }}
->
+      ref={sectionRef}
+      className="relative"
+      sx={{
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+        minHeight: "100svh",
+        height: "100%",
+        isolation: "isolate",
+        overflow: "hidden",
+      }}
+    >
       {/* Map canvas */}
       {/* <Box sx={{ height: "100%",  width: "100%", zIndex: 0, pointerEvents: "none", opacity: "10%", transform: "translate(0%, 20%)" }}> */}
       <canvas ref={canvasRef} className="absolute top-[10%] w-full inset-0 pointer-events-none opacity-100 " style={{ zIndex: 0, }} />
       {/* </Box> */}
 
 
-      <div
+      {/* <div
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
         style={{
           background: "linear-gradient(to top, #05080e 0%, transparent 100%)",
           zIndex: 1,
         }}
-      />
+      /> */}
       <Container sx={{
         ...styles.section_container,
         ...styles.between_flex,

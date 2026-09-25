@@ -40,7 +40,7 @@ export const styles = {
     // width: "32px",
     border: "1px solid #7E78D255",
   },
-   icons: {
+  icons: {
     fontSize: { xs: pxToRem(16), lg: pxToRem(22), xxl: pxToRem(32) }
   },
   iconXS: {
@@ -78,7 +78,7 @@ export const styles = {
   section_container_row: {
     width: "100%",
     position: "relative",
-    minHeight: "100dvh",
+    minHeight: "100svh",
     pt: "10vh",
   },
   section_container: {
@@ -336,6 +336,13 @@ export const styles = {
     fontSize: pxToRem(18),
     margin: `${pxToRem(20)} 0`,
     paddingBottom: pxToRem(20),
+  },
+textGradient: {
+    background: `linear-gradient(90deg,  #8989f1 ,  #5047c2 50%,   #000414 100%,    #1f0b0d 150%,    #000000 200%)`,
+    backgroundClip: "text",
+    color: "transparent",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
   }
 
 };

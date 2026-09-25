@@ -1,11 +1,7 @@
-// this component was coded by wilfred reign and is a product of gene20 incoporations
-// website:  www.wilfredreign.netlify.app
-// facebook: wilfred reign
-// contact : +27 61 202 3165
-// whatsapp: +27 61 202 3165
 "use client";
+
 // *** react/next imports ***
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
 
 // *** MUI5 Component imports ***
 import AppBar from "@mui/material/AppBar";
@@ -15,19 +11,19 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 
 // *** MUI5 Icon imports ***
-import MenuIcon from "@mui/icons-material/Menu";
-import Close from "@mui/icons-material/Close";
-import { Button, Link } from "@mui/material";
+import SvgIcon from "@mui/material/SvgIcon";
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import DragHandleIcon from '@mui/icons-material/DragHandle';
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-
-// *** style imports ***
-import { styles } from "@/styles/styles";
 
 // *** component imports ***
 import NavTabs from "./NavTabs";
 import NavigationMenu from "./NavigationMenu";
 import LogoThumbnail from "@/assets/logo/LogoThumbnail";
 
+// *** style imports ***
+import { styles } from "@/styles/styles";
 interface Props {
   window?: () => Window;
   children?: React.ReactElement<{ elevation?: number }>;
@@ -41,6 +37,7 @@ interface DashBoardNavigationProps {
 
 function ElevationScroll(props: Props) {
   const { children, window } = props;
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -57,11 +54,16 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
   window,
   ...rest
 }) => {
+  const gradientId = useId();
   const [mobileOpen, setMobileOpen] = useState(false);
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100,
+  });
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -79,54 +81,57 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
       >
         <ElevationScroll>
           <AppBar
-            position="sticky"
+            position="static"
             sx={{
               ...styles.scrolledAppBar,
-              bgcolor: "#00041417",
-              backdropFilter: "blur(10px)",
+              overflow: "visible",
               boxShadow: "none",
+              backgroundColor: trigger ? "#00041417" : "transparent",
+              border: (theme) => trigger ? `1px solid ${theme.palette.text.primary}11` : "none",
+              backdropFilter: trigger ? "blur(10px)" : 0,
+              borderRadius: (theme) => theme.shape.borderRadius,
             }}
           >
             <Toolbar
               sx={{
                 ...styles.between_flex,
-                border: (theme) => theme.palette.mode === "light" ? `1px solid ${theme.palette.text.primary}33` : `1px solid ${theme.palette.text.primary}22`,
-                borderRadius: (theme) => theme.shape.borderRadius,
-                position: "relative",
-                maxWidth: "100%",
-                minHeight: "40px",
                 width: "100%",
                 p: "0.5rem",
-                m: 0,
               }}
             >
               <Box
                 sx={{
                   ...styles.between_flex,
                   width: "100%",
-                  alignItems:"center"
+                  alignItems: "center"
                 }}
               >
                 <Link href="/">
-                  {/* {phone ? <LogoIcon /> : <LogoThumbnail />} */}
                   <LogoThumbnail />
                 </Link>
-                <Box display="flex" alignItems="center" gap={4}>
-                  <IconButton
-                    size="medium"
-                    aria-label="open drawer"
-                    onClick={handleDrawerToggle}
-                    sx={{
-                      ...styles.iconHover,
-                      borderRadius: "10px",
-                      border: "1px solid #D0A5C055",
-                      display: { xs: "flex", xl: "none" },
-                    }}
-                  >
-                    {!mobileOpen ? <MenuIcon /> : <Close />}
-                  </IconButton>
+                <IconButton
+                  onClick={handleDrawerToggle}
+                  aria-label="open drawer"
+                  sx={{
+                    display: trigger ? { xs: "flex", lg: "none" } : { xs: "flex", lg: "none" },
+                    ...styles.iconHover,
+                    "&:hover": { backgroundColor: "transparent" },
+                  }}
+                >
+                                     {mobileOpen ? (
+                      <SvgIcon viewBox="0 0 24 24" sx={{ fontSize: 32 }}>
+                      <path
+                        fill={`url(#${gradientId})`}
+                        d="M18.3 5.71 12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"
+                      /> 
+                      </SvgIcon>
+                    ) : (
+                      <DragHandleIcon sx={{ fontSize: 32, color: "text.primary" }} />
+                    )}
+                 
 
-                </Box>
+                </IconButton>
+
                 <Box
                   sx={{
                     display: { xs: "none", xl: "flex" },
@@ -144,7 +149,7 @@ const Appbar: React.FC<DashBoardNavigationProps> = ({
                   <Button
                     variant="contained"
                   >
-                    contact us
+                   get in touch
                   </Button>
                 </Box>
               </Box>

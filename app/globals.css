@@ -186,3 +186,28 @@ body.app-body {
 
 
 }
+/* Modern CSS (Progressive Enhancement) */
+.text-gradient {
+  /* Default: sRGB interpolation */
+  --_space: ;
+
+  background-image: linear-gradient(
+    45deg var(--_space),
+    #0a0a61 ,
+    #5047c2 50%,
+    #000414 100%,
+    #1f0b0d 150%,
+    #000000 200%
+  );
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modern: OKLCH interpolation */
+@supports (background-image: linear-gradient(in oklch, #000, #fff)) {
+  .text-gradient {
+    --_space: in oklch;
+  }
+}

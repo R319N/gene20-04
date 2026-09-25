@@ -1,6 +1,12 @@
 'use client'
-import { ArrowBack, ArrowForward, ChevronLeft, ChevronRight } from '@mui/icons-material'
-import { Box, Grid, Stack, Typography } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Image from 'next/image'
 
 import { Portfolio } from '@/type'
@@ -232,6 +238,15 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
                 gap: 4
             }}
         >
+            <Box
+                sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                        'linear-gradient(90deg, rgba(3,7,18,0.28), rgba(3, 7, 18, 0.34) 48%, rgba(3, 9, 27, 0.57))',
+                    pointerEvents: 'none',
+                }}
+            />
             <Stack spacing={{ xs: 3, md: 2 }}>
                 <Stack spacing={1}>
                     <Stack spacing={1}>
@@ -284,47 +299,44 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
                 </Stack>
 
             </Stack>
-
-            <Box
-                sx={{
-                    position: { xs: 'relative', lg: 'absolute' },
-                    //     top: 0,
-                    //     left: 0,
-                    //     minHeight: { xs: 260, lg: "34vh", xxl: "28vh" },
-                    border: '1px solid',
-                    borderColor: 'primary.main',
-                    borderRadius: 3,
-                    overflow: 'hidden',
-                    //     bgcolor: 'rgba(3, 7, 18, 0.62)',
-                    boxShadow: '0 0 34px rgba(82, 111, 255, 0.26)',
-                    //     // transform: { xs: 0, lg: "translate(0%, -130%)" },
-                    height: { xs: "240px", lg: "100%", xxl: "100%" },
-                    //     width: { xs: "100vw", lg: "500px", xxl: "680px" }
-                }}
-            >
-
-
-                <Image
-                    key={activeProject.id}
-                    src={activeProject.imgUrl}
-                    alt={activeProject.title}
-                    fill
-                    sizes="(max-width: 900px) 100vw, (max-width: 1536px) 50vw, 680px"
-                    style={{
-                        objectFit: 'fill',
-                        // objectPosition: 'top center',
-                    }}
-                />
+            <>
+                <Box sx={{  width: "100%", justifyContent: "flex-end", alignItems: "flex-end", gap: 2, mt: 4 }}>
+                    <ExternalLink activeProject={activeProject} />
+                </Box>
                 <Box
                     sx={{
-                        position: 'absolute',
-                        inset: 0,
-                        background:
-                            'linear-gradient(90deg, rgba(3,7,18,0.28), rgba(3, 7, 18, 0.34) 48%, rgba(3, 9, 27, 0.57))',
-                        pointerEvents: 'none',
+                        position: "relative",
+                        // position: { xs: 'relative', lg: 'absolute' },
+                        top: 0,
+                        left: 0,
+                        //     minHeight: { xs: 260, lg: "34vh", xxl: "28vh" },
+                        border: '1px solid',
+                        borderColor: 'primary.main',
+                        borderRadius: 3,
+                        overflow: 'hidden',
+                        //     bgcolor: 'rgba(3, 7, 18, 0.62)',
+                        boxShadow: '0 0 34px rgba(82, 111, 255, 0.26)',
+                        transform: { xs: 0, lg: "translate(0%, -50%)", xxl: "translate(0%, -60%)" },
+                        height: { xs: "240px", lg: "300px", xxl: "360px" },
+                        width: { xs: "100%", lg: "50%", xxl: "680px" }
                     }}
-                />
-                {/* <Stack direction="row" flexWrap="wrap" gap={1}>
+                >
+
+
+                    <Image
+                        key={activeProject.id}
+                        src={activeProject.imgUrl}
+                        alt={activeProject.title}
+                        fill
+                        sizes="(max-width: 900px) 100vw, (max-width: 1536px) 100vw, 680px"
+                        style={{
+                            objectFit: 'fill',
+                            // objectPosition: 'top center',
+                        }}
+                    />
+
+
+                    {/* <Stack direction="row" flexWrap="wrap" gap={1}>
                     {activeProject.features?.slice(0, 4).map((feature) => (
                         <Box
                             key={feature.text}
@@ -352,16 +364,15 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
                         </Box>
                     ))}
                 </Stack> */}
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" }, width: "100%", justifyContent: "flex-end", alignItems: "flex-end", gap: 2, mt: 4 }}>
-                <ExternalLink activeProject={activeProject} />
-            </Box>
+                </Box>
 
+            </>
             <Stack
                 spacing={{ xs: 2, md: 8 }}
                 flexDirection="row"
                 sx=
                 {{
+                    position: "absolute",
                     width: "100%", display: "flex",
                     height: "10vh",
                     justifyContent: "center", alignItems: "center",
@@ -371,7 +382,7 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
 
                     <NavigationButton
                         onClick={handlePrevious}
-                        icon={<ChevronLeft />}
+                        icon={<ChevronLeftIcon />}
                         ariaLabel="Previous project"
                     />
 
@@ -394,7 +405,7 @@ const PortfolioSlider = ({ activeIndex, setActiveIndex, activeProject, totalProj
 
                     <NavigationButton
                         onClick={handleNext}
-                        icon={<ChevronRight />}
+                        icon={<ChevronRightIcon />}
                         ariaLabel="Previous project"
                     />
                 </div>
