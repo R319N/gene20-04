@@ -1,6 +1,8 @@
 "use client";
 
-import { Box, Stack, Typography } from "@mui/material";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { styles } from "@/styles/styles";
 
 interface SlideIndicatorProps {
@@ -15,7 +17,7 @@ export default function SlideIndicator({
   return (
     <Box
       sx={{
-        width: { md: "6vw", xxl: "4vw" },
+        width: { md: "4.5vw", xxl: "4vw" },
         height: "100vh",
         position: "absolute",
         inset: 0,
@@ -27,6 +29,8 @@ export default function SlideIndicator({
         justifyContent: "space-evenly",
         borderRight: "1px solid rgba(153, 170, 255, 0.1)",
         zIndex: 6,
+        backgroundColor:"#ffffff0c",
+        backdropFilter:"blur(8px)"
       }}
     >
       {/* Slide dots */}

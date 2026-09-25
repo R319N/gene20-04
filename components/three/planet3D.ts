@@ -246,11 +246,33 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
     glowMesh.scale.setScalar(1.005);
     earthGroup.add(glowMesh);
 
-    const nebula = getLayer({
-        path: '/textures/rad-grad.png',
-        size: 1.2,
-    });
-    scene.add(nebula);
+    // const nebula = getLayer({
+    //     path: '/textures/rad-grad.png',
+    //     size: 1.2,
+    // });
+    // scene.add(nebula);
+       // Layer 2: Nebula fog (big soft planes with shader)
+    const fogGeo = new THREE.PlaneGeometry(15, 15)
+    const fogMat = new THREE.ShaderMaterial({
+      transparent: true,
+      uniforms: { time: { value: 0 } },
+      vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+      fragmentShader: `
+        varying vec2 vUv;
+        uniform float time;
+        void main(){
+          vec2 uv = vUv;
+          float noise = sin(uv.x*3.+time*0.2) * cos(uv.y*3.+time*0.1);
+          vec3 color1 = vec3(0.1,0.08,0.25);
+          vec3 color2 = vec3(0.25,0.15,0.4);
+          vec3 final = mix(color1, color2, noise*0.5+0.5);
+          gl_FragColor = vec4(final, 0.35 * (1.-length(uv-0.5)));
+        }
+      `
+    })
+    const fog = new THREE.Mesh(fogGeo, fogMat)
+    fog.position.z = -2
+    scene.add(fog)
 
     const ambientLight = new THREE.AmbientLight(0x00ffff, 0.35);
     scene.add(ambientLight);
@@ -258,6 +280,14 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
 
     const stars = getStarfield({ numStars: 12000 });
     scene.add(stars);
+    // const starsGeo = new THREE.BufferGeometry()
+    // const starsCount = 6000
+    // const pos = new Float32Array(starsCount * 3)
+    // for (let i = 0; i < starsCount * 3; i++) pos[i] = (Math.random() - 0.5) * 20
+    // starsGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3))
+    // const starsMat = new THREE.PointsMaterial({ size: 0.02, color: 0xffffff, transparent: true, opacity: 0.8 })
+    // const stars = new THREE.Points(starsGeo, starsMat)
+    // scene.add(stars)
 
     const sunDirection = new THREE.Vector3();
     sunDirection.set(-0.85, 0.78, -1).normalize();
@@ -273,8 +303,8 @@ const initPlanet = (): { scene: THREE.Scene, renderer: THREE.WebGLRenderer } => 
         camera.position.z = viewport.cameraZ;
         earthGroup.position.set(viewport.groupX, viewport.groupY, 0);
         earthGroup.scale.setScalar(viewport.groupScale);
-        nebula.position.x = viewport.nebulaX;
-        nebula.scale.setScalar(viewport.nebulaScale);
+        // nebula.position.x = viewport.nebulaX;
+        // nebula.scale.setScalar(viewport.nebulaScale);
         camera.updateProjectionMatrix();
     };
 

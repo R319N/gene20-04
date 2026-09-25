@@ -1,8 +1,13 @@
-"use client"
 import ourServices from "@/constants/our_services";
 import { Box, Button, Chip, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Gene 20 | Our Services",
+  description:
+    "from polished websites to brand systems and digital campaigns, we create thoughtful experiences that help businesses present themselves with confidence and convert attention into action.",
+}
 
 function getServiceId(pageUrl: string, name: string) {
   const hash = pageUrl.split("#")[1];
@@ -56,7 +61,7 @@ export default function ServicesPage() {
               const serviceId = getServiceId(service.pageUrl, service.name);
 
               return (
-                <Grid size={{xs:12, md:6}} key={service.key}>
+                <Grid size={{ xs: 12, md: 6 }} key={service.key}>
                   <Paper
                     id={serviceId}
                     elevation={0}
@@ -130,7 +135,6 @@ export default function ServicesPage() {
                     </Stack>
 
                     <Button
-                      component={Link}
                       href={service.pageUrl}
                       variant="contained"
                       sx={{

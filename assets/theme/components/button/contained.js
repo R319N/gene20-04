@@ -9,8 +9,7 @@ const { size } = typography;
 const contained = {
   base: {
     color: text.primary,
-    background:"transparent",
-    // background: `linear-gradient(to bottom left, ${secondary.main}11 50%, ${primary.main}0.1 100%)`,
+    background: `linear-gradient(to bottom left, ${secondary.main}11 50%, ${primary.main}0.1 100%)`,
     minHeight: pxToRem(40),
     boxShadow: `0 2px 5px 0 ${primary.main}11, 0 5px 10px 0 ${primary.main}1A`,
     transition: "all 1s ease",
@@ -18,7 +17,6 @@ const contained = {
     "&:hover": {
       backgroundColor: primary.light,
       boxShadow: `0 2px 5px 0 ${primary.main}55, 0 5px 10px 0 ${primary.main}75`,
-      color: white.main,
       textShadow: `0 0 8px ${primary.main}`,
 
     },
@@ -37,6 +35,7 @@ const contained = {
     padding: `${pxToRem(6)} ${pxToRem(16)}`,
     fontSize: size.xs,
 
+
     "& .material-icon, .material-icons-round, svg": {
       fontSize: `${pxToRem(12)} !important`,
     },
@@ -53,7 +52,7 @@ const contained = {
   },
 
   primary: {
-    backgroundColor: "transparent",
+    background: `linear-gradient(to bottom left, ${secondary.main} 50%, ${primary.main} 100%)`,
     boxShadow: ` 0 0 10px ${({ theme }) => theme.palette.secondary.main}`,
     "&:hover": {
       backgroundColor: secondary.light,

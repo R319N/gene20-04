@@ -7,7 +7,7 @@ import pxToRem from '../../functions/pxToRem'
 
 const { fontWeightMedium, size } = typography
 const { borderRadius } = borders
-const { text } = colors
+const { text, primary, secondary} = colors
 
 const shareTech = Share_Tech({
   weight: ["400"],
@@ -30,7 +30,8 @@ const root = {
   lineHeight: 1.4,
   textAlign: 'center',
   userSelect: 'none',
-  backgroundColor:"transparent",
+background: `linear-gradient(to bottom left, ${secondary.main}11 50%, ${primary.main}0.1 100%)`,
+ 
   backgroundSize: '150% !important',
   backgroundPositionX: '25% !important',
   transition: 'all 150ms ease-in',

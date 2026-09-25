@@ -1,6 +1,8 @@
 import pxToRem from '@/assets/theme/functions/pxToRem';
-import { DoubleArrow } from '@mui/icons-material';
-import { Typography, Stack, Box } from '@mui/material'
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 import React from 'react'
 
 interface Props {
@@ -15,7 +17,7 @@ const HeaderBanner = ({ text, spanText, spanColor, subtitle }: Props) => {
         <Stack gap={2} width="90%" >
             <Typography variant="h1" textTransform={"capitalize"}
                 sx={{
-                    width: { xs: "80vw", lg: "16ch", xxl: "14ch" },
+                    width: { xs: "80vw", lg: "14ch", xxl: "14ch" },
                     lineHeight: 1.125,
                     textAlign: "left",
                     fontSize: { xs: pxToRem(32), sm: "4rem", md: "5rem", lg: pxToRem(36), xxl: pxToRem(64) }
@@ -36,7 +38,7 @@ const HeaderBanner = ({ text, spanText, spanColor, subtitle }: Props) => {
             </Typography>
             <Stack direction="row" alignItems="center" gap={2}>
                 <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                    <DoubleArrow />
+                    <DoubleArrowIcon />
                 </Box>
                 <Typography
                     variant="body1"

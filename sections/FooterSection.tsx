@@ -1,5 +1,13 @@
 "use client"
-import { Box, Typography, Link, IconButton, Stack, Grid, Divider, TextField, Container } from "@mui/material";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 import Address from '@/components/footer-components/address'
 import LogoIconFull from '@/assets/logo/Logo'
 import ContactDetails from '@/components/contact/ContactDetails'
@@ -189,7 +197,7 @@ const FooterSection = () => {
             mx: "auto",
             gap: 4
           }}>
-          <Stack gap={1} sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <Stack gap={1} sx={{ width: "100%", display: "flex", justifyContent: "center", py:"20dvh" }}>
             <Box height="fit-content" width="100%" sx={{ ...styles.center_flex }}>
               <Image
                 src="/images/logo-thumbnail.png"
@@ -205,8 +213,8 @@ const FooterSection = () => {
               <SocialContacts />
             </Box>
           </Stack>
-          <Box>
-            <Box sx={{ display: 'flex', gap: 5 }}>
+          <Box width="100%">
+            <Box sx={{ display: 'flex', gap: {xs:0, lg:5},width:"100%", justifyContent:{xs:"space-between", lg:"center"} }}>
               <Link href="#home" sx={{ color: 'grey.300', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
                 Home
               </Link>

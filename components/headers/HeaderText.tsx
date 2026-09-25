@@ -1,5 +1,5 @@
 import pxToRem from '@/assets/theme/functions/pxToRem'
-import { Typography } from '@mui/material'
+import Typography from '@mui/material/Typography';
 import React from 'react'
 
 const HeaderText = ({ label }: { label: string }) => {
@@ -8,7 +8,7 @@ const HeaderText = ({ label }: { label: string }) => {
             variant="caption"
             sx={{
                 background: `
-      linear-gradient(#0e1116, #0e1116) padding-box,
+      linear-gradient(#0e1116, #000414) padding-box,
       linear-gradient(90deg, #5876db, #4f5ad9, #3729ff) border-box
     `,
                 border: "1px solid transparent",
@@ -18,7 +18,7 @@ const HeaderText = ({ label }: { label: string }) => {
                 lineHeight: 1.5,
                 fontVariant: "all-small-caps",
                 width: "fit-content",
-                p: "0.5rem 1.5rem",
+                p: "0.5rem 1.2rem",
                 height: "100%",
                 borderRadius: "20px",
                 "&::before": {
@@ -30,7 +30,7 @@ const HeaderText = ({ label }: { label: string }) => {
                     background:
                         "linear-gradient(135deg, #29adff 0%, #8f7cff 100%)",
                     boxShadow: "0 0 14px rgba(41,173,255,0.6)",
-                    mr: 1,
+                    mr: 2,
                     verticalAlign: "middle",
                 },
             }}

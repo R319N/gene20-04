@@ -2,14 +2,18 @@ import pxToRem from '@/assets/theme/functions/pxToRem'
 import { styles } from '@/styles/styles'
 import { Feature } from '@/type'
 import ArrowForwardRounded from '@mui/icons-material/ArrowForwardRounded'
-import { Box, Container, Grid, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import dynamic from "next/dynamic";
 import FeatureCard from './FeatureCard'
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-
+import InfoIcon from '@mui/icons-material/Info';
 const NetworkCanvas = dynamic(
     () => import("./networkCanvas"),
     { ssr: false }
@@ -32,15 +36,27 @@ interface props {
 
 const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables, outcomes, description, heading, features, importance, pageUrl, color = "#8f7cff", index = 0 }) => {
     const slideRef = React.useRef<HTMLDivElement>(null)
+    function gradient(arg0: number, deg: unknown) {
+        throw new Error('Function not implemented.');
+    }
+
     return (
-        <Container
+        <Box
+            // disableGutters
+            // maxWidth={false}
+            // component="section"
             ref={slideRef}
             className="service-slide"
+            px={{xs:"1rem", lg:"6rem", xxl:"10rem"}}
+
             sx={{
                 height: '100%',
+                minHeight: '100svh',
                 width: "100%",
                 position: "relative",
                 flexDirection: "column",
+                overflowY: "auto",
+                // boxSizing: "border-box",
 
             }}
         >
@@ -52,23 +68,30 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     position: "relative",
                     flexDirection: { xs: "column", lg: "row" },
                     width: "100%",
-                    height: "100%",
+                    minHeight: "100%",
+                    height: "auto",
                     justifyContent: "flex-start",
-                    pb: "8rem",
+                    pb: { xs: "1rem", md: "2rem" },
+
                     pt: "0"
 
                 }}
             >
-                <Box sx={{ height: "100%", zIndex: 1, position: "relative" }}>
+                <Box sx={{
+                    height: "100%",
+                    zIndex: 1, position: "relative",
+                    px: { xs: "0rem", md: "1rem", xxl: 0 },
+                    width: "100%"
+                }}>
                     <Typography
                         aria-hidden
                         variant="h1"
                         sx={{
                             position: "relative",
-                            fontSize: { xs: 88, lg: 190, xl: 154 },
+                            fontSize: { xs: 88, lg: pxToRem(120), xxl: 154 },
                             fontWeight: 900,
                             lineHeight: 1,
-                            color: "#ffffff71",
+                            color: (theme) => `${theme.palette.primary.main}22`,
                             zIndex: -1,
                             maskImage:
                                 "linear-gradient(to bottom, black 0%, transparent 100%)",
@@ -78,84 +101,175 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {String(index + 1).padStart(2, "0")}
                     </Typography>
-                    <Stack gap={1} sx={{
+                    <Stack sx={{
                         // position: "absolute",
                         left: 0,
                         // top: "50%",
-                        mt: { xs: "-25px", lg: "-90px", xl: "-50px" },
+                        mt: { xs: "-25px", lg: "-40px", xxl: "-50px" },
                         zIndex: 2,
-                    }}
+                        pl: { xs: "0rem", xxl: "2rem" },
+                        pb: '6rem',
+                        // ...styles.between_flex,
+                        // height: "fit-content"
 
-                    >
-                        <Typography
-                            className="title1 slide-animate"
-                            variant='h1'
-                            sx={{
-                                width: "15ch",
-                                fontSize: { xs: 22, sm: 24, md: 42, xxl: 44 },
-                                fontWeight: 900,
-                                lineHeight: 1,
-                                textTransform: "uppercase",
-                                textShadow: "0 16px 44px rgba(255,255,255,0.14)",
-                            }}
-                        >
-                            {name}
-                        </Typography>
+                    }}>
+                        <Stack spacing={{ md: 1, xxl: 3 }}                       >
+                            <Typography
+                                className="title1 slide-animate text-gradient"
+                                variant='h1'
+                                sx={{
+                                    ...styles.textGradient,
+                                    width: "15ch",
+                                    fontSize: { xs: 22, sm: 24, md: pxToRem(32), xxl: 44 },
+                                    fontWeight: 900,
+                                    lineHeight: 1.125,
+                                    textTransform: "uppercase",
+                                    textShadow: "0 2px 2px rgba(255, 255, 255, 0.07)",
 
-                        <Typography
-                            className="slide-text slide-animate"
-                            variant='body1'
-                            sx={{
-                                // color: "rgba(235, 239, 255, 0.78)",
-                                fontSize: { xs: 14, md: 20, xxl: 18 },
-                                fontWeight: 400,
-                                lineHeight: 1.34,
-                            }}
-                        >
-                            {heading}
-                        </Typography>
-                        <Box
-                            className="slide-rule slide-animate"
-                            sx={{
-                                width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, my: "0.5rem 1rem"
-                            }}
-                        />
+                                }}
+                            >
+                                {name}
+                            </Typography>
+
+                            <Typography
+                                className="slide-text slide-animate"
+                                variant='body1'
+                                sx={{
+                                    fontSize: { xs: 14, md: pxToRem(18), xxl: 18 },
+                                    fontWeight: 400,
+                                    lineHeight: 1.34,
+                                }}
+                            >
+                                {heading}
+                            </Typography>
+                            <Box
+                                className="slide-rule slide-animate"
+                                sx={{
+                                    width: 46, height: 2, bgcolor: color, boxShadow: `0 0 14px ${color}`, my: "0.5rem 1rem"
+                                }}
+                            />
+                        </Stack>
+
+                        <Stack spacing={2} sx={{ zIndex: 1, display: { xs: "none", md: "flex" }, py: "1rem" }}>
+                            <Typography
+                                className="slide-importance slide-animate"
+                                variant='body2'
+                                sx={{
+                                    textTransform: "capitalize",
+                                    fontSize: { xs: 12, md: 12, xxl: 16 },
+                                    lineHeight: 1.4,
+                                    width: "90%",
+                                    fontWeight: "regular",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 1.5,
+                                    // py: "1rem",
+                                    // pl: "1rem",
+                                }}
+                            >
+                                <span>
+                                    <LabelImportantIcon sx={{ color: color }} />
+                                </span>
+                                {description}
+                            </Typography>
+                            <Typography
+                                className="slide-importance slide-animate"
+                                variant='body2'
+                                color="textSecondary"
+                                sx={{
+                                    textTransform: "capitalize",
+                                    fontSize: { xs: 12, md: 12, xxl: 16 },
+                                    lineHeight: 1.4,
+                                    maxWidth: "60ch",
+                                    fontWeight: "light",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 1.5,
+                                    // py: "1rem",
+                                    // pl: "1rem",
+                                }}
+                            >
+                                <span>
+                                    <InfoIcon sx={{ color: color }} />
+                                </span>
+                                {importance}
+                            </Typography>
+
+                            <Box
+                                className="slide-button slide-animate"
+                                component={Link}
+                                href={pageUrl}
+                                sx={{
+                                    ...styles.center_flex,
+                                    justifyContent: "flex-start",
+                                    gap: 1,
+                                    width: "fit-content",
+                                    color: "#ffffff",
+                                    textDecoration: "none",
+                                    pt: "1rem"
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        ...styles.center_flex,
+                                        width: 36,
+                                        height: 36,
+                                        borderRadius: "50%",
+                                        border: "1px solid #fafafa44",
+                                        color: { color },
+                                        transition: "border-color 0.2s ease, transform 0.2s ease",
+                                        "& svg": { fontSize: 20 },
+                                        ".slide-button:hover &": {
+                                            borderColor: color,
+                                            transform: "translateX(4px)",
+                                        },
+                                    }}
+                                >
+                                    <ArrowForwardRounded />
+                                </Box>
+                                <Typography variant="caption" sx={{
+                                    fontSize: { xs: 12, md: 16 }, '&:hover': {
+                                        color: { color }
+                                    }
+                                }} >
+                                    Explore {name}
+                                </Typography>
+                            </Box>
+                        </Stack>
+
                     </Stack>
                 </Box>
 
-                {/* IMAGE-SECTION */}
+                {/* {/* IMAGE-SECTION  */}
                 <Box
                     className="slide-image-wrap slide-animate"
                     sx={{
                         position: "relative",
                         width: { xs: "100%", md: "100%" },
-                        height: { xs: "100%", md: "40vw" },
+                        height: { xs: "100%", md: "600px" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
-                        alignItems: {xs:"flex-start", xl:"flex-end"},
-                        // justifyContent: {xs:"flex-end", xl:"space-between"},
-
-                        justifyContent:"flex-end",
-                        pt: "1rem"
+                        alignItems: { xs: "flex-start", xl: "flex-end" },
+                        justifyContent: { xs: "flex-end", xl: "space-between" },
+                        overflow: "visible",
+                        // justifyContent: "flex-end",
+                      
                     }}
                 >
-                   
-
                     <Box
                         className="slide-feature-card slide-animate"
                         sx={{
                             position: "relative",
-                            // left: { xs: "2%", md: "8%" },
-                            // top: { xs: "6%", md: "31%" },
+
                             zIndex: 3,
                             width: { xs: "100%", md: 210 },
                             height: "fit-content",
                             borderRadius: 2,
-                            color: "#ffffff",
                             bgcolor: `${color}22`,
                             border: `1px solid ${color}22`,
                             boxShadow: `0 24px 60px ${color}22`,
                             backdropFilter: "blur(20px)",
+                            mb: "4rem"
                         }}
                     >
                         <Grid container spacing={2.2} p="0.5rem" width="100%">
@@ -192,36 +306,43 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     >
                         {features[0]?.icon}
                     </Box>
-                    <Box sx={{ width: "100%", height: "100% ", display: "flex", justifyContent: "flex-end", alignItems: "flex-end", position: "relative" }}>
-                        <Box sx={{ width: {xs:"340px", xl:"500px"}, height:{xs:"340px", xl:"500px"}, position: "absolute", bottom: 0, right: 0, zIndex: 0 }}>
-                             <Box
-                        sx={{
+                    <Box
+                        sx={{ width: "100%", height: "100% ", display: "flex", justifyContent: "flex-start", alignItems: "flex-start", position: "relative", overflow: "visible" }}>
+                        <Box sx={{
+                            width: { xs: "340px", xl: "500px" },
+                            height: { xs: "340px", xl: "500px" },
                             position: "absolute",
-                            inset: 0,
-                            zIndex: 0,
-                            overflow: "hidden",
-                            opacity: 0.9,
-                            width: "100%",
-                            height: "100%"
-                        }}
-                    >
-                        <NetworkCanvas />
-                    </Box>
+                            top: { xs: "100%", md: '0%' },
+                            right: 0,
+                            zIndex: 0
+                        }}>
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    inset: 0,
+                                    zIndex: 0,
+                                    overflow: "visible",
+                                    opacity: 0.9,
+                                    width: "100%",
+                                    height: "100%"
+                                }}
+                            >
+                                <NetworkCanvas />
+                            </Box>
                             <Image
                                 src={image}
                                 alt={name}
                                 fill
-                                unoptimized
-                                // sizes="(max-width: 900px) 90vw, 98vw"
-                                style={{ objectFit: "contain" }}
+                                sizes="(max-width: 900px) 90vw, (max-width: 1536px) 42vw, 680px"
+                                style={{ objectFit: "fill" }}
                             />
                         </Box>
                     </Box>
                 </Box>
 
 
-                {/* CTA */}
-                <Stack gap={2} sx={{ zIndex: 1, display:{xs:"flex",xl: "none"}, py:"1rem" }}>
+
+                <Stack gap={2} sx={{ zIndex: 1, flexShrink: 0, display: { xs: "flex", xl: "none" }, py: "1rem", pb: "calc(1rem + env(safe-area-inset-bottom))" }}>
                     <Typography
                         className="slide-importance slide-animate"
                         variant='body2'
@@ -240,7 +361,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         }}
                     >
                         <span>
-                            <LabelImportantIcon sx={{color:color}}/>
+                            <LabelImportantIcon sx={{ color: color }} />
                         </span>
                         {importance}
                     </Typography>
@@ -281,10 +402,8 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         </Typography>
                     </Box>
                 </Stack>
-
-                {/* wrapper end  */}
             </Box>
-        </Container >
+        </Box >
     )
 }
 

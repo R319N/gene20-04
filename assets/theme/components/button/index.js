@@ -20,7 +20,6 @@ const button = {
         color: theme.palette.text.primary,
         textTransform: "uppercase",
         letterSpacing: "0.08em",
-        backgroundColor: "transparent",
         "& .MuiButton-startIcon": {
           marginRight: 0,
           marginLeft: 0,
