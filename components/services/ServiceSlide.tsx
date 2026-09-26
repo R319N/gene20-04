@@ -68,18 +68,10 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     position: "relative",
                     flexDirection: { xs: "column", lg: "row" },
                     width: "100%",
-<<<<<<< HEAD
                     // minHeight: "100%",
                     height: "100%",
                     justifyContent: { xs:"space-between", md:"flex-start"},
                     pb: { xs: "0em", md: "2rem" },
-=======
-                    minHeight: "100%",
-                    height: "auto",
-                    justifyContent: "flex-start",
-                    pb: { xs: "1rem", md: "2rem" },
-
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                     pt: "0"
                 }}
             >
@@ -94,11 +86,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         variant="h1"
                         sx={{
                             position: "relative",
-<<<<<<< HEAD
                             fontSize: { xs: pxToRem(80), lg: pxToRem(120), xxl: 154 },
-=======
-                            fontSize: { xs: 88, lg: pxToRem(120), xxl: 154 },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                             fontWeight: 900,
                             lineHeight: 1,
                             color: (theme) => `${theme.palette.primary.main}22`,
@@ -115,46 +103,27 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         // position: "absolute",
                         left: 0,
                         // top: "50%",
-<<<<<<< HEAD
-                        mt: { xs: "-30px", lg: "-40px", xxl: "-50px" },
-                        zIndex: 2,
-                        pl: { xs: "1rem", xxl: "2rem" },
-                        pb: {xs:2, md:'6rem'},
-=======
                         mt: { xs: "-25px", lg: "-40px", xxl: "-50px" },
                         zIndex: 2,
                         pl: { xs: "0rem", xxl: "2rem" },
                         pb: '6rem',
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                         // ...styles.between_flex,
                         // height: "fit-content"
 
                     }}>
-<<<<<<< HEAD
                         <Stack spacing={{ xs: 1, xxl: 3 }}                       >
-=======
-                        <Stack spacing={{ md: 1, xxl: 3 }}                       >
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                             <Typography
                                 className="title1 slide-animate text-gradient"
                                 variant='h1'
                                 sx={{
                                     ...styles.textGradient,
-<<<<<<< HEAD
                                     width: "14ch",
                                     fontSize: { xs: pxToRem(24), sm: pxToRem(24), md: pxToRem(32), xxl: pxToRem(44) },
-=======
-                                    width: "15ch",
-                                    fontSize: { xs: 22, sm: 24, md: pxToRem(32), xxl: 44 },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                                     fontWeight: 900,
                                     lineHeight: 1.125,
                                     textTransform: "uppercase",
                                     textShadow: "0 2px 2px rgba(255, 255, 255, 0.07)",
-<<<<<<< HEAD
                                     letterSpacing:"-0.5px"
-=======
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
 
                                 }}
                             >
@@ -164,14 +133,9 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             <Typography
                                 className="slide-text slide-animate"
                                 variant='body1'
-<<<<<<< HEAD
                                 color="textSecondary"
                                 sx={{
                                     fontSize: { xs: pxToRem(14), md: pxToRem(18), xxl: pxToRem(18) },
-=======
-                                sx={{
-                                    fontSize: { xs: 14, md: pxToRem(18), xxl: 18 },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                                     fontWeight: 400,
                                     lineHeight: 1.34,
                                 }}
@@ -186,27 +150,16 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             />
                         </Stack>
 
-<<<<<<< HEAD
                         <Stack spacing={2} sx={{ zIndex: 1, py: "1rem" }}>
-=======
-                        <Stack spacing={2} sx={{ zIndex: 1, display: { xs: "none", md: "flex" }, py: "1rem" }}>
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                             <Typography
                                 className="slide-importance slide-animate"
                                 variant='body2'
                                 sx={{
                                     textTransform: "capitalize",
-<<<<<<< HEAD
                                     fontSize: { xs: "0.75em", md: 12, xxl: 16 },
                                     lineHeight: 1.4,
                                     width: {xs:"100%", md:"90%"},
                                     fontWeight: "medium",
-=======
-                                    fontSize: { xs: 12, md: 12, xxl: 16 },
-                                    lineHeight: 1.4,
-                                    width: "90%",
-                                    fontWeight: "regular",
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                                     display: "flex",
                                     alignItems: "center",
                                     gap: 1.5,
@@ -248,10 +201,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 href={pageUrl}
                                 sx={{
                                     ...styles.center_flex,
-<<<<<<< HEAD
                                     display:{xs:"none", md:"none"},
-=======
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                                     justifyContent: "flex-start",
                                     gap: 1,
                                     width: "fit-content",
@@ -298,20 +248,13 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         position: "relative",
                         // top:"40%",
                         width: { xs: "100%", md: "100%" },
-<<<<<<< HEAD
                         height: { xs: "100%", md: "100%" },
-=======
-                        height: { xs: "100%", md: "600px" },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
                         alignItems: { xs: "flex-start", xl: "flex-end" },
                         justifyContent: { xs: "flex-end", xl: "space-between" },
                         overflow: "visible",
-<<<<<<< HEAD
                           pl:"1rem"
-=======
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                         // justifyContent: "flex-end",
                       
                     }}
@@ -320,10 +263,6 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         className="slide-feature-card slide-animate"
                         sx={{
                             position: "relative",
-<<<<<<< HEAD
-=======
-
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                             zIndex: 3,
                             width: { xs: "100%", md: 210 },
                             height: "fit-content",
@@ -332,12 +271,8 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             border: `1px solid ${color}22`,
                             boxShadow: `0 24px 60px ${color}22`,
                             backdropFilter: "blur(20px)",
-<<<<<<< HEAD
                             mb: "4rem",
                           
-=======
-                            mb: "4rem"
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                         }}
                     >
                         <Grid container spacing={2.2} p="0.5rem" width="100%">
@@ -380,11 +315,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             width: { xs: "340px", xl: "500px" },
                             height: { xs: "340px", xl: "500px" },
                             position: "absolute",
-<<<<<<< HEAD
                             top: { xs: "0%", md: '0%' },
-=======
-                            top: { xs: "100%", md: '0%' },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                             right: 0,
                             zIndex: 0
                         }}>
@@ -410,37 +341,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             />
                         </Box>
                     </Box>
-<<<<<<< HEAD
                 </Box>               
-=======
-                </Box>
-
-
-
-                <Stack gap={2} sx={{ zIndex: 1, flexShrink: 0, display: { xs: "flex", xl: "none" }, py: "1rem", pb: "calc(1rem + env(safe-area-inset-bottom))" }}>
-                    <Typography
-                        className="slide-importance slide-animate"
-                        variant='body2'
-                        sx={{
-                            textTransform: "capitalize",
-                            fontSize: { xs: 12, md: 10, xxl: 16 },
-                            lineHeight: 1.4,
-                            // maxWidth: "50ch",
-                            fontWeight: "light",
-                            color: "#fff",
-                            display: "flex",
-                            alignItems: "start",
-                            gap: 1.5,
-                            // py: "1rem",
-                            // pl: "1rem",
-                        }}
-                    >
-                        <span>
-                            <LabelImportantIcon sx={{ color: color }} />
-                        </span>
-                        {importance}
-                    </Typography>
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
 
                     <Box
                         // className="slide-button slide-animate"
@@ -478,11 +379,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             Explore {name}
                         </Typography>
                     </Box>
-<<<<<<< HEAD
                
-=======
-                </Stack>
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
             </Box>
         </Box >
     )
