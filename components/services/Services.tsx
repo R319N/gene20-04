@@ -2,7 +2,6 @@
 import { styles } from '@/styles/styles'
 import { useGSAP } from '@gsap/react'
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -139,12 +138,7 @@ const Services = () => {
       <div
         className="services-gradient1"
       />
-<<<<<<< HEAD
       <Box
-=======
-      <Grid
-        container
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
         sx={{
           height: "100%",
           minHeight: 0,
@@ -176,11 +170,7 @@ const Services = () => {
                 ...styles.center_flex,
                 alignItems: "center",
                 gap: 0.8,
-<<<<<<< HEAD
                 width: { xs: "min(210px, 30%)", md: "min(260px, 100%)", xxl: "min(370px, 100%)" },
-=======
-                width: { xs: "min(210px, 30%)", md: "min(260px, 100%)"  ,xxl: "min(370px, 100%)" },
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                 maxWidth: "100%",
                 color: "#5db2ff",
                 py: 1.35,
@@ -277,23 +267,7 @@ const Services = () => {
             ))}
           </Box>
         </Box>
-       {/* <Box
-          sx={{
-<<<<<<< HEAD
-
-=======
-          
->>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
-            display: { xs: "flex", lg: "none" },
-            position: "relative",
-            // bottom:"-10%",
-            width: "100%",
-            height: "100%",
-            gap: 2,
-          }}
-        >
-         
-        </Box> */} <ScrollIndicator />
+       <ScrollIndicator />
       </Box> 
     </Box >
   )
