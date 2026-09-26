@@ -139,7 +139,12 @@ const Services = () => {
       <div
         className="services-gradient1"
       />
+<<<<<<< HEAD
       <Box
+=======
+      <Grid
+        container
+>>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
         sx={{
           height: "100%",
           minHeight: 0,
@@ -171,7 +176,11 @@ const Services = () => {
                 ...styles.center_flex,
                 alignItems: "center",
                 gap: 0.8,
+<<<<<<< HEAD
                 width: { xs: "min(210px, 30%)", md: "min(260px, 100%)", xxl: "min(370px, 100%)" },
+=======
+                width: { xs: "min(210px, 30%)", md: "min(260px, 100%)"  ,xxl: "min(370px, 100%)" },
+>>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
                 maxWidth: "100%",
                 color: "#5db2ff",
                 py: 1.35,
@@ -270,7 +279,11 @@ const Services = () => {
         </Box>
        {/* <Box
           sx={{
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> 236e7f27b64ccba120c8305ec564da0712689350
             display: { xs: "flex", lg: "none" },
             position: "relative",
             // bottom:"-10%",
