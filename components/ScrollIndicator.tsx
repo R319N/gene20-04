@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { styles } from '@/styles/styles';
 
@@ -11,9 +12,9 @@ const ScrollIndicator: React.FC<Props> = ({ label }) => {
     return (
         <Box sx={{
             position: 'absolute',
-            left: '50%',
-            bottom: 0,
-            transform: 'translateX(-50%)',
+            left: 0,
+            right: 0,
+            bottom: 'max(16px, env(safe-area-inset-bottom, 0px))',
             zIndex: 1,
             letterSpacing: 6,
             display: "flex",

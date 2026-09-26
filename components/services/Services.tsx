@@ -124,15 +124,15 @@ const Services = () => {
   return (
     <Box
       ref={sectionRef}
-      component="section"
       id="services"
       className="services-section"
       sx={{
         ...styles.section_container_row,
+        height: "100svh",
         minHeight: "100svh",
-        height: "100%",
         boxSizing: "border-box",
-        overflow: "visible",
+        overflow: "hidden",
+        position: "relative",
       }}
     >
       <div
@@ -143,15 +143,22 @@ const Services = () => {
           height: "100%",
           minHeight: 0,
           zIndex: 1,
-          flexWrap: "nowrap",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          pt: { xs: "0vh", lg: "8vh", xxl: "0vh" },
+          pt: { xs: 0, lg: "8vh", xxl: 0 },
         }}
       >
         <SlideIndicator slides={slides} active={active} />
-        <Box sx={{ width: "100%", flex: 1, overflow: "hidden", height: "100%", position: "relative" }} >
+        <Box
+          sx={{
+            width: "100%",
+            flex: 1,
+            minHeight: 0,
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
           <Box
             sx={{
               ...styles.between_flex,
@@ -227,15 +234,16 @@ const Services = () => {
           </Box>
           <Box
             ref={trackRef}
-            className='track'
+            className="track"
             sx={{
               ...styles.center_flex,
               height: "100%",
-              width: `${slides.length * 100}vw`,
               minHeight: 0,
+              width: `${slides.length * 100}vw`,
               willChange: "transform",
-              py: { xs: "0", lg: "0" }
-            }}>
+              py: 0,
+            }}
+          >
             {slides.map((slide, i) => (
               <Box
                 className="service-slide"
@@ -266,9 +274,12 @@ const Services = () => {
               </Box>
             ))}
           </Box>
-        </Box>
-       <ScrollIndicator />
-      </Box> 
+
+          <ScrollIndicator /> </Box>
+      </Box>
+
+
+
     </Box >
   )
 }

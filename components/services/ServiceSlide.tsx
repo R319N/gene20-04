@@ -42,20 +42,15 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
 
     return (
         <Box
-            // disableGutters
-            // maxWidth={false}
-            // component="section"
             ref={slideRef}
             className="service-slide"
-            px={{xs:"1rem", lg:"6rem", xxl:"10rem"}}
-
-            sx={{
-                height: '100%',
-                minHeight: '100svh',
+            sx={{ 
+                px:{ xs: "1rem", lg: "6rem", xxl: "10rem" },
+                height: '100%', pb: "10rem",
                 width: "100%",
                 position: "relative",
                 flexDirection: "column",
-                overflowY: "auto",
+                // overflowY: "auto",
                 // boxSizing: "border-box",
 
             }}
@@ -70,9 +65,8 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                     width: "100%",
                     // minHeight: "100%",
                     height: "100%",
-                    justifyContent: { xs:"space-between", md:"flex-start"},
-                    pb: { xs: "0em", md: "2rem" },
-                    pt: "0"
+                    justifyContent: { xs: "space-between", md: "flex-start" },
+                    pb: { xs: "6rem", md: "2rem" },
                 }}
             >
                 <Box sx={{
@@ -106,9 +100,9 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         mt: { xs: "-25px", lg: "-40px", xxl: "-50px" },
                         zIndex: 2,
                         pl: { xs: "0rem", xxl: "2rem" },
-                        pb: '6rem',
+                        // pb: '6rem', note 1
                         // ...styles.between_flex,
-                        // height: "fit-content"
+                        height: "100%"
 
                     }}>
                         <Stack spacing={{ xs: 1, xxl: 3 }}                       >
@@ -123,7 +117,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                     lineHeight: 1.125,
                                     textTransform: "uppercase",
                                     textShadow: "0 2px 2px rgba(255, 255, 255, 0.07)",
-                                    letterSpacing:"-0.5px"
+                                    letterSpacing: "-0.5px"
 
                                 }}
                             >
@@ -150,7 +144,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             />
                         </Stack>
 
-                        <Stack spacing={2} sx={{ zIndex: 1, py: "1rem" }}>
+                        <Stack spacing={{ xs: 1, lg: 2 }} sx={{ zIndex: 1, py: "1rem", display: { lg: "flex" }, }}>
                             <Typography
                                 className="slide-importance slide-animate"
                                 variant='body2'
@@ -158,9 +152,9 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                     textTransform: "capitalize",
                                     fontSize: { xs: "0.75em", md: 12, xxl: 16 },
                                     lineHeight: 1.4,
-                                    width: {xs:"100%", md:"90%"},
+                                    width: { xs: "100%", md: "90%" },
                                     fontWeight: "medium",
-                                    display: "flex",
+                                   
                                     alignItems: "center",
                                     gap: 1.5,
                                     // py: "1rem",
@@ -201,7 +195,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 href={pageUrl}
                                 sx={{
                                     ...styles.center_flex,
-                                    display:{xs:"none", md:"none"},
+                                    display: { xs: "none", md: "none" },
                                     justifyContent: "flex-start",
                                     gap: 1,
                                     width: "fit-content",
@@ -248,15 +242,15 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         position: "relative",
                         // top:"40%",
                         width: { xs: "100%", md: "100%" },
-                        height: { xs: "100%", md: "100%" },
+                        height: { xs: "60%", md: "100%" },
                         filter: "drop-shadow(0 42px 54px rgba(0,0,0,0.55))",
                         display: "flex",
                         alignItems: { xs: "flex-start", xl: "flex-end" },
                         justifyContent: { xs: "flex-end", xl: "space-between" },
                         overflow: "visible",
-                          pl:"1rem"
+                        pl: "1rem"
                         // justifyContent: "flex-end",
-                      
+
                     }}
                 >
                     <Box
@@ -272,7 +266,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                             boxShadow: `0 24px 60px ${color}22`,
                             backdropFilter: "blur(20px)",
                             mb: "4rem",
-                          
+
                         }}
                     >
                         <Grid container spacing={2.2} p="0.5rem" width="100%">
@@ -313,7 +307,7 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                         sx={{ width: "100%", height: "100% ", display: "flex", justifyContent: "flex-start", alignItems: "flex-start", position: "relative", overflow: "visible" }}>
                         <Box sx={{
                             width: { xs: "340px", xl: "500px" },
-                            height: { xs: "340px", xl: "500px" },
+                            height: { xs: "280px", xl: "500px" },
                             position: "absolute",
                             top: { xs: "0%", md: '0%' },
                             right: 0,
@@ -336,50 +330,50 @@ const ServiceSlide: React.FC<props> = ({ image, name, detailIntro, deliverables,
                                 src={image}
                                 alt={name}
                                 fill
-                                sizes="(max-width: 900px) 90vw, (max-width: 1536px) 42vw, 680px"
+                                sizes="(max-width: 900px) 80vw, (max-width: 1536px) 42vw, 680px"
                                 style={{ objectFit: "fill" }}
                             />
                         </Box>
                     </Box>
-                </Box>               
+                </Box>
 
+                <Box
+                    // className="slide-button slide-animate"
+                    component={Link}
+                    href={pageUrl}
+                    sx={{
+                        ...styles.center_flex,
+                        justifyContent: "flex-end",
+                        gap: 1,
+                        width: "fit-content",
+                        textDecoration: "none",
+                        height: "100%"
+
+                    }}
+                >
                     <Box
-                        // className="slide-button slide-animate"
-                        component={Link}
-                        href={pageUrl}
                         sx={{
                             ...styles.center_flex,
-                            justifyContent: "flex-end",
-                            gap: 1,
-                            width: "fit-content",
-                            textDecoration: "none",
-                            height:"100%"
-                           
+                            width: 36,
+                            height: 36,
+                            borderRadius: "50%",
+                            border: "1px solid #fafafa44",
+                            color: { color },
+                            transition: "border-color 0.2s ease, transform 0.2s ease",
+                            "& svg": { fontSize: 20 },
+                            ".slide-button:hover &": {
+                                borderColor: color,
+                                transform: "translateX(4px)",
+                            },
                         }}
                     >
-                        <Box
-                            sx={{
-                                ...styles.center_flex,
-                                width: 36,
-                                height: 36,
-                                borderRadius: "50%",
-                                border: "1px solid #fafafa44",
-                                color: { color },
-                                transition: "border-color 0.2s ease, transform 0.2s ease",
-                                "& svg": { fontSize: 20 },
-                                ".slide-button:hover &": {
-                                    borderColor: color,
-                                    transform: "translateX(4px)",
-                                },
-                            }}
-                        >
-                            <ArrowForwardRounded />
-                        </Box>
-                        <Typography variant="caption" sx={{ fontSize: { xs: 12, md: 16 }, color: "#ffffff" }} >
-                            Explore {name}
-                        </Typography>
+                        <ArrowForwardRounded />
                     </Box>
-               
+                    <Typography variant="caption" sx={{ fontSize: { xs: 12, md: 16 }, color: "#ffffff" }} >
+                        Explore {name}
+                    </Typography>
+                </Box>
+
             </Box>
         </Box >
     )
